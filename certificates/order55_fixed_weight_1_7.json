@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "claim": "exact maxima for order-55 binary circulant matrices at fixed row weights 1 through 7",
+  "definition": "max |det(circ(a))| over a in {0,1}^55 with sum(a)=weight",
+  "order": 55,
+  "discovery_date": "2026-09-09",
+  "enumeration": {
+    "representatives": "all weight-k supports containing position 0",
+    "coverage_reason": "every nonempty cyclic-rotation orbit has a support containing position 0 and absolute determinant is rotation invariant",
+    "total_representatives": 29332216,
+    "determinant_method": "product over all 55 roots of unity in two finite fields, followed by signed CRT",
+    "prime_1": 2305843009213696591,
+    "prime_2": 2305843009213697141,
+    "signed_crt_capacity_bits_lower_bound": 121,
+    "largest_hadamard_bound_log2": 77.20226036
+  },
+  "results": [
+    {
+      "weight": 1,
+      "absolute_determinant": "1",
+      "word": "1000000000000000000000000000000000000000000000000000000",
+      "residue_prime_1": 1,
+      "residue_prime_2": 1,
+      "representatives_evaluated": 1
+    },
+    {
+      "weight": 2,
+      "absolute_determinant": "2048",
+      "word": "1000000000010000000000000000000000000000000000000000000",
+      "residue_prime_1": 2048,
+      "residue_prime_2": 2048,
+      "representatives_evaluated": 54
+    },
+    {
+      "weight": 3,
+      "absolute_determinant": "1564031349",
+      "word": "1000010000000001000000000000000000000000000000000000000",
+      "residue_prime_1": 1564031349,
+      "residue_prime_2": 1564031349,
+      "representatives_evaluated": 1431
+    },
+    {
+      "weight": 4,
+      "absolute_determinant": "6424318816256",
+      "word": "1000010000010000000000000001000000000000000000000000000",
+      "residue_prime_1": 6424318816256,
+      "residue_prime_2": 6424318816256,
+      "representatives_evaluated": 24804
+    },
+    {
+      "weight": 5,
+      "absolute_determinant": "12556202952818275",
+      "word": "1000000011000000000000000000000100000000000000001000000",
+      "residue_prime_1": 12556202952818275,
+      "residue_prime_2": 12556202952818275,
+      "representatives_evaluated": 316251
+    },
+    {
+      "weight": 6,
+      "absolute_determinant": "4342461217049330166",
+      "word": "1000000000001100100000100000000000000000000000001000000",
+      "residue_prime_1": 2036618207835633575,
+      "residue_prime_2": 2036618207835633025,
+      "representatives_evaluated": 3162510
+    },
+    {
+      "weight": 7,
+      "absolute_determinant": "570999857161750276477",
+      "word": "1000000000000011000010000001000000001000000010000000000",
+      "residue_prime_1": 1456633885967218500,
+      "residue_prime_2": 1456633885967082650,
+      "representatives_evaluated": 25827165
+    }
+  ]
+}
