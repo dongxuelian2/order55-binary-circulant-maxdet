@@ -1,0 +1,44 @@
+[
+  {
+    "command": [
+      "clang++",
+      "-O3",
+      "-std=c++20",
+      "-march=native",
+      "-Wall",
+      "-Wextra",
+      "E:\\maximal determinant\\native\\order55_profiles.cpp",
+      "-o",
+      "E:\\maximal determinant\\native\\order55_profiles.exe"
+    ],
+    "source_sha256": "d94aa8bc7e81607993a76b0ce9c1e7141b7348147f64c839fcc4ba87a893a4e4"
+  },
+  {
+    "command": [
+      "clang++",
+      "-O3",
+      "-std=c++20",
+      "-march=native",
+      "-Wall",
+      "-Wextra",
+      "E:\\maximal determinant\\native\\order55_correlation_screen.cpp",
+      "-o",
+      "E:\\maximal determinant\\native\\order55_correlation_screen.exe"
+    ],
+    "source_sha256": "02a15f5eeb4f542c0b4a408d218aff7cdc203b1870395a92244ea5f2e37580d5"
+  },
+  {
+    "command": [
+      "clang++",
+      "-O3",
+      "-std=c++20",
+      "-march=native",
+      "-Wall",
+      "-Wextra",
+      "E:\\maximal determinant\\native\\order55_torus_lift.cpp",
+      "-o",
+      "E:\\maximal determinant\\native\\order55_torus_lift.exe"
+    ],
+    "source_sha256": "63f6936ce4142c2f75180ac59274f48996b3687007db49d0491102ff3aa741ec"
+  }
+]

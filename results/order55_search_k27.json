@@ -1,0 +1,11 @@
+{
+  "schema": "aletheia-c54-search-v1",
+  "n": 55,
+  "weight": 27,
+  "alternating_sum": 1,
+  "bits": "1111011101000011101110011001011100011010010000101000001",
+  "log_absolute_determinant_estimate": 73.5530223432502481,
+  "worker": 9,
+  "iteration": 2715596,
+  "warning": "floating-point search output; verify.py is authoritative"
+}

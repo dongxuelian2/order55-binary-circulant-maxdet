@@ -1,0 +1,10 @@
+# Preserve certificate and proof-source bytes across operating systems.
+certificates/order55_global/** -text
+native/order55_*.cpp -text
+output/pdf/*.pdf -text
+scripts/build_order55_global.py -text
+scripts/verify_order55_global.py -text
+src/maxdet/order55.py -text
+src/maxdet/boxed_moment.py -text
+# CRLF is part of the frozen certificate bytes, not trailing content.
+* whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

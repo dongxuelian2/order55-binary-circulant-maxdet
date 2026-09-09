@@ -35,3 +35,17 @@ The machine currently exposes a working Python 3.13 installation through the
 `Python313` executable above. The generic `python`/`python3` commands resolve to
 an unavailable Cygwin shim on this host, so commands in this project use the
 virtual-environment interpreter explicitly.
+
+## Order-55 global proof audit (2026-09-09)
+
+- CPU SIMD probe: AVX2, BMI2, POPCNT, AVX512F, and AVX512VPOPCNTDQ available.
+- Final native build: Clang C++20, `-O3 -march=native -Wall -Wextra`.
+- Final suite: 30 passed; `pip check` reports no broken requirements.
+- Original fixed-weight verifier: all seven strata pass, 29,332,216 covered
+  zero-containing representatives in the original certificate.
+- Global verifier: all mathematical bounds, hashes, exact norms, complete
+  profile generators, task coverage, and all maximizing words PASS.
+- Full independent 6+5 split replay: all 16,084 margin tasks pass, with
+  identical 15,487,882,832 joined-word counts and two normalized solutions.
+- Paper: 8-page PDF generated with local TeX Live 2024 and visually checked
+  after Poppler rendering; no overfull-box or LaTeX warning remains.

@@ -1,48 +1,78 @@
-# Maximal Determinant Production Research
-
-This repository contains exactness-aware code and certificates for determinant
-searches over binary and ±1 matrices.
+# Maximal determinant: exact binary circulant order 55
 
 ## Result
 
-The production run of 2026-09-09 establishes the exact fixed-weight binary
-circulant maxima `D_circ(55,k)` for `1 <= k <= 7`. The largest new structured
-value is
-
 ```text
-D_circ(55,7) = 570999857161750276477.
+D_01(55) = 134694094094758395331307111329132
 ```
 
-This is a structured exact theorem, not an unrestricted 55-by-55 binary
-circulant result and not an unrestricted ±1 maximal determinant record. See
-`paper/order55_fixed_weight_note.md` for the claim and proof, and
-`certificates/order55_fixed_weight_1_7.json` for the machine-readable data.
+All maximizing 55-bit words have weight 28 and form exactly one affine
+class of size 2,200, with trivial stabilizer. Its lexicographically least
+representative is
+
+```text
+0000000100011111011011001101011011010100011110101000111
+```
+
+This is a global theorem over all `2^55` binary circulants. The certificate
+covers every weight pair, including equality, and classifies every maximizer.
+
+- Paper: [Markdown](paper/order55_global/manuscript.md),
+  [LaTeX](paper/order55_global/manuscript.tex),
+  [PDF](output/pdf/order55_global.pdf).
+- [Global certificate](certificates/order55_global/global.json) and
+  [winner classification](certificates/order55_global/winner.json).
+- [Independent verifier](scripts/verify_order55_global.py).
+- [Source and novelty record](references/order55/SOURCES.md).
+- [OEIS update draft](paper/order55_global/oeis_update_draft.md), not submitted.
 
 ## Reproduce
 
+Install Python 3.11+ with this project (`python -m pip install -e .`) and
+Clang with C++20 and unsigned `__int128` support. No external proof repository
+or stochastic search is needed for the final certificate.
+
 ```powershell
-clang++ -O3 -std=c++17 -Wall -Wextra -Wpedantic -pthread native/circulant_fixed_weight_exact.cpp -o native/circulant_fixed_weight_exact.exe
-1..7 | ForEach-Object { native/circulant_fixed_weight_exact.exe --weight $_ --threads 15 }
-& .\.venv\Scripts\python.exe scripts\verify_structured.py
-& .\.venv\Scripts\python.exe -m pytest
-& .\.venv\Scripts\python.exe -m pip check
+& ./.venv/Scripts/python.exe scripts/build_order55_global.py
+& ./.venv/Scripts/python.exe scripts/verify_order55_global.py --full-lifts
+& ./.venv/Scripts/python.exe -m pytest
+& ./.venv/Scripts/python.exe -m pip check
 ```
 
-The exact enumerator uses two finite fields and signed CRT for every candidate.
-The independent verifier reconstructs the seven winning matrices and computes
-their determinants with SymPy. Floating point is used only by the separate
-bordered two-circulant heuristic searcher.
+On other platforms use the installed Python interpreter instead of the
+Windows venv path. The builder compiles native executables itself. For a
+separate reproduction directory, pass `--output PATH`. The verifier accepts
+that directory as its positional argument.
 
-## Layout
+The ordinary verifier independently recomputes all bounds and norms,
+recompiles the hash-bound generators, regenerates all folded and correlation
+profiles, and checks the full task coverage. `--full-lifts` additionally
+repeats every binary lift with a different 6+5 split. The original full
+5+6 lift and this full independent split replay both completed successfully.
 
-- `src/maxdet/`: validated matrix, construction, and heuristic scoring primitives.
-- `native/`: high-performance heuristic and exact exhaustive searchers.
-- `scripts/verify_structured.py`: independent certificate verifier.
-- `certificates/`: machine-readable exact results.
-- `results/`: production-run discovery log and negative unrestricted evidence.
-- `docs/target_selection.md`: literature-driven target selection.
-- `references/SOURCES.md`: frozen upstream revisions and access dates.
-- `paper/order55_fixed_weight_note.md`: technical note.
+The proof reduces 38,629,684 formally allowed ordered correlation profiles
+to 6,845,230 explicit profile evaluations, 2,316 correlation targets, and
+16,084 complete margin tasks. The lift tests 15,487,882,832 joined words.
+Two normalized solutions give the same affine class. The winner has three
+independent exact checks: Fourier/CRT, SymPy integer determinant, and
+cyclotomic resultant product.
 
-The original exact determinant infrastructure and Sylvester Hadamard fixtures
-remain covered by the test suite.
+The certificate stores exact source and output hashes. Preserve the bytes
+of certificate files; their `.gitattributes` rules disable line-ending
+conversion. Elapsed times and host-specific command paths may differ during
+regeneration; mathematical counts, targets, and classification must agree.
+
+## Supporting results and research history
+
+The previously certified `D_circ(55,k)` values for `1 <= k <= 7` remain in
+`certificates/order55_fixed_weight_1_7.json` and are discussed in the paper's
+appendix. Run `scripts/verify_structured.py` to audit them.
+
+Exploratory `scripts/order55_*.py` programs use scratch files under `results/`
+and sometimes the separately retrieved ALETHEIA source. They are not
+needed for the final proof. The final entry points are
+`build_order55_global.py` and `verify_order55_global.py`.
+
+The source checks on 2026-09-09 located no prior published exact order-55
+determination in the sources inspected; this is not an absolute-priority
+claim. No remote publication or OEIS submission has been performed.

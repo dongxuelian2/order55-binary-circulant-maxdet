@@ -1,0 +1,33 @@
+{
+  "upstream": "c1332afa5d406373ec47f63dc3f187aee4a6cecf",
+  "commands": {
+    "order55_search_k27.json": [
+      550927,
+      "ALETHEIA generic random fixed-weight starts, annealing, one-swap local search; 40 seconds, 12 threads"
+    ],
+    "order55_search_k26.json": [
+      550926,
+      "ALETHEIA generic random fixed-weight starts, annealing, one-swap local search; 40 seconds, 12 threads"
+    ],
+    "order55_search_k25.json": [
+      550925,
+      "ALETHEIA generic random fixed-weight starts, annealing, one-swap local search; 30 seconds, 12 threads"
+    ],
+    "order55_search_k24.json": [
+      550924,
+      "ALETHEIA generic random fixed-weight starts, annealing, one-swap local search; 30 seconds, 12 threads"
+    ],
+    "order55_search_k27_deep.json": [
+      550928,
+      "ALETHEIA incumbent-start annealing and complete two-swap quench; 40 seconds, 12 threads"
+    ]
+  },
+  "three_swap": {
+    "log": "order55_search_k27_three.json",
+    "seed": 551027,
+    "iterations": 1,
+    "threads": 1,
+    "method": "complete three-swap audit; no improvement"
+  },
+  "final_result_source": "exact torus MITM"
+}

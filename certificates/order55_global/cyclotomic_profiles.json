@@ -1,0 +1,98 @@
+[
+  {
+    "command": [
+      "E:\\maximal determinant\\native\\order55_profiles.exe",
+      "E:\\maximal determinant\\certificates\\order55_global\\profile_thresholds.txt",
+      "5",
+      "25"
+    ],
+    "seconds": 0.060361385345458984,
+    "stderr": "m=5 k=25 nodes=1068 min_at_zero_leaves=213 threshold_canonical=40 survivors=17 covered_profiles=330 seconds=0.0002006\n",
+    "source_sha256": "d94aa8bc7e81607993a76b0ce9c1e7141b7348147f64c839fcc4ba87a893a4e4",
+    "output_sha256": "e1386ab4c94a8fbe44f6f0841233d5676ff2fb66c49bea8f762da14bddbd1341",
+    "k": 25,
+    "m": 5,
+    "canonical_survivors": 17,
+    "folded_correlation_signatures": 19
+  },
+  {
+    "command": [
+      "E:\\maximal determinant\\native\\order55_profiles.exe",
+      "E:\\maximal determinant\\certificates\\order55_global\\profile_thresholds.txt",
+      "11",
+      "25"
+    ],
+    "seconds": 0.07139396667480469,
+    "stderr": "m=11 k=25 nodes=834622 min_at_zero_leaves=200697 threshold_canonical=9831 survivors=321 covered_profiles=35310 seconds=0.0303368\n",
+    "source_sha256": "d94aa8bc7e81607993a76b0ce9c1e7141b7348147f64c839fcc4ba87a893a4e4",
+    "output_sha256": "953aa9219106655037462d5854d1c8855e038ce5b217253fc3e36d847d81cc97",
+    "k": 25,
+    "m": 11,
+    "canonical_survivors": 321,
+    "folded_correlation_signatures": 1020
+  },
+  {
+    "command": [
+      "E:\\maximal determinant\\native\\order55_profiles.exe",
+      "E:\\maximal determinant\\certificates\\order55_global\\profile_thresholds.txt",
+      "5",
+      "26"
+    ],
+    "seconds": 0.022246599197387695,
+    "stderr": "m=5 k=26 nodes=1314 min_at_zero_leaves=279 threshold_canonical=53 survivors=27 covered_profiles=505 seconds=0.0001746\n",
+    "source_sha256": "d94aa8bc7e81607993a76b0ce9c1e7141b7348147f64c839fcc4ba87a893a4e4",
+    "output_sha256": "46ae4d66192d47e9b5becb25b5615c74258efa2dfd60c54788a7facfd91aeb8c",
+    "k": 26,
+    "m": 5,
+    "canonical_survivors": 27,
+    "folded_correlation_signatures": 44
+  },
+  {
+    "command": [
+      "E:\\maximal determinant\\native\\order55_profiles.exe",
+      "E:\\maximal determinant\\certificates\\order55_global\\profile_thresholds.txt",
+      "11",
+      "26"
+    ],
+    "seconds": 0.07768607139587402,
+    "stderr": "m=11 k=26 nodes=1375407 min_at_zero_leaves=356292 threshold_canonical=18738 survivors=560 covered_profiles=61600 seconds=0.056319\n",
+    "source_sha256": "d94aa8bc7e81607993a76b0ce9c1e7141b7348147f64c839fcc4ba87a893a4e4",
+    "output_sha256": "4f2304ff3ea45152322a4f37ab01d22b904da8163508d4beb3372860b81dc4f8",
+    "k": 26,
+    "m": 11,
+    "canonical_survivors": 560,
+    "folded_correlation_signatures": 1765
+  },
+  {
+    "command": [
+      "E:\\maximal determinant\\native\\order55_profiles.exe",
+      "E:\\maximal determinant\\certificates\\order55_global\\profile_thresholds.txt",
+      "5",
+      "27"
+    ],
+    "seconds": 0.022414684295654297,
+    "stderr": "m=5 k=27 nodes=1369 min_at_zero_leaves=293 threshold_canonical=58 survivors=26 covered_profiles=485 seconds=0.0001859\n",
+    "source_sha256": "d94aa8bc7e81607993a76b0ce9c1e7141b7348147f64c839fcc4ba87a893a4e4",
+    "output_sha256": "1959b73e24850a525a91404afa475fa54a19cce49f1ff47ee126766231783270",
+    "k": 27,
+    "m": 5,
+    "canonical_survivors": 26,
+    "folded_correlation_signatures": 45
+  },
+  {
+    "command": [
+      "E:\\maximal determinant\\native\\order55_profiles.exe",
+      "E:\\maximal determinant\\certificates\\order55_global\\profile_thresholds.txt",
+      "11",
+      "27"
+    ],
+    "seconds": 0.08182644844055176,
+    "stderr": "m=11 k=27 nodes=1432920 min_at_zero_leaves=371512 threshold_canonical=19899 survivors=660 covered_profiles=72545 seconds=0.0593731\n",
+    "source_sha256": "d94aa8bc7e81607993a76b0ce9c1e7141b7348147f64c839fcc4ba87a893a4e4",
+    "output_sha256": "e9d520d6d6b88d93579f1f629a5ab80dbaf6fd6ea4a98c7f0f33f93e3e6f8bd1",
+    "k": 27,
+    "m": 11,
+    "canonical_survivors": 660,
+    "folded_correlation_signatures": 2055
+  }
+]

@@ -22,3 +22,6 @@ data/*
 !data/.gitkeep
 results/*
 !results/.gitkeep
+
+# Local paper-rendering intermediates
+/tmp/pdfs/
