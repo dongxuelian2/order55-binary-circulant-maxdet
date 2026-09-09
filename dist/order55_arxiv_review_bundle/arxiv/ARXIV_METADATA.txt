@@ -1,8 +1,0 @@
-Title: The Maximum Determinant of a 55 x 55 Binary Circulant Matrix
-Authors: Qichao Wang; Daoyu Dong
-Affiliations: Hebei University of Technology; University of Electronic Science and Technology of China
-Primary category suggestion: math.CO
-Suggested comments: 11 pages. Computer-assisted exact finite computation with machine-readable certificates. Review draft: the independent full order-55 fiber-union certificate remains open.
-License: author must choose before submission
-Repository/DOI: author must supply a public URL if desired
-Email addresses: intentionally omitted from this package

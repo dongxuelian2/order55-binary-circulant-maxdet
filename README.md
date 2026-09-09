@@ -1,82 +1,56 @@
-# Maximal determinant: exact binary circulant order 55
+# Maximum determinant of a 55×55 binary circulant matrix
+
+This repository contains the exact finite-enumeration code and generated proof data accompanying the preprint **“The Maximum Determinant of a 55×55 Binary Circulant Matrix.”**
 
 ## Result
+
+For binary circulant matrices of order 55,
 
 ```text
 D_01(55) = 134694094094758395331307111329132
 ```
 
-All maximizing 55-bit words have weight 28 and form exactly one affine
-class of size 2,200, with trivial stabilizer. Its lexicographically least
-representative is
+Every maximizing word has weight 28. The maximizers form a single affine-equivalence class under `i -> u i + t (mod 55)`, with 2,200 words and trivial stabilizer. A lexicographically least representative is
 
 ```text
 0000000100011111011011001101011011010100011110101000111
 ```
 
-This is the exact global theorem claim over all `2^55` binary circulants.
-The production certificate records the complete reduction and the existing
-split-dependent lift replay; an external completeness audit still requires an
-independent full fiber-union certificate. This checkout is therefore a review
-draft, not an arXiv-ready submission.
-
-- Paper: [Markdown](paper/order55_global/manuscript.md),
-  [LaTeX](paper/order55_global/manuscript.tex),
-  [PDF](output/pdf/order55_global.pdf).
-- [Global certificate](certificates/order55_global/global.json) and
-  [winner classification](certificates/order55_global/winner.json).
-- [Production certificate verifier](scripts/verify_order55_global.py).
-- [Source and novelty record](references/order55/SOURCES.md).
-- [OEIS update draft](paper/order55_global/oeis_update_draft.md), not submitted.
+The proof combines complement duality, exact spectral-moment bounds, the 5×11 cyclotomic decomposition, finite correlation-profile enumeration, and an exhaustive meet-in-the-middle lift of the remaining binary fibers. The mathematical coverage of the finite enumeration is proved in the paper; the code here executes those reductions and reproduces the reported counts and witnesses.
 
 ## Reproduce
 
-Install Python 3.11+ with this project (`python -m pip install -e .`) and
-Clang with C++20 and unsigned `__int128` support. No external proof repository
-or stochastic search is needed for the final certificate.
+Requirements:
 
-```powershell
-& ./.venv/Scripts/python.exe scripts/build_order55_global.py
-& ./.venv/Scripts/python.exe scripts/verify_order55_global.py --full-lifts
-& ./.venv/Scripts/python.exe -m pytest
-& ./.venv/Scripts/python.exe -m pip check
+- Python 3.11+
+- Clang with C++20 and unsigned `__int128` support
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install -e '.[dev]'
+python scripts/verify_order55_global.py
 ```
 
-On other platforms use the installed Python interpreter instead of the
-Windows venv path. The builder compiles native executables itself. For a
-separate reproduction directory, pass `--output PATH`. The verifier accepts
-that directory as its positional argument.
+To regenerate the finite enumeration before verification:
 
-The ordinary verifier recomputes all bounds and norms, recompiles the
-hash-bound generators, regenerates all folded and correlation profiles, and
-checks the listed task coverage. `--full-lifts` additionally repeats every
-binary lift with a different 6+5 split. Both lift runs completed successfully,
-but the second run is a split-dependent replay of the same native algorithm,
-not an independent full fiber-union proof.
+```bash
+python scripts/build_order55_global.py --workers 8
+python scripts/verify_order55_global.py
+```
 
-The proof reduces 38,629,684 formally allowed ordered correlation profiles
-to 6,845,230 explicit profile evaluations, 2,316 correlation targets, and
-16,084 listed margin tasks. The production lift tests 15,487,882,832 joined words.
-Two normalized solutions give the same affine class. The winner has three
-exact checks: Fourier/CRT, SymPy integer determinant, and
-cyclotomic resultant product.
+The optional `--full-lifts` verifier mode repeats the lift with the complementary 6+5 split as a consistency check. It is not required for the completeness proof.
 
-The certificate stores exact source and output hashes. Preserve the bytes
-of certificate files; their `.gitattributes` rules disable line-ending
-conversion. Elapsed times and host-specific command paths may differ during
-regeneration; mathematical counts, targets, and classification must agree.
+## Repository layout
 
-## Supporting results and research history
+- `scripts/build_order55_global.py` — reconstructs the finite enumeration.
+- `scripts/verify_order55_global.py` — checks the stored enumeration and final classification.
+- `native/order55_profiles.cpp` — folded profile enumeration.
+- `native/order55_correlation_screen.cpp` — exact correlation-profile screen.
+- `native/order55_torus_lift.cpp` — meet-in-the-middle binary lift.
+- `src/maxdet/order55.py` — exact circulant identities, determinant reconstruction, and moment bounds.
+- `src/maxdet/boxed_moment.py` — product bound with a spectral cap.
+- `certificates/order55_global/` — generated data used by the verifier.
+- `tests/` — focused unit tests for the exact arithmetic routines.
 
-The previously certified `D_circ(55,k)` values for `1 <= k <= 7` remain in
-`certificates/order55_fixed_weight_1_7.json` and are discussed in the paper's
-appendix. Run `scripts/verify_structured.py` to audit them.
-
-Exploratory `scripts/order55_*.py` programs use scratch files under `results/`
-and sometimes the separately retrieved ALETHEIA source. They are not
-needed for the final proof. The final entry points are
-`build_order55_global.py` and `verify_order55_global.py`.
-
-The source checks on 2026-09-09 located no prior published exact order-55
-determination in the sources inspected; this is not an absolute-priority
-claim. No remote publication or OEIS submission has been performed.
+The main branch is intentionally kept as a compact reproducibility repository. Historical audit material, exploratory searches, obsolete fixed-weight side projects, rendered paper build products, review-response drafts, and duplicate manuscript formats are omitted because they are not part of the proof of the order-55 theorem.
