@@ -52,5 +52,3 @@ The optional `--full-lifts` verifier mode repeats the lift with the complementar
 - `src/maxdet/boxed_moment.py` — product bound with a spectral cap.
 - `certificates/order55_global/` — generated data used by the verifier.
 - `tests/` — focused unit tests for the exact arithmetic routines.
-
-The main branch is intentionally kept as a compact reproducibility repository. Historical audit material, exploratory searches, obsolete fixed-weight side projects, rendered paper build products, review-response drafts, and duplicate manuscript formats are omitted because they are not part of the proof of the order-55 theorem.
