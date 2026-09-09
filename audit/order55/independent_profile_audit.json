@@ -1,0 +1,86 @@
+{
+  "partitions": [
+    {
+      "k": 25,
+      "partition": 2,
+      "ordered_profiles": 2925,
+      "folded_matching_profiles": 1065,
+      "canonical_determinants": 55,
+      "above_screen": 55,
+      "max_absolute_profile_product": "149252348330330952354666327508350",
+      "targets": 55
+    },
+    {
+      "k": 26,
+      "partition": 3,
+      "ordered_profiles": 807300,
+      "folded_matching_profiles": 440990,
+      "canonical_determinants": 22094,
+      "above_screen": 0,
+      "max_absolute_profile_product": "132807686612813122442304827054057",
+      "targets": 0
+    },
+    {
+      "k": 26,
+      "partition": 5,
+      "ordered_profiles": 8775,
+      "folded_matching_profiles": 5440,
+      "canonical_determinants": 279,
+      "above_screen": 279,
+      "max_absolute_profile_product": "161463924681760264101264998336768",
+      "targets": 279
+    },
+    {
+      "k": 26,
+      "partition": 6,
+      "ordered_profiles": 27,
+      "folded_matching_profiles": 25,
+      "canonical_determinants": 2,
+      "above_screen": 2,
+      "max_absolute_profile_product": "207707950706572213976867685818624",
+      "targets": 2
+    },
+    {
+      "k": 27,
+      "partition": 1,
+      "ordered_profiles": 5920200,
+      "folded_matching_profiles": 3051280,
+      "canonical_determinants": 152721,
+      "above_screen": 0,
+      "max_absolute_profile_product": "127780054816420227713100959553868",
+      "targets": 0
+    },
+    {
+      "k": 27,
+      "partition": 3,
+      "ordered_profiles": 105300,
+      "folded_matching_profiles": 56165,
+      "canonical_determinants": 2821,
+      "above_screen": 1964,
+      "max_absolute_profile_product": "148189063898913547781572729639876",
+      "targets": 1964
+    },
+    {
+      "k": 27,
+      "partition": 4,
+      "ordered_profiles": 702,
+      "folded_matching_profiles": 300,
+      "canonical_determinants": 16,
+      "above_screen": 16,
+      "max_absolute_profile_product": "189235672145899722005180399430892",
+      "targets": 16
+    },
+    {
+      "k": 27,
+      "partition": 5,
+      "ordered_profiles": 1,
+      "folded_matching_profiles": 0,
+      "canonical_determinants": 0,
+      "above_screen": 0,
+      "max_absolute_profile_product": "0",
+      "targets": 0
+    }
+  ],
+  "targets": 2316,
+  "status": "PASS"
+}
