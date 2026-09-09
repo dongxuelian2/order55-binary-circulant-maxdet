@@ -1,8 +1,0 @@
-weight=1 determinant=1 representatives=1 PASS
-weight=2 determinant=2048 representatives=54 PASS
-weight=3 determinant=1564031349 representatives=1431 PASS
-weight=4 determinant=6424318816256 representatives=24804 PASS
-weight=5 determinant=12556202952818275 representatives=316251 PASS
-weight=6 determinant=4342461217049330166 representatives=3162510 PASS
-weight=7 determinant=570999857161750276477 representatives=25827165 PASS
-order=55 total_representatives=29332216 PASS
