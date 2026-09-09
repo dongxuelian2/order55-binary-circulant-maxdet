@@ -14,15 +14,18 @@ representative is
 0000000100011111011011001101011011010100011110101000111
 ```
 
-This is a global theorem over all `2^55` binary circulants. The certificate
-covers every weight pair, including equality, and classifies every maximizer.
+This is the exact global theorem claim over all `2^55` binary circulants.
+The production certificate records the complete reduction and the existing
+split-dependent lift replay; an external completeness audit still requires an
+independent full fiber-union certificate. This checkout is therefore a review
+draft, not an arXiv-ready submission.
 
 - Paper: [Markdown](paper/order55_global/manuscript.md),
   [LaTeX](paper/order55_global/manuscript.tex),
   [PDF](output/pdf/order55_global.pdf).
 - [Global certificate](certificates/order55_global/global.json) and
   [winner classification](certificates/order55_global/winner.json).
-- [Independent verifier](scripts/verify_order55_global.py).
+- [Production certificate verifier](scripts/verify_order55_global.py).
 - [Source and novelty record](references/order55/SOURCES.md).
 - [OEIS update draft](paper/order55_global/oeis_update_draft.md), not submitted.
 
@@ -44,17 +47,18 @@ Windows venv path. The builder compiles native executables itself. For a
 separate reproduction directory, pass `--output PATH`. The verifier accepts
 that directory as its positional argument.
 
-The ordinary verifier independently recomputes all bounds and norms,
-recompiles the hash-bound generators, regenerates all folded and correlation
-profiles, and checks the full task coverage. `--full-lifts` additionally
-repeats every binary lift with a different 6+5 split. The original full
-5+6 lift and this full independent split replay both completed successfully.
+The ordinary verifier recomputes all bounds and norms, recompiles the
+hash-bound generators, regenerates all folded and correlation profiles, and
+checks the listed task coverage. `--full-lifts` additionally repeats every
+binary lift with a different 6+5 split. Both lift runs completed successfully,
+but the second run is a split-dependent replay of the same native algorithm,
+not an independent full fiber-union proof.
 
 The proof reduces 38,629,684 formally allowed ordered correlation profiles
 to 6,845,230 explicit profile evaluations, 2,316 correlation targets, and
-16,084 complete margin tasks. The lift tests 15,487,882,832 joined words.
+16,084 listed margin tasks. The production lift tests 15,487,882,832 joined words.
 Two normalized solutions give the same affine class. The winner has three
-independent exact checks: Fourier/CRT, SymPy integer determinant, and
+exact checks: Fourier/CRT, SymPy integer determinant, and
 cyclotomic resultant product.
 
 The certificate stores exact source and output hashes. Preserve the bytes

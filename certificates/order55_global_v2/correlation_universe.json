@@ -1,0 +1,24 @@
+{
+  "by_weight": {
+    "25": {
+      "clean_count": 3,
+      "clean_ordered_count": 407277
+    },
+    "26": {
+      "clean_count": 7,
+      "clean_ordered_count": 32178654
+    },
+    "27": {
+      "clean_count": 6,
+      "clean_ordered_count": 6043753
+    }
+  },
+  "clean_count": 16,
+  "extra_in_production": [],
+  "intersection_size": 16,
+  "missing_from_production": [],
+  "pass": true,
+  "production_count": 16,
+  "set_sha256_clean": "2cab44963951727b5382f7dba7657e4841c42c931f6541d31ff31d39385be1fe",
+  "set_sha256_production": "2cab44963951727b5382f7dba7657e4841c42c931f6541d31ff31d39385be1fe"
+}

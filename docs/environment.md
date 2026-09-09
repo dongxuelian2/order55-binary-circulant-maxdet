@@ -43,9 +43,10 @@ virtual-environment interpreter explicitly.
 - Final suite: 30 passed; `pip check` reports no broken requirements.
 - Original fixed-weight verifier: all seven strata pass, 29,332,216 covered
   zero-containing representatives in the original certificate.
-- Global verifier: all mathematical bounds, hashes, exact norms, complete
-  profile generators, task coverage, and all maximizing words PASS.
-- Full independent 6+5 split replay: all 16,084 margin tasks pass, with
-  identical 15,487,882,832 joined-word counts and two normalized solutions.
+- Production verifier: all mathematical bounds, hashes, exact norms, complete
+  profile generators, listed task coverage, and all maximizing words PASS.
+- Split-dependent 6+5 replay: all 16,084 listed margin tasks pass, with
+  identical 15,487,882,832 joined-word counts and two normalized solutions;
+  this is not an independent full fiber-union proof.
 - Paper: 8-page PDF generated with local TeX Live 2024 and visually checked
   after Poppler rendering; no overfull-box or LaTeX warning remains.

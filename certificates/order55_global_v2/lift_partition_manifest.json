@@ -1,0 +1,13 @@
+{
+  "actual_task_count": 16084,
+  "duplicate_task_ids": [],
+  "expected_task_count": 16084,
+  "extra_task_ids": [],
+  "fiber_union_proof": "NOT_COMPLETED",
+  "intersection_size": 16084,
+  "missing_task_ids": [],
+  "partition_manifest_pass": true,
+  "payload_mismatches": [],
+  "task_set_sha256_actual": "8973024528fa6c6adc38091b0c67457491c22459259e086fef255237175f88a8",
+  "task_set_sha256_expected": "8973024528fa6c6adc38091b0c67457491c22459259e086fef255237175f88a8"
+}

@@ -1,0 +1,25 @@
+Commands are run from the repository root.
+
+Fast checks:
+  .\.venv\Scripts\python.exe scripts\verify_order55_global.py
+  .\.venv\Scripts\python.exe scripts\verify_structured.py
+  .\.venv\Scripts\python.exe -m pytest
+  .\.venv\Scripts\python.exe -m pip check
+  .\.venv\Scripts\python.exe audit\completeness\independent_lift_checker.py
+  .\.venv\Scripts\python.exe audit\completeness\verify_completeness_independent.py
+  .\.venv\Scripts\python.exe audit\completeness\affine_canonicalization_audit_v2.py
+  .\.venv\Scripts\python.exe audit\completeness\small_order_validation.py
+  .\.venv\Scripts\python.exe audit\completeness\random_forward_coverage_v8.py
+
+  .\.venv\Scripts\python.exe audit\completeness\run_cleanroom_profile_audit_v4.py --certificate certificates\order55_global --output tmp\profile_audit
+Full split-dependent replay:
+  .\.venv\Scripts\python.exe scripts\verify_order55_global.py --full-lifts
+
+PDF build from paper\order55_global\arxiv:
+  pdflatex -interaction=nonstopmode -halt-on-error main.tex
+  bibtex main
+  pdflatex -interaction=nonstopmode -halt-on-error main.tex
+  pdflatex -interaction=nonstopmode -halt-on-error main.tex
+
+The six-plus-five lift is explicitly a split-dependent replay of the same
+native algorithm.  It is not an independent full-fiber proof.

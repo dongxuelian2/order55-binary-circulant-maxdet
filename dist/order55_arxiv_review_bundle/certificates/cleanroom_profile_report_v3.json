@@ -1,0 +1,35 @@
+{
+  "clean_above_incumbent": 2316,
+  "clean_canonical_records": 984905,
+  "clean_target_set_sha256": "8aaf62fb93547de19f52063447ec8ec1a073ebd85f3e608484fcb0ad966055c9",
+  "counts_by_weight": {
+    "25": {
+      "above_incumbent": 55,
+      "canonical_profiles": 6358,
+      "folded_matching_profiles": 126675,
+      "ordered_profiles": 407277
+    },
+    "26": {
+      "above_incumbent": 281,
+      "canonical_profiles": 822567,
+      "folded_matching_profiles": 16443145,
+      "ordered_profiles": 32178654
+    },
+    "27": {
+      "above_incumbent": 1980,
+      "canonical_profiles": 155980,
+      "folded_matching_profiles": 3116105,
+      "ordered_profiles": 6043753
+    }
+  },
+  "extra_from_clean": [],
+  "implementation": "audit/completeness/cleanroom_profile_checker_v3.cpp",
+  "missing_from_clean": [],
+  "production_executables_called": false,
+  "production_target_count": 2316,
+  "production_target_set_sha256": "8aaf62fb93547de19f52063447ec8ec1a073ebd85f3e608484fcb0ad966055c9",
+  "production_verifier_called": false,
+  "pruned_canonical_profile_count": 982589,
+  "pruning_scope": "all canonical profile classes reaching the exact profile-product stage",
+  "status": "PASS"
+}

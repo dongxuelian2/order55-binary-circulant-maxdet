@@ -1,0 +1,9 @@
+{
+  "fold_signature_mismatches": [],
+  "missing_from_profile_universe": [],
+  "noncanonical_target_ids": [],
+  "pass": true,
+  "target_count": 2316,
+  "target_set_count": 2316,
+  "target_set_sha256": "039c0ec0302b15279fd66bca08a46e46b33bf4207c70feaa27384fe4d6bd0b35"
+}

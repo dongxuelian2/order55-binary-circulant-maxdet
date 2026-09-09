@@ -354,9 +354,11 @@ This is a complete meet-in-the-middle enumeration of each margin fiber.
 Nonnegative partial row counts and within-column correlations exceeding
 their targets can safely be pruned. No floating-point operation is involved.
 The computation tests 15,487,882,832 joined words and finds exactly two
-normalized solutions. An independent audit repeats every task with a
-six-plus-five split and obtains identical joined-word counts and identical
-solution sets. A separate small fiber was compared with all 78,125 direct
+normalized solutions. The canonical verifier replays every task with a six-plus-five split
+and obtains identical joined-word counts and identical solution sets. This is
+a split-dependent cross-check using the same native lift implementation, not an
+independent full fiber-union proof; the clean-room audit validates the listed
+task partition and witnesses while the global fiber-union certificate remains open. A separate small fiber was compared with all 78,125 direct
 column assignments, using three different splits.
 
 ## 10. Global maximality and classification proof
@@ -379,7 +381,7 @@ all agree. Thus no word exceeds M, and every word attaining M is in the
 reported class. Enumerating its affine action gives 2,200 distinct words,
 so the stabilizer has order one. This proves Theorem 1.
 
-## 11. Independent certification and reproducibility
+## 11. Certification, completeness review, and reproducibility
 
 The global JSON file binds a hash manifest and all component files.
 `verify_order55_global.py` imports neither the search nor the production
@@ -388,9 +390,13 @@ cap formulas, verifies a separate Machin/Taylor enclosure, checks all
 retained norms by resultants, recompiles hash-identified C++ sources, and
 replays the folded and correlation enumerations. It derives every required
 margin task afresh and checks task identities, multiplicities, output
-words, exact determinants, and affine classification. Its optional full
-mode also replays every lift with a different split. Both audit modes and
-the complete full-mode replay passed in this run.
+words, exact determinants, and affine classification. Its optional full mode replays every lift with a different split. This is
+a split-dependent replay, not an independent implementation. The external
+completeness review records the independent profile, task, witness, affine,
+small-order, and random-coverage checks, while the full order-55 fiber-union
+certificate remains incomplete.
+
+The current package is a review draft, not an arXiv-ready submission: an independent full fiber-union certificate (or equivalent branch-level partition/union proof) is still required. The exact theorem and incumbent are retained without weakening them.
 
 The finite-field primes are 2305843009213696591 and 2305843009213697141;
 each is prime and is 1 modulo 55. The winner residues are respectively
