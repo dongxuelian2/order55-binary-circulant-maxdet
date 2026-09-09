@@ -1,0 +1,24 @@
+# Local Python environment
+.venv/
+venv/
+
+# Python caches and build products
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+build/
+dist/
+
+# Coverage and local tooling
+.coverage
+htmlcov/
+.tox/
+
+# Experimental data and generated results (keep directory placeholders)
+data/*
+!data/.gitkeep
+results/*
+!results/.gitkeep
