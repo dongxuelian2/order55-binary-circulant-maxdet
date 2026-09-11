@@ -1,0 +1,82 @@
+[
+  {
+    "part": 3,
+    "tasks": 18972,
+    "joined_words": 14252520388,
+    "solutions": 0,
+    "seconds": 160.9231460094452,
+    "source_sha256": "22f11cbace2754794e15578487eded35ee124bbfe004339920a2af3ff769c8f6",
+    "audit_sha256": "ba7427c56ad4c3583df96757e3ddd911b769372a2eb30ec3f8b185e040dcb121",
+    "words_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "part": 1,
+    "tasks": 18972,
+    "joined_words": 14240165654,
+    "solutions": 1,
+    "seconds": 164.07649564743042,
+    "source_sha256": "22f11cbace2754794e15578487eded35ee124bbfe004339920a2af3ff769c8f6",
+    "audit_sha256": "5e9e045f06f61f6ac05468cb9461888fbd4d298d73c633c21e468c61142b4f75",
+    "words_sha256": "bf849e2bc122b4838e7b6fa6d574e60f7d45d4fc491db470f6aa3d50c96ac0ea"
+  },
+  {
+    "part": 0,
+    "tasks": 18972,
+    "joined_words": 14240435642,
+    "solutions": 0,
+    "seconds": 180.22060775756836,
+    "source_sha256": "22f11cbace2754794e15578487eded35ee124bbfe004339920a2af3ff769c8f6",
+    "audit_sha256": "d9b4f74730b2f2dab6e6ddc1cc3df4461ab63f7957b4eb9b2a91d5953093d971",
+    "words_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "part": 2,
+    "tasks": 18972,
+    "joined_words": 14255785934,
+    "solutions": 0,
+    "seconds": 181.253276348114,
+    "source_sha256": "22f11cbace2754794e15578487eded35ee124bbfe004339920a2af3ff769c8f6",
+    "audit_sha256": "ee52df741826302efa2ca81bd48ce5c41106eebfffc186699b52fb16dd2067a7",
+    "words_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "part": 5,
+    "tasks": 18971,
+    "joined_words": 14256796531,
+    "solutions": 0,
+    "seconds": 123.60629987716675,
+    "source_sha256": "22f11cbace2754794e15578487eded35ee124bbfe004339920a2af3ff769c8f6",
+    "audit_sha256": "e54432849433c2b643a024715e03123d66b1e7868dd3715065f61a0c75b89fde",
+    "words_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "part": 4,
+    "tasks": 18971,
+    "joined_words": 14254793811,
+    "solutions": 1,
+    "seconds": 139.98382472991943,
+    "source_sha256": "22f11cbace2754794e15578487eded35ee124bbfe004339920a2af3ff769c8f6",
+    "audit_sha256": "df286df1893a7fd1bf2db75fb3c62bc6e158229741e4e13e89119f2814e68c01",
+    "words_sha256": "2c9180ba4f82ac03a94a752335edf226f724bb00564f5244abae44c833000f92"
+  },
+  {
+    "part": 7,
+    "tasks": 18971,
+    "joined_words": 14247812681,
+    "solutions": 0,
+    "seconds": 122.31404948234558,
+    "source_sha256": "22f11cbace2754794e15578487eded35ee124bbfe004339920a2af3ff769c8f6",
+    "audit_sha256": "18cf65b3054da483518da7b4023d878ce51dd230f224b8023b61a7ce2eda3640",
+    "words_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "part": 6,
+    "tasks": 18971,
+    "joined_words": 14249024939,
+    "solutions": 0,
+    "seconds": 137.4103922843933,
+    "source_sha256": "22f11cbace2754794e15578487eded35ee124bbfe004339920a2af3ff769c8f6",
+    "audit_sha256": "7f7118a72dc7d53bdc9d57f27fe5bea7f274015295d953f8044a1b8ccd109cdc",
+    "words_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

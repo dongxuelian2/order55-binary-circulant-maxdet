@@ -25,3 +25,6 @@ results/*
 
 # Local paper-rendering intermediates
 /tmp/pdfs/
+
+# Rebuilt sign research executables
+native/order55_sign/*.exe

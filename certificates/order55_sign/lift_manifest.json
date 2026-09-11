@@ -1,0 +1,15 @@
+{
+  "status": "COMPLETE; every listed fiber independently reconstructed and exhaustively enumerated twice",
+  "targets": 17835,
+  "tasks": 151772,
+  "partitions": {
+    "lift_part0.txt": "6b28904fe7efa670b6d0f455586ec48db35e8924b92ae20ab7243b1a5b894773",
+    "lift_part1.txt": "f64ec4b57a749491d62b716425211fe16ab554003d77e5adcd010dd51fcac44b",
+    "lift_part2.txt": "017b2a4bebeeaf82f9b83ceeae1fd3f8003c5576ab1a4beb77187df8c2591c6f",
+    "lift_part3.txt": "9929d62a17425bb11334de5d60382ff15080d59d4f96173986dcda488ea0e938",
+    "lift_part4.txt": "759a1c91d86d9aeb8b66036d439233356bca61909ae95725e73fb5bacb1c67de",
+    "lift_part5.txt": "bab6fcf1d4771f2d0bac218b1044e95e6ef618c5163bb2748ef1096bcea1bbf0",
+    "lift_part6.txt": "404440613c169ce2e00f1eb82bf54238f7578ab335484ac195d3d026e0a84b52",
+    "lift_part7.txt": "3abd9342d9a3d71a6c7e188de533d23a175bd352aae59c986233c976921f8fc7"
+  }
+}

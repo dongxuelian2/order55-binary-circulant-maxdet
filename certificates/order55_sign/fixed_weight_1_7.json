@@ -1,0 +1,41 @@
+{
+  "status": "EXACT TRANSFER OF EXISTING FIXED-WEIGHT CERTIFICATES",
+  "source": "certificates/order55_fixed_weight_1_7.json",
+  "results": [
+    {
+      "k": 1,
+      "normalized": "53",
+      "source_binary_determinant": "1"
+    },
+    {
+      "k": 2,
+      "normalized": "52224",
+      "source_binary_determinant": "2048"
+    },
+    {
+      "k": 3,
+      "normalized": "25545845367",
+      "source_binary_determinant": "1564031349"
+    },
+    {
+      "k": 4,
+      "normalized": "75485746091008",
+      "source_binary_determinant": "6424318816256"
+    },
+    {
+      "k": 5,
+      "normalized": "113005826575364475",
+      "source_binary_determinant": "12556202952818275"
+    },
+    {
+      "k": 6,
+      "normalized": "31120972055520199523",
+      "source_binary_determinant": "4342461217049330166"
+    },
+    {
+      "k": 7,
+      "normalized": "3344427734804537333651",
+      "source_binary_determinant": "570999857161750276477"
+    }
+  ]
+}

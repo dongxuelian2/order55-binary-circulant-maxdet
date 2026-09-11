@@ -1,0 +1,38 @@
+[
+  {
+    "k": 23,
+    "correlations": [
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      10,
+      10,
+      10,
+      10,
+      10,
+      11,
+      10,
+      10,
+      10
+    ],
+    "absolute_algebraic_product": "17775489531149861381088895211499",
+    "frequency": 1,
+    "eigenvalue_upper_numerator": -47689822,
+    "eigenvalue_upper_denominator": 16777216
+  }
+]

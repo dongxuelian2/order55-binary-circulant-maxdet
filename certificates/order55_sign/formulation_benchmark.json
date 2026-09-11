@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "scope": "Representation benchmark only; not a proof dependency",
+  "profiles": 1050,
+  "binary_seconds": 0.039228100002219435,
+  "direct_sign_seconds": 0.039690400000836235,
+  "exact_modular_products_equal": true,
+  "decision": "Keep sparse binary c deviations: direct sign deviations are exactly four times these, with no extra independent congruence restriction at fixed weight."
+}

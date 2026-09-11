@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "independent_full_fiber_union": "PASS",
+  "target_count": 17835,
+  "expected_tasks": 151772,
+  "actual_tasks": 151772,
+  "joined_words": 113997335580,
+  "normalized_solutions": 2,
+  "exact_fiber_counts_equal": true,
+  "full_fiber_word_sets_equal": true,
+  "independently_reconstructed_margins": true,
+  "production_split": 5,
+  "independent_split": 6,
+  "proof": "Every binary word can be mapped to a canonical correlation target by a unit. The independent necklace fold lists include every rotation class in that orientation. The two fold rotations lift simultaneously to one translation modulo 55. Each Cartesian margin fiber is fully enumerated by two distinct implementations."
+}

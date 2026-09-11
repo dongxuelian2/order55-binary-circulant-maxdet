@@ -1,0 +1,89 @@
+{
+  "status": "FULL LISTED FIBERS ENUMERATED",
+  "parts": [
+    {
+      "part": 0,
+      "tasks": 18972,
+      "joined_words": 14240435642,
+      "solutions": 0,
+      "seconds": 199.803391456604,
+      "source_sha256": "63f6936ce4142c2f75180ac59274f48996b3687007db49d0491102ff3aa741ec",
+      "audit_sha256": "6b2fe32282400ed2d295f78e95cd1d0b7b44af42e7740e9da6785ad5b281f552",
+      "words_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "part": 1,
+      "tasks": 18972,
+      "joined_words": 14240165654,
+      "solutions": 1,
+      "seconds": 239.24365854263306,
+      "source_sha256": "63f6936ce4142c2f75180ac59274f48996b3687007db49d0491102ff3aa741ec",
+      "audit_sha256": "465caba08c345449b261b41722990ad2a80f000aa166db2e3416f8d1b8e5d08b",
+      "words_sha256": "bf849e2bc122b4838e7b6fa6d574e60f7d45d4fc491db470f6aa3d50c96ac0ea"
+    },
+    {
+      "part": 2,
+      "tasks": 18972,
+      "joined_words": 14255785934,
+      "solutions": 0,
+      "seconds": 201.36258029937744,
+      "source_sha256": "63f6936ce4142c2f75180ac59274f48996b3687007db49d0491102ff3aa741ec",
+      "audit_sha256": "d9432c47628e82dce9a8508b47f84f6e3fcd23a5654f245ba1f153df52bffdb8",
+      "words_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "part": 3,
+      "tasks": 18972,
+      "joined_words": 14252520388,
+      "solutions": 0,
+      "seconds": 240.9698884487152,
+      "source_sha256": "63f6936ce4142c2f75180ac59274f48996b3687007db49d0491102ff3aa741ec",
+      "audit_sha256": "42d7fb290814a9f899dba6965c14cf72cc1c4d56a1e7fa2bef28ee3469166297",
+      "words_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "part": 4,
+      "tasks": 18971,
+      "joined_words": 14254793811,
+      "solutions": 1,
+      "seconds": 200.03720831871033,
+      "source_sha256": "63f6936ce4142c2f75180ac59274f48996b3687007db49d0491102ff3aa741ec",
+      "audit_sha256": "6959e2939a655c1935ea996ec5bf0f19078fb7095a4139361ee4b1ffd07c9963",
+      "words_sha256": "2c9180ba4f82ac03a94a752335edf226f724bb00564f5244abae44c833000f92"
+    },
+    {
+      "part": 5,
+      "tasks": 18971,
+      "joined_words": 14256796531,
+      "solutions": 0,
+      "seconds": 238.8205704689026,
+      "source_sha256": "63f6936ce4142c2f75180ac59274f48996b3687007db49d0491102ff3aa741ec",
+      "audit_sha256": "38415171265c36b5f28ae28a388745e2dbe705e52a942c7973b91703409fb889",
+      "words_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "part": 6,
+      "tasks": 18971,
+      "joined_words": 14249024939,
+      "solutions": 0,
+      "seconds": 200.8509657382965,
+      "source_sha256": "63f6936ce4142c2f75180ac59274f48996b3687007db49d0491102ff3aa741ec",
+      "audit_sha256": "cc6ef09660882b4bf3f74a8c44c4d9243990fef56ac01635ec1a37340ac6c236",
+      "words_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "part": 7,
+      "tasks": 18971,
+      "joined_words": 14247812681,
+      "solutions": 0,
+      "seconds": 240.15206789970398,
+      "source_sha256": "63f6936ce4142c2f75180ac59274f48996b3687007db49d0491102ff3aa741ec",
+      "audit_sha256": "60a1aa215c750a7bfe4f7b5e77facee7dc5055193d14bc56e36a7c370111f211",
+      "words_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "total_tasks": 151772,
+  "joined_words": 113997335580,
+  "solutions": 2,
+  "split": 5
+}

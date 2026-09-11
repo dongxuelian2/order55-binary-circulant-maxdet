@@ -1,0 +1,37 @@
+[
+  {
+    "k": 22,
+    "pairs": 17498,
+    "survivors": 3590,
+    "upper_floor": 18531935318099684846280691448473,
+    "excluded": false
+  },
+  {
+    "k": 23,
+    "pairs": 44280,
+    "survivors": 12417,
+    "upper_floor": 22755751923593887460560153346038,
+    "excluded": false
+  },
+  {
+    "k": 24,
+    "pairs": 60858,
+    "survivors": 15626,
+    "upper_floor": 26718009462269156947414832702371,
+    "excluded": false
+  },
+  {
+    "k": 25,
+    "pairs": 38885,
+    "survivors": 9780,
+    "upper_floor": 27645819272253264461722387008502,
+    "excluded": false
+  },
+  {
+    "k": 26,
+    "pairs": 3927,
+    "survivors": 1015,
+    "upper_floor": 22211318029883923660732199370175,
+    "excluded": false
+  }
+]

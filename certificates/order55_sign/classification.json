@@ -1,0 +1,39 @@
+{
+  "status": "COMPLETE",
+  "maximum_normalized": "16516366298178510386365752382353",
+  "total_maximizing_sign_words": 4400,
+  "affine_orbits": 2,
+  "affine_plus_negation_classes": 1,
+  "classes": [
+    {
+      "canonical_binary": "0000000000100110110100111001001110001010101100010010111",
+      "canonical_sign": "----------+--++-++-+--+++--+--+++---+-+-+-++---+--+-+++",
+      "weight": 23,
+      "row_sum": -9,
+      "orbit_size": 2200,
+      "stabilizer_size": 1,
+      "stabilizer": [
+        [
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "canonical_binary": "0000001101110110101010100110111101111011110011010001111",
+      "canonical_sign": "------++-+++-++-+-+-+-+--++-++++-++++-++++--++-+---++++",
+      "weight": 32,
+      "row_sum": 9,
+      "orbit_size": 2200,
+      "stabilizer_size": 1,
+      "stabilizer": [
+        [
+          1,
+          0
+        ]
+      ]
+    }
+  ],
+  "all_words_sha256": "8c27a52aeb302f7711519667b3de05ea2309deddd0ff28839c912834c8687ec1",
+  "canonicalization": "Independent pushforward support action; sign reversal creates a separate affine orbit"
+}

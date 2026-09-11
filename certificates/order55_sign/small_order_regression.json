@@ -1,0 +1,137 @@
+{
+  "status": "PASS",
+  "scope": "Generic exact sign moment/profile/CRT-column-split pipeline at 15 and 21; independent direct Gray sign brute force",
+  "reports": [
+    {
+      "n": 15,
+      "status": "PASS",
+      "raw": 390905856,
+      "normalized": 23859,
+      "all_sign_words": 32768,
+      "lower_weight_winners": 240,
+      "total_winners": 480,
+      "lower_affine_classes": 2,
+      "weights": [
+        6,
+        9
+      ],
+      "weight_reduction": "PASS",
+      "profile_coverage": "PASS",
+      "lift_coverage": "PASS",
+      "winner_set_equality": "PASS",
+      "formal_multisets": 1,
+      "profile_log": "profiles 15 7 7\n",
+      "lift_log": "lifts 15 all reduced 16383 target profiles 7 realized 4 solutions 240\n",
+      "weight_screen": [
+        {
+          "k": 1,
+          "upper_floor": 13,
+          "excluded": true
+        },
+        {
+          "k": 2,
+          "upper_floor": 279,
+          "excluded": true
+        },
+        {
+          "k": 3,
+          "upper_floor": 2143,
+          "excluded": true
+        },
+        {
+          "k": 4,
+          "upper_floor": 13641,
+          "excluded": true
+        },
+        {
+          "k": 5,
+          "upper_floor": 19450,
+          "excluded": true
+        },
+        {
+          "k": 6,
+          "upper_floor": 28001,
+          "excluded": false
+        },
+        {
+          "k": 7,
+          "upper_floor": 16384,
+          "excluded": true
+        }
+      ]
+    },
+    {
+      "n": 21,
+      "status": "PASS",
+      "raw": 41248865910784,
+      "normalized": 39337984,
+      "all_sign_words": 2097152,
+      "lower_weight_winners": 42,
+      "total_winners": 84,
+      "lower_affine_classes": 1,
+      "weights": [
+        7,
+        14
+      ],
+      "weight_reduction": "PASS",
+      "profile_coverage": "PASS",
+      "lift_coverage": "PASS",
+      "winner_set_equality": "PASS",
+      "formal_multisets": 2,
+      "profile_log": "profiles 21 55 1\n",
+      "lift_log": "lifts 21 all reduced 1048575 target profiles 1 realized 1 solutions 42\n",
+      "weight_screen": [
+        {
+          "k": 1,
+          "upper_floor": 19,
+          "excluded": true
+        },
+        {
+          "k": 2,
+          "upper_floor": 2756,
+          "excluded": true
+        },
+        {
+          "k": 3,
+          "upper_floor": 69120,
+          "excluded": true
+        },
+        {
+          "k": 4,
+          "upper_floor": 853963,
+          "excluded": true
+        },
+        {
+          "k": 5,
+          "upper_floor": 11534336,
+          "excluded": true
+        },
+        {
+          "k": 6,
+          "upper_floor": 14523145,
+          "excluded": true
+        },
+        {
+          "k": 7,
+          "upper_floor": 42510163,
+          "excluded": false
+        },
+        {
+          "k": 8,
+          "upper_floor": 48280393,
+          "excluded": false
+        },
+        {
+          "k": 9,
+          "upper_floor": 37122675,
+          "excluded": true
+        },
+        {
+          "k": 10,
+          "upper_floor": 14839062,
+          "excluded": true
+        }
+      ]
+    }
+  ]
+}

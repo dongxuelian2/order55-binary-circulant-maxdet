@@ -1,0 +1,67 @@
+{
+  "status": "PASS",
+  "scope": "Completes the previously missing independent full binary-55 fibers, after sign theorem closure",
+  "implementation": "audit/order55/independent_torus_lift.cpp",
+  "source_sha256": "22f11cbace2754794e15578487eded35ee124bbfe004339920a2af3ff769c8f6",
+  "tasks": 16084,
+  "joined_words": 15487882832,
+  "solutions": 2,
+  "parts": [
+    {
+      "part": 0,
+      "tasks": 2011,
+      "joined_words": 1947432320,
+      "solutions": 0,
+      "input_sha256": "5cf67f61f03dec760fab3df9a647cbeded98e729415f96129ee75a7a949f23ac"
+    },
+    {
+      "part": 1,
+      "tasks": 2011,
+      "joined_words": 1922675330,
+      "solutions": 1,
+      "input_sha256": "170dfdd589168db95f89ba189f78f270055615bc3e17f9619369dda8a0eea4cc"
+    },
+    {
+      "part": 2,
+      "tasks": 2011,
+      "joined_words": 1951395543,
+      "solutions": 1,
+      "input_sha256": "6256e06b6b04bcc19b3081d775052d748b87dfb2ccb8f34063ec29e14b960cf8"
+    },
+    {
+      "part": 3,
+      "tasks": 2011,
+      "joined_words": 1932139664,
+      "solutions": 0,
+      "input_sha256": "b96ad32bcb5cc7c2646130157c88980b3cdb4dba58f9ee40c9768ebf576577c1"
+    },
+    {
+      "part": 4,
+      "tasks": 2010,
+      "joined_words": 1941341181,
+      "solutions": 0,
+      "input_sha256": "67a4379738a24852ed1fa53a979b307819b31cab5fa6431981b41351a6e3ba4b"
+    },
+    {
+      "part": 5,
+      "tasks": 2010,
+      "joined_words": 1920036010,
+      "solutions": 0,
+      "input_sha256": "6b032a9ff9c603ff67fe4d3703000498e00025f91aa12a5ff3120d229ffff1bc"
+    },
+    {
+      "part": 6,
+      "tasks": 2010,
+      "joined_words": 1944066646,
+      "solutions": 0,
+      "input_sha256": "c9415ab199fc55a966a3002987bdbf9e9eb73d4b9a52d99909db071767a18b34"
+    },
+    {
+      "part": 7,
+      "tasks": 2010,
+      "joined_words": 1928796138,
+      "solutions": 0,
+      "input_sha256": "de4bb661863c93eee91be41fea07f2f5084a4cebee75e9c0096c47019d5bc0e9"
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "status": "COMPLETE",
+  "order": 55,
+  "alphabet": [
+    -1,
+    1
+  ],
+  "maximum_normalized": "16516366298178510386365752382353",
+  "maximum_raw": "297532404423965431213849494795385191907933028352",
+  "exact_global_upper_bound_normalized": "16516366298178510386365752382353",
+  "global_completeness": "PASS",
+  "cleanroom_profile_audit": "PASS",
+  "cleanroom_lift_audit": "PASS",
+  "small_order_regression": "PASS",
+  "winning_weights": [
+    23,
+    32
+  ],
+  "winning_row_sums": [
+    -9,
+    9
+  ],
+  "maximizing_sign_words": 4400,
+  "affine_orbits": 2,
+  "affine_plus_negation_classes": 1,
+  "screened_weights": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27
+  ],
+  "moment_active_weights": [
+    22,
+    23,
+    24,
+    25,
+    26
+  ],
+  "weights_with_lift_targets": [
+    23,
+    24,
+    25,
+    26
+  ],
+  "formal_correlation_profiles": 9531797706,
+  "explicit_profile_evaluations": 731378844,
+  "boxed_pruned_profiles": 8800418862,
+  "correlation_targets": 17835,
+  "independent_indefinite_exclusions": 255,
+  "lift_tasks": 151772,
+  "joined_words_per_full_lift": 113997335580,
+  "old_binary_global_theorem_used_for_sign_upper_bound": false,
+  "hash_manifest_sha256": "a5a36f91b78d01ed73affeaf9a95aa6e8588a32fd9907bbc1169573899471fae"
+}

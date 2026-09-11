@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "independent_weight_screen": true,
+  "independent_two_root_moment_bound": true,
+  "independent_capped_bound": true,
+  "independent_cosine_enclosures": true,
+  "independent_multiset_universe": true,
+  "independent_fold_thresholds": true
+}

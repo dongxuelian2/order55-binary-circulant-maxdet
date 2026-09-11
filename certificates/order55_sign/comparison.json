@@ -1,0 +1,19 @@
+{
+  "binary_weight": 23,
+  "binary_determinant": "42208491650900637654045811643791",
+  "binary_complement_determinant": "58724857949079148040411564026144",
+  "existing_binary_global": "134694094094758395331307111329132",
+  "shortfall": "92485602443857757677261299685341",
+  "fraction_of_existing": "322202226342752959191189401861/1028199191563041185735168788772",
+  "old_binary_induced_normalized": "4810503360527085547546682547469",
+  "sign_improvement_ratio": "126079132047164201422639331163/36721399698680042347684599599",
+  "same_as_old_binary_winner": false,
+  "half_binary_correlation_histogram": {
+    "9": 17,
+    "10": 10
+  },
+  "half_sign_correlation_histogram": {
+    "-1": 17,
+    "3": 10
+  }
+}

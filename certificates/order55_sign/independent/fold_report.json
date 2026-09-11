@@ -1,0 +1,76 @@
+{
+  "status": "PASS",
+  "algorithm": "FKM necklaces, every rotation class; no production affine canonicalization",
+  "rows": [
+    {
+      "k": 22,
+      "m": 5,
+      "necklace_profiles": 97,
+      "signatures": 45,
+      "status": "PASS"
+    },
+    {
+      "k": 22,
+      "m": 11,
+      "necklace_profiles": 6712,
+      "signatures": 1291,
+      "status": "PASS"
+    },
+    {
+      "k": 23,
+      "m": 5,
+      "necklace_profiles": 137,
+      "signatures": 61,
+      "status": "PASS"
+    },
+    {
+      "k": 23,
+      "m": 11,
+      "necklace_profiles": 12282,
+      "signatures": 4061,
+      "status": "PASS"
+    },
+    {
+      "k": 24,
+      "m": 5,
+      "necklace_profiles": 159,
+      "signatures": 70,
+      "status": "PASS"
+    },
+    {
+      "k": 24,
+      "m": 11,
+      "necklace_profiles": 14472,
+      "signatures": 4731,
+      "status": "PASS"
+    },
+    {
+      "k": 25,
+      "m": 5,
+      "necklace_profiles": 132,
+      "signatures": 36,
+      "status": "PASS"
+    },
+    {
+      "k": 25,
+      "m": 11,
+      "necklace_profiles": 11085,
+      "signatures": 3522,
+      "status": "PASS"
+    },
+    {
+      "k": 26,
+      "m": 5,
+      "necklace_profiles": 65,
+      "signatures": 30,
+      "status": "PASS"
+    },
+    {
+      "k": 26,
+      "m": 11,
+      "necklace_profiles": 2310,
+      "signatures": 745,
+      "status": "PASS"
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+[
+  {
+    "k": 22,
+    "m": 5,
+    "survivors": 26,
+    "signatures": 45,
+    "sha256": "0813f9d32297d53ea25141a00f2eae70feee05bed02e62929f48fa2ff930dd2b",
+    "stderr": "m=5 k=22 nodes=1371 min_at_zero_leaves=293 threshold_canonical=58 survivors=26 covered_profiles=485 seconds=0.0005248\n"
+  },
+  {
+    "k": 22,
+    "m": 11,
+    "survivors": 673,
+    "signatures": 1291,
+    "sha256": "33f105b4535d323fdc6422f4b5f78fbf937f48e911da233039b879ea79625c33",
+    "stderr": "m=11 k=22 nodes=1106038 min_at_zero_leaves=269885 threshold_canonical=15106 survivors=673 covered_profiles=73832 seconds=0.081847\n"
+  },
+  {
+    "k": 23,
+    "m": 5,
+    "survivors": 36,
+    "signatures": 61,
+    "sha256": "24b9f77bc844d9936c0695440a87d46e629ac010cf449e0ee11cae973909a0c5",
+    "stderr": "m=5 k=23 nodes=1362 min_at_zero_leaves=287 threshold_canonical=58 survivors=36 covered_profiles=685 seconds=0.0002677\n"
+  },
+  {
+    "k": 23,
+    "m": 11,
+    "survivors": 1230,
+    "signatures": 4061,
+    "sha256": "50cdde1ae1583fcb50adfd788669a8a7fe3a39507054bc62a3d38d574e8649f0",
+    "stderr": "m=11 k=23 nodes=1368542 min_at_zero_leaves=346035 threshold_canonical=19063 survivors=1230 covered_profiles=135102 seconds=0.103009\n"
+  },
+  {
+    "k": 24,
+    "m": 5,
+    "survivors": 42,
+    "signatures": 70,
+    "sha256": "c82cec680b19172eb42754dcffda1a17fd49f3bac51d9fcf31b9c2dff626af64",
+    "stderr": "m=5 k=24 nodes=1474 min_at_zero_leaves=311 threshold_canonical=65 survivors=42 covered_profiles=795 seconds=0.0002826\n"
+  },
+  {
+    "k": 24,
+    "m": 11,
+    "survivors": 1449,
+    "signatures": 4731,
+    "sha256": "0d2dfbfa3cb8380d2db498d8f8216a08bef05b3d5658938d2c262ab7ccdd5144",
+    "stderr": "m=11 k=24 nodes=1620330 min_at_zero_leaves=423875 threshold_canonical=23231 survivors=1449 covered_profiles=159192 seconds=0.119547\n"
+  },
+  {
+    "k": 25,
+    "m": 5,
+    "survivors": 35,
+    "signatures": 36,
+    "sha256": "faa16d8d9b899f0f0d95e1835d4f3c1baaa6d952379629f100c70eaf106d2d01",
+    "stderr": "m=5 k=25 nodes=1467 min_at_zero_leaves=302 threshold_canonical=60 survivors=35 covered_profiles=660 seconds=0.0003548\n"
+  },
+  {
+    "k": 25,
+    "m": 11,
+    "survivors": 1111,
+    "signatures": 3522,
+    "sha256": "2592cc5795f810c6d6bb947330daf5e665c2f0df09d36a8cbf2139b222ad92f9",
+    "stderr": "m=11 k=25 nodes=1272133 min_at_zero_leaves=325567 threshold_canonical=16869 survivors=1111 covered_profiles=121935 seconds=0.0857984\n"
+  },
+  {
+    "k": 26,
+    "m": 5,
+    "survivors": 17,
+    "signatures": 30,
+    "sha256": "60fd9a4b26e175ec87421b22b3c4a52d91c5f1291fa4dad061fcf65011c06c0c",
+    "stderr": "m=5 k=26 nodes=1181 min_at_zero_leaves=231 threshold_canonical=44 survivors=17 covered_profiles=325 seconds=0.0001956\n"
+  },
+  {
+    "k": 26,
+    "m": 11,
+    "survivors": 231,
+    "signatures": 745,
+    "sha256": "bd013352e68defba5466ffb117e4d17a9f033e856908d5b2859b4a53b8e56aa1",
+    "stderr": "m=11 k=26 nodes=922957 min_at_zero_leaves=225597 threshold_canonical=10913 survivors=231 covered_profiles=25410 seconds=0.0536183\n"
+  }
+]

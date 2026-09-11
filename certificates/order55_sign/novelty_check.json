@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "scope": "Bounded public-source check; no absolute priority claim",
+  "as_of": "2026-09-11",
+  "sources": [
+    "https://oeis.org/A215723",
+    "https://oeis.org/A215897",
+    "https://arxiv.org/abs/1801.00399",
+    "https://arxiv.org/html/1801.00399v6",
+    "https://cs.uwaterloo.ca/journals/JIS/VOL21/Brent/brent11.html"
+  ],
+  "findings": [
+    "OEIS linked table descriptions still end at 52; direct b-file retrieval failed in the web tool.",
+    "Latest arXiv v6 is revised 2021-02-20 and Table 4 includes sign order 53.",
+    "No prior exact sign order 55 result was located in the searched results."
+  ],
+  "queries": [
+    "A215723 55",
+    "A215897 55",
+    "maximum determinant circulant sign matrix 55",
+    "55x55 circulant determinant",
+    "order 55 circulant maximal determinant",
+    "16516366298178510386365752382353",
+    "297532404423965431213849494795385191907933028352",
+    "0000000000100110110100111001001110001010101100010010111",
+    "21345077647511",
+    "----------+--++-++-+--+++--+--+++---+-+-+-++---+--+-+++",
+    "site:arxiv.org order 55 circulant determinant",
+    "site:github.com 16516366298178510386365752382353",
+    "site:zenodo.org A215897",
+    "site:cs.uwaterloo.ca/journals/JIS 55 circulant determinant"
+  ],
+  "exact_integer_and_binary_word_queries": "No results returned",
+  "publication_actions": "None"
+}

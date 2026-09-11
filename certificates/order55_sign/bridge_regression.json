@@ -1,0 +1,47 @@
+{
+  "status": "PASS",
+  "exhaustive_orders": [
+    3,
+    5,
+    7,
+    9
+  ],
+  "random_order55_weights": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27
+  ],
+  "words_tested": 707,
+  "checks": [
+    "direct sign Bareiss vs binary bridge",
+    "negation",
+    "divisibility",
+    "autocorrelation congruence",
+    "modular Fourier first/fourth moments",
+    "sign fourth bound"
+  ]
+}

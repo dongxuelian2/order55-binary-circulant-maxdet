@@ -1,0 +1,284 @@
+{
+  "status": "PASS",
+  "bounds": "PASS",
+  "fold_universe": "PASS",
+  "correlation_universe": "PASS",
+  "canonical_target_sets": "EXACT EQUALITY",
+  "survivors": 17835,
+  "indefinite_profiles_excluded": 255,
+  "raw_algebraic_survivors": 18090,
+  "parts": [
+    {
+      "k": 23,
+      "partition": 4,
+      "status": "PASS",
+      "audit": {
+        "k": 23,
+        "ordered_profiles": 42181425,
+        "folded_matching_profiles": 20540680,
+        "canonical_determinants": 1027311,
+        "above_screen": 1,
+        "max_absolute_profile_product": "17775489531149861381088895211499"
+      },
+      "indefinite_profiles_excluded": 1,
+      "retained_profiles": 0,
+      "target_set_equal": true
+    },
+    {
+      "k": 23,
+      "partition": 2,
+      "status": "PASS",
+      "audit": {
+        "k": 23,
+        "ordered_profiles": 208606320,
+        "folded_matching_profiles": 99880613,
+        "canonical_determinants": 4995020,
+        "above_screen": 135,
+        "max_absolute_profile_product": "30758283530301995260269423315363"
+      },
+      "indefinite_profiles_excluded": 135,
+      "retained_profiles": 0,
+      "target_set_equal": true
+    },
+    {
+      "k": 24,
+      "partition": 5,
+      "status": "PASS",
+      "audit": {
+        "k": 24,
+        "ordered_profiles": 37297260,
+        "folded_matching_profiles": 16360947,
+        "canonical_determinants": 818321,
+        "above_screen": 0,
+        "max_absolute_profile_product": "14765545325907051020248080508597"
+      },
+      "indefinite_profiles_excluded": 0,
+      "retained_profiles": 0,
+      "target_set_equal": true
+    },
+    {
+      "k": 24,
+      "partition": 3,
+      "status": "PASS",
+      "audit": {
+        "k": 24,
+        "ordered_profiles": 379632825,
+        "folded_matching_profiles": 177425795,
+        "canonical_determinants": 8872698,
+        "above_screen": 117,
+        "max_absolute_profile_product": "25036070501618029105543153046737"
+      },
+      "indefinite_profiles_excluded": 117,
+      "retained_profiles": 0,
+      "target_set_equal": true
+    },
+    {
+      "k": 22,
+      "partition": 0,
+      "status": "PASS",
+      "audit": {
+        "k": 22,
+        "ordered_profiles": 17383860,
+        "folded_matching_profiles": 4873175,
+        "canonical_determinants": 243837,
+        "above_screen": 2,
+        "max_absolute_profile_product": "18307498383832556523962931868241"
+      },
+      "indefinite_profiles_excluded": 2,
+      "retained_profiles": 0,
+      "target_set_equal": true
+    },
+    {
+      "k": 23,
+      "partition": 5,
+      "status": "PASS",
+      "audit": {
+        "k": 23,
+        "ordered_profiles": 8436285,
+        "folded_matching_profiles": 4098578,
+        "canonical_determinants": 205120,
+        "above_screen": 1705,
+        "max_absolute_profile_product": "19259142348391581873274973733888"
+      },
+      "indefinite_profiles_excluded": 0,
+      "retained_profiles": 1705,
+      "target_set_equal": true
+    },
+    {
+      "k": 24,
+      "partition": 9,
+      "status": "PASS",
+      "audit": {
+        "k": 24,
+        "ordered_profiles": 105300,
+        "folded_matching_profiles": 37055,
+        "canonical_determinants": 1857,
+        "above_screen": 0,
+        "max_absolute_profile_product": "14873289540939243301492299430351"
+      },
+      "indefinite_profiles_excluded": 0,
+      "retained_profiles": 0,
+      "target_set_equal": true
+    },
+    {
+      "k": 24,
+      "partition": 6,
+      "status": "PASS",
+      "audit": {
+        "k": 24,
+        "ordered_profiles": 17760600,
+        "folded_matching_profiles": 8558435,
+        "canonical_determinants": 428181,
+        "above_screen": 3277,
+        "max_absolute_profile_product": "18934554695937244369265698835663"
+      },
+      "indefinite_profiles_excluded": 0,
+      "retained_profiles": 3277,
+      "target_set_equal": true
+    },
+    {
+      "k": 24,
+      "partition": 10,
+      "status": "PASS",
+      "audit": {
+        "k": 24,
+        "ordered_profiles": 403650,
+        "folded_matching_profiles": 161300,
+        "canonical_determinants": 8083,
+        "above_screen": 60,
+        "max_absolute_profile_product": "18527717338257746158093328960143"
+      },
+      "indefinite_profiles_excluded": 0,
+      "retained_profiles": 60,
+      "target_set_equal": true
+    },
+    {
+      "k": 24,
+      "partition": 11,
+      "status": "PASS",
+      "audit": {
+        "k": 24,
+        "ordered_profiles": 296010,
+        "folded_matching_profiles": 148769,
+        "canonical_determinants": 7471,
+        "above_screen": 7310,
+        "max_absolute_profile_product": "23441231589676913005392219194563"
+      },
+      "indefinite_profiles_excluded": 0,
+      "retained_profiles": 7310,
+      "target_set_equal": true
+    },
+    {
+      "k": 25,
+      "partition": 3,
+      "status": "PASS",
+      "audit": {
+        "k": 25,
+        "ordered_profiles": 18648630,
+        "folded_matching_profiles": 5856765,
+        "canonical_determinants": 293034,
+        "above_screen": 0,
+        "max_absolute_profile_product": "16515425191974872517525131433775"
+      },
+      "indefinite_profiles_excluded": 0,
+      "retained_profiles": 0,
+      "target_set_equal": true
+    },
+    {
+      "k": 25,
+      "partition": 5,
+      "status": "PASS",
+      "audit": {
+        "k": 25,
+        "ordered_profiles": 210600,
+        "folded_matching_profiles": 78165,
+        "canonical_determinants": 3924,
+        "above_screen": 0,
+        "max_absolute_profile_product": "14970200131691681246021965957825"
+      },
+      "indefinite_profiles_excluded": 0,
+      "retained_profiles": 0,
+      "target_set_equal": true
+    },
+    {
+      "k": 25,
+      "partition": 8,
+      "status": "PASS",
+      "audit": {
+        "k": 25,
+        "ordered_profiles": 702,
+        "folded_matching_profiles": 282,
+        "canonical_determinants": 18,
+        "above_screen": 18,
+        "max_absolute_profile_product": "19850372575316274218750000000000"
+      },
+      "indefinite_profiles_excluded": 0,
+      "retained_profiles": 18,
+      "target_set_equal": true
+    },
+    {
+      "k": 25,
+      "partition": 6,
+      "status": "PASS",
+      "audit": {
+        "k": 25,
+        "ordered_profiles": 403650,
+        "folded_matching_profiles": 125600,
+        "canonical_determinants": 6300,
+        "above_screen": 5404,
+        "max_absolute_profile_product": "19771261109025283112520187177525"
+      },
+      "indefinite_profiles_excluded": 0,
+      "retained_profiles": 5404,
+      "target_set_equal": true
+    },
+    {
+      "k": 25,
+      "partition": 9,
+      "status": "PASS",
+      "audit": {
+        "k": 25,
+        "ordered_profiles": 2925,
+        "folded_matching_profiles": 1065,
+        "canonical_determinants": 55,
+        "above_screen": 55,
+        "max_absolute_profile_product": "24875391388388492059111054584725"
+      },
+      "indefinite_profiles_excluded": 0,
+      "retained_profiles": 55,
+      "target_set_equal": true
+    },
+    {
+      "k": 26,
+      "partition": 0,
+      "status": "PASS",
+      "audit": {
+        "k": 26,
+        "ordered_profiles": 8775,
+        "folded_matching_profiles": 5440,
+        "canonical_determinants": 279,
+        "above_screen": 4,
+        "max_absolute_profile_product": "16703164622251061803579137758976"
+      },
+      "indefinite_profiles_excluded": 0,
+      "retained_profiles": 4,
+      "target_set_equal": true
+    },
+    {
+      "k": 26,
+      "partition": 1,
+      "status": "PASS",
+      "audit": {
+        "k": 26,
+        "ordered_profiles": 27,
+        "folded_matching_profiles": 25,
+        "canonical_determinants": 2,
+        "above_screen": 2,
+        "max_absolute_profile_product": "21487029383438504894158726119168"
+      },
+      "indefinite_profiles_excluded": 0,
+      "retained_profiles": 2,
+      "target_set_equal": true
+    }
+  ]
+}
