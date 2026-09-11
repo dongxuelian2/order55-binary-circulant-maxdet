@@ -1,318 +1,948 @@
 \documentclass[11pt,a4paper]{article}
+
 \usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{lmodern,amsmath,amssymb,booktabs,listings,hyperref,microtype}
-\usepackage[margin=26mm]{geometry}
-\hypersetup{colorlinks=true,urlcolor=blue,linkcolor=blue,pdftitle={The Maximum Determinant of a 55 by 55 Binary Circulant Matrix}}
-\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true,columns=fullflexible,keepspaces=true}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{geometry}
+\usepackage{microtype}
+\usepackage{listings}
+\usepackage{hyperref}
+
+\geometry{margin=25mm}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue,
+  pdftitle={Maximum Determinants of 55 by 55 Circulant Matrices over 0,1 and -1,1},
+  pdfauthor={Qichao Wang and Daoyu Dong}
+}
+\urlstyle{same}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{5pt}
 \setlength{\emergencystretch}{2em}
-\title{The Maximum Determinant of a\\55 $\times$ 55 Binary Circulant Matrix}
-\author{Reproducible computational research note}
-\date{9 September 2026}
+\lstset{
+  basicstyle=\ttfamily\small,
+  columns=fullflexible,
+  keepspaces=true,
+  breaklines=true,
+  frame=single,
+  framerule=0.3pt,
+  xleftmargin=4pt,
+  xrightmargin=4pt
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\wt}{wt}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\F}{\mathbb F}
+\newcommand{\D}{D_{01}(55)}
+\newcommand{\M}{134694094094758395331307111329132}
+
+\title{Maximum Determinants of $55\times55$ Circulant Matrices\\over $\{0,1\}$ and $\{-1,1\}$}
+\author{
+  Qichao Wang\\
+  Hebei University of Technology
+  \and
+  Daoyu Dong\\
+  University of Electronic Science and Technology of China
+  \thanks{Qichao Wang and Daoyu Dong contributed equally to this work.}
+}
+\date{}
+
 \begin{document}
 \maketitle
-\section*{Abstract}
 
-For a binary word a of length 55, let C(a) have entries a[(j\ensuremath{-}i) mod 55]. We determine the maximum of det C(a) over all \ensuremath{2^55} words:
-
+\begin{abstract}
+We determine the maximum determinants of circulant matrices of order $55$
+over both binary alphabets:
 \[
-D_{01}(55)=134694094094758395331307111329132.
+ D_{01}(55)=134694094094758395331307111329132,
 \]
-
-All maximizing words have weight 28 and form exactly one orbit under the affine group of the cyclic group of order 55. The orbit has 2,200 elements and trivial stabilizer. The proof combines complement duality, integer periodic correlations, fourth-moment product bounds with a spectral cap, cyclotomic folds of orders 5 and 11, exact correlation-profile enumeration, and binary torus lifts. Only 6,845,230 ordered correlation profiles require explicit enumeration. They leave 2,316 unit-orbit representatives and 16,084 margin tasks. A meet-in-the-middle lift examines 15,487,882,832 joined words and returns two normalized words, belonging to the same affine class. A separate verifier recomputes the mathematical bounds and exact norms, regenerates the profile enumerations, and checks all lifts using a different column split. Every component is SHA-256-bound to the global certificate. Neither floating-point scores nor an uncompleted search are used as evidence of maximality.
-
-\section*{1. Introduction and previous exact frontier}
-
-Write D01(n) for the largest absolute determinant of an n \ensuremath{\times} n binary circulant matrix. Brent and Yedidia developed exact necklace enumeration and Fourier determinant algorithms; the updated version of their paper reports values through n=53 [1]. The OEIS A086432 b-file inspected on 2026-09-09 ends at n=53 [2]. ALETHEIA-54 supplies a computational proof at n=54 based on integer correlation profiles and folded binary lifts [3]. The present calculation addresses n=55, whose factorization 5\ensuremath{\cdot}11 replaces the parity fold available at even order.
-
-\textbf{Theorem 1 (global maximum and complete classification).}
-
 \[
-\max_{a\in\{0,1\}^{55}}\det C(a)
-=134694094094758395331307111329132=:M.
+ D_{\pm}^{\mathrm{circ}}(55)=
+ 297532404423965431213849494795385191907933028352.
 \]
+The normalized sign maximum is $16516366298178510386365752382353$.
+The binary maximizers have weight $28$ and form one affine orbit of
+$2200$ words. The sign maximizers have $23$ or $32$ plus signs and form
+two affine orbits of $2200$ words each, paired by global negation.
+The exact binary-to-sign bridge shows why these objectives have different
+winners. The proofs combine spectral moments, capped product bounds,
+cyclotomic folds, correlation-profile enumeration and binary lifts.
+The sign screen retains $17,835$ targets and $151,772$ margin tasks.
+Production and independent lifts each inspect $113,997,335,580$ joined
+words and agree on every task and every returned word. Independent
+profile generation, explicit negative-spectrum certificates,
+small-order full-domain regressions and three exact determinant
+calculations complete the audit. To the best of our knowledge neither
+exact order-$55$ maximum was previously published in the sources checked.
+\end{abstract}
 
-A lexicographically minimal representative of the unique maximizing affine class is
+\section{Introduction}
 
-\begin{lstlisting}
-0000000100011111011011001101011011010100011110101000111
-\end{lstlisting}
-
-Its weight is 28, its affine stabilizer is trivial, and all 2,200 maximizing words are obtained by the transformations \ensuremath{a_i} \ensuremath{\mapsto} \ensuremath{a_{ui+t},} with u a unit modulo 55 and t any residue modulo 55.
-
-The complete finite computations supporting the theorem are recorded in \path|certificates/order55_global/|. The scope is binary circulants, rather than all binary matrices of order 55 or unrestricted \ensuremath{\pm}1 matrices.
-
-\section*{2. Odd-order Fourier formulation}
-
-Let \ensuremath{f(x)=\sum _{t=0}^{54}a_t} \ensuremath{x^t,} \ensuremath{\zeta}=exp(2\ensuremath{\pi}i/55), and \ensuremath{k=\sum a_t.} The eigenvalues of C(a) are \ensuremath{f(\zeta ^j),} possibly in the reverse frequency order according to the eigenvector convention. For real a and odd order all nonzero frequencies pair with their conjugates. Put
-
+Binary circulant matrices are a structured class of integer matrices whose
+determinants can be evaluated spectrally, while the underlying words still
+have a search space of size $2^n$.  Write
 \[
-q_j=|f(\zeta^j)|^2,\quad 1\le j\le27.
+  D_{01}(n)=\max_{a\in\{0,1\}^n}|\det C(a)|.
 \]
+The exact binary-circulant tables of Brent and Yedidia extend through order
+$53$ in their updated work \cite{brent-yedidia}.  The order-$54$ computation
+ALETHEIA-54 provides a subsequent exact computational reference
+\cite{aletheia54}.  We determine both alphabet variants at order $55=5\cdot11$.
 
-Then
+The novelty statement is intentionally scoped.  The source and retrieval
+record used for this manuscript reports no prior published exact
+determination of $D_{01}(55)$ in the sources checked as of 9 September 2026;
+the search is not an absolute-priority claim.  The checked records include
+the OEIS sequence and b-file, the Brent--Yedidia sources, ALETHEIA-54, and
+targeted searches for the exact integer and for order-$55$ binary circulants
+\cite{oeis}.
 
+We obtain the following two headline results.
+
+\begin{theorem}[Global maximum and classification]
+\label{thm:main}
+For binary circulant matrices of order $55$,
 \[
-\det C(a)=k\prod_{j=1}^{27}q_j\ge0,\qquad
-\sum_{j=1}^{27}q_j=\frac{55k-k^2}{2}.
+  D_{01}(55)=\M.
 \]
-
-The nonnegativity makes absolute-value notation unnecessary for actual 55-bit words. Absolute products remain useful when screening formal correlation profiles which have not yet been proved positive semidefinite.
-
-\section*{3. Complement duality and affine symmetry}
-
-For 0<k<55, complement changes the zero-frequency eigenvalue from k to 55\ensuremath{-}k and negates all 54 other eigenvalues. Hence
-
+Moreover, every maximizing word has weight $28$.  The maximizing words form
+one orbit under the affine action
 \[
-k\det C(1-a)=(55-k)\det C(a),
-\qquad
-D_{\rm circ}(55,55-k)=\frac{55-k}{k}D_{\rm circ}(55,k).
+  a_i\longmapsto a_{ui+t},
+  \qquad u\in(\Z/55\Z)^\times,
+  \quad t\in\Z/55\Z,
 \]
+and this orbit has $2200$ elements.
+\end{theorem}
 
-Complement is a bijection between the two weight strata. Both constant words are singular. Since (55\ensuremath{-}k)/k>1 for k\ensuremath{\le}27,
-
+\begin{theorem}[Sign maximum and classification]\label{thm:sign}
+For sign circulants of order $55$,
 \[
-D_{01}(55)=\max_{1\le k\le27}\frac{55-k}{k}D_{\rm circ}(55,k).
+ D_{\pm}^{\mathrm{circ}}(55)=
+ 297532404423965431213849494795385191907933028352,
 \]
-
-Translation multiplies Fourier eigenvalues by phases with product \ensuremath{\zeta ^{t\cdot 55\cdot 54/2}=1.} Multiplication of the indices by a unit permutes frequencies. Thus the affine group of order 55\ensuremath{\varphi}(55)=2,200 preserves the determinant. Reversal is its u=\ensuremath{-}1 element. We use actual stabilizers rather than assuming all orbits have size 2,200.
-
-Correlations are invariant under translation and reversal identifies opposite shifts. The effective unit action on the 27 paired shifts has order 20. Its shift orbits have sizes 20, 5, and 2, according as the gcd with 55 is 1, 5, or 11.
-
-\section*{4. Periodic correlations and weight reduction}
-
-Define \ensuremath{c_s=\sum _t} \ensuremath{a_t} \ensuremath{a_{t+s}.} Then \ensuremath{c_0=k,} \ensuremath{c_s=c_{55- s},} and
-
 \[
-2\sum_{s=1}^{27}c_s=k(k-1),\qquad
-k^4+2\sum_{j=1}^{27}q_j^2
-=55\left(k^2+2\sum_{s=1}^{27}c_s^2\right).
+ S_{\pm}(55)=D_{\pm}^{\mathrm{circ}}(55)/2^{54}
+ =16516366298178510386365752382353.
 \]
+All maximizers have $23$ or $32$ plus signs, and row sum $-9$ or $9$.
+They form two affine orbits, each of size $2200$ with trivial stabilizer,
+and one class under affine maps and global negation.
+\end{theorem}
 
-These follow by Fourier orthogonality, since the Fourier transform of the correlation sequence is \ensuremath{|f(\zeta ^j)|^2.} If T nonnegative integer units are allocated among h coordinates, write T=hb+r, 0\ensuremath{\le}r<h. The minimum square sum is (h\ensuremath{-}r)b\textsuperscript{2}+r(b+1)\textsuperscript{2}: transferring one unit between coordinates differing by at least two strictly decreases the square sum.
 
-The first spectral moment gives the fixed-row-sum bound
-
+The canonical binary representative for Theorem~\ref{thm:main} is
 \[
-\det C(a)\le k\left(\frac{k(55-k)}{54}\right)^{27}.
+\boxed{\texttt{0000000100011111011011001101011011010100011110101000111}}
 \]
+and has weight $28$.  It has stabilizer size one under the affine action.
+Its complement is
+\[
+\texttt{1111111011100000100100110010100100101011100001010111000},
+\]
+of weight $27$, and its determinant is
+\[
+  129883590734231309783760428781663.
+\]
+The scope of Theorem~\ref{thm:main} is binary circulant matrices, not all
+binary matrices and not unrestricted $\{\pm1\}$ matrices.
 
-For the complementary high-weight word the leading factor is 55\ensuremath{-}k. Combining this bound with the integer fourth moment excludes k=1,...,24 at threshold M. The certificate lists each weight pair separately. Only k=25,26,27 remain, with the following necessary bounds:
+The proof architecture is worth making explicit:
+\[
+\begin{array}{c}
+\text{all }2^{55}\text{ words}
+\longrightarrow \text{complement and weight reduction}\\[2pt]
+\longrightarrow \text{exact spectral bounds}
+\longrightarrow \text{mod-5/mod-11 folds}\\[2pt]
+\longrightarrow \text{correlation profiles}
+\longrightarrow \text{binary lifts}\\[2pt]
+\longrightarrow \text{exact determinant comparison}.
+\end{array}
+\]
+Each arrow is a mathematical reduction with an exhaustive finite residue,
+rather than a claim that an unstructured program happened to search far
+enough.
 
+\section{Binary circulants and Fourier formulation}
+
+Let $a\in\{0,1\}^{55}$, let $k=\sum_{j=0}^{54}a_j$, and define
+\[
+  C(a)_{ij}=a_{j-i},
+  \qquad
+  f_a(x)=\sum_{j=0}^{54}a_jx^j.
+\]
+If $\zeta=\exp(2\pi i/55)$, the Fourier eigenvalues of $C(a)$ are
+$f_a(\zeta^r)$, $0\leq r<55$, up to the harmless choice of frequency
+orientation.  Since $a$ is real and $55$ is odd, the nonzero frequencies
+pair by complex conjugation.  Thus, with
+\[
+  q_r=|f_a(\zeta^r)|^2,\qquad 1\leq r\leq27,
+\]
+we have
+\begin{equation}
+\label{eq:fourier-det}
+  \det C(a)=k\prod_{r=1}^{27}q_r\geq0.
+\end{equation}
+Consequently the absolute value in the definition of $D_{01}(55)$ is
+redundant for actual binary words, although absolute products are retained
+when formal correlation profiles have not yet been shown realizable.
+
+Define the periodic autocorrelation sequence
+\[
+  c_s=\sum_{t=0}^{54}a_ta_{t+s},
+  \qquad s\in\Z/55\Z.
+\]
+Then $c_0=k$, $c_s=c_{55-s}$, and counting ordered pairs of distinct
+support elements gives
+\begin{equation}
+\label{eq:corr-sum}
+  2\sum_{s=1}^{27}c_s=k(k-1).
+\end{equation}
+The correlation sequence is the inverse Fourier transform of the squared
+Fourier magnitudes.  Parseval therefore gives the two moment identities
+\begin{align}
+  2\sum_{r=1}^{27}q_r&=55k-k^2, \label{eq:first-moment}\\
+  k^4+2\sum_{r=1}^{27}q_r^2
+    &=55\left(k^2+2\sum_{s=1}^{27}c_s^2\right).
+    \label{eq:fourth-moment}
+\end{align}
+The first identity and AM--GM immediately imply
+\begin{equation}
+\label{eq:amgm}
+  \det C(a)\leq k\left(\frac{k(55-k)}{54}\right)^{27}.
+\end{equation}
+
+\section{Complement duality and affine symmetry}
+
+Let $\bar a=1-a$.  At the zero frequency,
+$f_{\bar a}(1)=55-k$.  At every nonzero $55$th root of unity,
+\[
+  f_{\bar a}(\zeta^r)=-f_a(\zeta^r),
+  \qquad 1\leq r<55,
+\]
+because the sum of all $55$th roots in a nontrivial frequency is zero.
+There are $54$ nonzero eigenvalues, so the signs cancel in the determinant.
+For $0<k<55$ this proves
+\begin{equation}
+\label{eq:complement}
+  k\det C(\bar a)=(55-k)\det C(a).
+\end{equation}
+The constant words are singular.  If
+\[
+  D_{\mathrm{circ}}(55,k)=
+  \max_{\wt(a)=k}\det C(a),
+\]
+then complement is a bijection between weight strata and
+\begin{equation}
+\label{eq:weight-pair}
+  D_{\mathrm{circ}}(55,55-k)
+    =\frac{55-k}{k}D_{\mathrm{circ}}(55,k).
+\end{equation}
+It is therefore enough to handle $1\leq k\leq27$.  For the complementary
+word, the first-moment bound takes the form
+\begin{equation}
+\label{eq:complement-amgm}
+  \det C(\bar a)
+    =(55-k)\prod_{r=1}^{27}q_r
+    \leq(55-k)\left(\frac{k(55-k)}{54}\right)^{27}.
+\end{equation}
+
+Translations and multipliers preserve the determinant.  Translation changes
+Fourier eigenvalues only by phases whose product is one, while multiplication
+of indices by $u\in(\Z/55\Z)^\times$ permutes the nonzero frequencies.  The
+affine group has order
+\[
+  55\varphi(55)=55\cdot40=2200.
+\]
+Reversal is the multiplier $u=-1$.  Orbit sizes must still be computed from
+actual stabilizers; the group order alone does not imply that every orbit has
+size $2200$.  Correlations are invariant under translation and are indexed
+by the $27$ opposite-shift pairs.  On these pairs the effective unit action
+has order $20$.
+
+\section{Spectral-moment reduction}
+
+The correlation identities turn the global problem into a finite collection
+of integer moment problems.  Among $h$ nonnegative integers with fixed sum
+$T$, write $T=hb+r$, $0\leq r<h$.  Their minimum square sum is
+\[
+  (h-r)b^2+r(b+1)^2.
+\]
+Indeed, transferring one unit from two entries that differ by at least two
+strictly decreases the square sum.  Applying this to the $27$ independent
+correlations, and combining it with the exact product bounds below, excludes
+all lower weights $k\leq24$ at threshold $M$.
+
+For clarity, the remaining necessary windows are listed here.  The entries
+are for $\sum_{s=1}^{27}c_s^2$; the upper endpoint is the largest integer
+that can still reach $M$ under the certified moment bound.
 \begin{center}
-\footnotesize
-\setlength{\tabcolsep}{4pt}
-\begin{tabular}{lrr}
+\small
+\begin{tabular}{@{}rrrr@{}}
 \toprule
-Lower weight k & Minimum \ensuremath{\sum} \ensuremath{c_s^2} & Maximum \ensuremath{\sum} \ensuremath{c_s^2} to reach M \\
+lower weight $k$ & complement weight & minimum square sum & maximum square sum\\
 \midrule
-25 & 3336 & 3338 \\
-26 & 3913 & 3919 \\
-27 & 4563 & 4570 \\
+25 & 30 & 3336 & 3338\\
+26 & 29 & 3913 & 3919\\
+27 & 28 & 4563 & 4570\\
+\bottomrule
+\end{tabular}
+\end{center}
+For $k=27$, the deviations $d_s=c_s-13$ have sum zero, so
+$\sum d_s^2$ is even; the final row is equivalently a small deviation
+window around the nearly balanced correlation $13$.
+
+\subsection{Exact product bounds}
+
+The fourth moment in \eqref{eq:fourth-moment} fixes the square sum of the
+$q_r$.  The following elementary extremal calculation supplies a rigorous
+upper bound on their product.  Consider $h$ nonnegative variables with sum
+$S$ and square sum at least $L$.  Contracting variables toward their common
+mean increases the product until the square-sum constraint is tight (or the
+variance is zero).  At a positive constrained stationary point, Lagrange
+multipliers give
+\[
+  \frac1x=\alpha+2\beta x,
+\]
+so there are at most two distinct values.  If the smaller value occurs $m$
+times, put $\mu=S/h$ and $V=L-S^2/h$.  The two values are
+\begin{equation}
+\label{eq:two-values}
+  \mu-\sqrt{\frac{V(h-m)}{hm}},
+  \qquad
+  \mu+\sqrt{\frac{Vm}{h(h-m)}}.
+\end{equation}
+Enumerating $m=1,\ldots,h-1$, together with the zero-variance and boundary
+cases, exhausts the compact feasible set.  The implementation bounds the
+square roots outward by integer arithmetic at a decimal scale of $10^{50}$.
+No floating-point comparison decides a pruning step.
+
+The certificate also imposes a uniform spectral cap.  Let
+\[
+  b=\left\lfloor\frac{k(k-1)}{54}\right\rfloor,
+  \qquad \delta_s=c_s-b.
+\]
+For every nonzero frequency,
+\begin{equation}
+\label{eq:spectral-cap-formula}
+  q_r=k-b+\sum_{s=1}^{27}\delta_s\,2\cos(2\pi rs/55).
+\end{equation}
+The rearrangement inequality pairs the sorted deviations with sorted cosine
+coefficients.  There are only three coefficient multisets, represented by
+$r=1,5,11$, according to the gcd class of the frequency.  Their rational
+outward bounds give a cap $B$ valid for every $q_r$.
+
+To maximize a product subject also to $0\leq x_i\leq B$, enumerate the
+number of coordinates on the upper boundary.  The remaining interior
+coordinates again have the form \eqref{eq:two-values}; infeasible sums,
+negative roots, and roots above $B$ are discarded.  This is a finite
+description of all extrema on the capped set.  The cosine intervals are
+constructed from Machin's identity and rational Taylor remainders for
+$\pi$ and cosine, and the stored dyadic intervals are independently checked
+by the verifier.
+
+\section{The \texorpdfstring{$5\times11$}{5x11} cyclotomic decomposition}
+
+The factorization $55=5\cdot11$ splits the frequency space into the
+cyclotomic sectors of orders $1,5,11,55$.  Their dimensions are
+\[
+  1,\quad4,\quad10,\quad40,
+  \qquad 1+4+10+40=55.
+\]
+The nonzero sectors have respectively $2$, $5$, and $20$ conjugate pairs.
+Let
+\[
+  N_m(a)=\Res(f_a,\Phi_m),
+  \qquad m\in\{5,11,55\}.
+\]
+All three cyclotomic degrees are even, so the resultant convention used here
+has positive sign, and conjugate pairing makes these norms nonnegative.  We
+obtain
+\begin{equation}
+\label{eq:resultant-factorization}
+  \det C(a)=kN_5(a)N_{11}(a)N_{55}(a).
+\end{equation}
+
+Use the Chinese remainder identification
+\[
+  \Z/55\Z\cong\Z/5\Z\times\Z/11\Z.
+\]
+For a word $a$, define the two fold vectors
+\[
+  r_i=\sum_{t\equiv i\pmod5}a_t,\qquad
+  s_j=\sum_{t\equiv j\pmod{11}}a_t.
+\]
+Thus $0\leq r_i\leq11$ and $0\leq s_j\leq5$.  The order-$5$ norm
+$N_5$ depends only on $r$, and $N_{11}$ only on $s$.  If
+\[
+  h_i^{(m)}=\sum_{t\equiv i\pmod m}c_t,
+\]
+then $h^{(m)}$ is the cyclic correlation of the corresponding fold.  The
+sector moments are
+\begin{align}
+  S_1^{(m)}&=\frac{m\sum_i r_i^2-k^2}{2},\\
+  S_2^{(m)}&=\frac{m\sum_i (h_i^{(m)})^2-k^4}{2}.
+\end{align}
+
+For fixed folds $r$ and $s$, the first moment in the primitive order-$55$
+sector is
+\begin{equation}
+\label{eq:primitive-sector-sum}
+  T=\frac{55k+k^2-5\sum_i r_i^2-11\sum_j s_j^2}{2}.
+\end{equation}
+Its norm is at most $(T/20)^{20}$.  A simpler necessary fold screen is also
+useful.  If the selected small sector has $h=(m-1)/2$ pairs and sum $T_m$,
+the remaining $27-h$ pairs have sum
+\[
+  R=\frac{k(55-k)}2-T_m.
+\]
+Any word whose complementary determinant is at least $M$ must satisfy
+\begin{equation}
+\label{eq:fold-screen}
+  (55-k)N_m\left(\frac{R}{27-h}\right)^{27-h}\geq M.
+\end{equation}
+This is rational and exhaustive over the bounded integer fold vectors.
+
+The retained fold representatives, up to their affine fold symmetries, are:
+\begin{center}
+\small
+\begin{tabular}{@{}rrr@{}}
+\toprule
+$k$ & order-$5$ representatives & order-$11$ representatives\\
+\midrule
+25 & 17 & 321\\
+26 & 27 & 560\\
+27 & 26 & 660\\
+\bottomrule
+\end{tabular}
+\end{center}
+All unit orientations of the folded correlations are retained.  Independent
+translations of the two fold vectors lift jointly by the Chinese remainder
+theorem.  This reduction does not assert that every pair of fold profiles
+has a binary lift; that remaining existence question is handled exhaustively
+in Section~\ref{sec:lifts}.
+
+\section{Correlation profiles and exact enumeration}
+
+For each active weight $k\in\{25,26,27\}$, the exact sum in
+\eqref{eq:corr-sum}, the square-sum window, the range $0\leq c_s\leq k$, and
+the capped moment bound define a finite family of integer correlation
+profiles.  The generator first visits sorted multisets and uses the
+multinomial coefficient to recover the exact number of ordered profiles.
+It then tests every coordinate assignment against both fold signatures and
+the effective order-$20$ unit action.
+
+The resulting certificate counts are shown below.  ``Allowed'' is the
+recorded overapproximation of formal ordered profiles after the initial
+integer screen.  ``Explicitly enumerated'' is completed work, not projected
+throughput.  A formal profile is not treated as a word until it passes the
+binary lift.
+\begin{center}
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+$k$ & allowed ordered profiles & explicitly enumerated & canonical profiles & lift targets\\
+\midrule
+25 & 407,277 & 2,925 & 55 & 55\\
+26 & 32,178,654 & 816,102 & 22,375 & 281\\
+27 & 6,043,753 & 6,026,203 & 155,558 & 1,980\\
+\midrule
+total & 38,629,684 & 6,845,230 & 177,988 & 2,316\\
 \bottomrule
 \end{tabular}
 \end{center}
 
-All sums in this table use s=1,...,27. For k=27, \ensuremath{d_s=c_s- 13} has sum zero, so \ensuremath{E=\sum d_s^2} is even. Thus the last row permits only E\ensuremath{\le}6.
+For a formal profile, the $q_r$ obtained from the discrete Fourier transform
+need not all be nonnegative.  The profile screen therefore uses the safe
+inequality
+\begin{equation}
+\label{eq:formal-profile-bound}
+  \left|(55-k)\prod_{r=1}^{27}q_r\right|
+  \leq (55-k)\left(\frac{\sum_r q_r^2}{27}\right)^{27/2},
+\end{equation}
+which is just Cauchy--Schwarz followed by AM--GM on the absolute values.
+The signed product is reconstructed from two $61$-bit Fourier fields.  A
+separate squared integer comparison proves that the product of the primes
+exceeds the bound in \eqref{eq:formal-profile-bound}; hence no modular wrap
+can turn a formal product into a false target.  Profiles whose exact absolute
+product is below $M$ cannot contain an improving word.  Profiles at or above
+the threshold are passed to the complete lift enumeration.
 
-\section*{5. Exact fourth-moment product bounds}
+\section{Exhaustive binary lifts}
+\label{sec:lifts}
 
-Consider h nonnegative variables with sum S and square sum at least L. Contracting toward the common mean reduces the square sum and increases the product, by concavity of log and continuity at zero. It suffices to use square sum max(L,S\textsuperscript{2}/h). At a positive constrained stationary point,
-
+Use the explicit torus coordinate
 \[
-1/x=\alpha+2\beta x,
+  (i,j)\in\Z/5\Z\times\Z/11\Z
+  \longmapsto 11i+45j\pmod{55}.
 \]
+The $11$ columns are five-bit masks, so there are $32$ possible column
+states.  For every retained correlation target, all compatible oriented
+pairs of fold vectors are enumerated after normalizing the independent row
+and column translations.  This produces exactly $16,084$ lift jobs.
 
-so there are at most two distinct coordinates. If the smaller value occurs m times, let \ensuremath{\mu}=S/h and V=L\ensuremath{-}S\textsuperscript{2}/h. The two values are
+The production lift splits the eleven columns into five and six.  A partial
+assignment records its word and a seven-coordinate signature: five row
+counts and the two within-column correlation sums for shifts $11$ and $22$.
+These statistics are additive across columns.  The left half is sorted by
+its packed signature; each right half is joined to the unique complementary
+signature.  The packing is injective over the bounded coordinate ranges, so
+the join uses exact integer equality rather than a hash collision.  Every
+joined word has the requested folds and the two stored correlations; the
+remaining independent shifts are checked by rotated $55$-bit intersections
+and population counts.
 
-\[
-\mu-\sqrt{\frac{V(h-m)}{hm}},\qquad
-\mu+\sqrt{\frac{Vm}{h(h-m)}}.
-\]
+Nonnegative partial row counts and partial correlations above their targets
+are safe pruning rules.  No floating-point operation is used in the lift.
+The production run tests $15,487,882,832$ joined words and finds exactly
+two normalized solutions.  The canonical verifier replays all jobs with a
+six-plus-five split and compares joined-word counts and solution sets.  This
+was initially a split-dependent cross-check. In this joint revision,
+the separate typed-key implementation exhausts all $16,084$ original
+binary tasks with split six-plus-five. All $15,487,882,832$ joined words
+and both normalized solutions agree task by task with production.
+The complete supplement is
+\path|certificates/order55_sign/binary_companion/full_fiber_report.json|.
+A separate small fiber is checked against all $78,125$ direct column
+assignments using three splits.
 
-Enumerate every m=1,...,h\ensuremath{-}1, retaining positive values. Boundary products with a zero coordinate vanish. Rational outward square-root intervals bound each stationary product from above. A zero-variance case is handled directly. The implementation uses integer square roots at a decimal scale of \ensuremath{10^50;} no floating-point comparison decides a pruning step.
+\section{Winner and classification}
 
-\subsection*{5.1. A spectral cap from each correlation multiset}
-
-The unbounded stationary problem is sometimes too permissive. Let b=floor(k(k\ensuremath{-}1)/54), and sort the 27 deviations \ensuremath{c_s- b.} For any nonzero frequency,
-
-\[
-q_j=k-b+\sum_{s=1}^{27}(c_s-b)\,2\cos(2\pi js/55).
-\]
-
-The rearrangement inequality bounds this expression by pairing the sorted deviations with sorted cosine coefficients. There are only three possible coefficient multisets, represented by j=1,5,11. The largest of their outward rational bounds is a uniform cap B for every \ensuremath{q_j.}
-
-To maximize the product subject also to \ensuremath{x_i\le B,} enumerate r coordinates at the upper boundary B. The remaining h\ensuremath{-}r coordinates have sum S\ensuremath{-}rB and square sum L\ensuremath{-}rB\textsuperscript{2}; their interior stationary points again have at most two values. Discard infeasible sums, negative coordinates, and a larger root provably above B. Include all-zero-variance cases. Zero lower-boundary coordinates contribute product zero. This exhausts the compact feasible set and proves the capped bound used in the certificate.
-
-Pi is enclosed using Machin's identity and rational alternating series for arctangent. Rational Taylor remainders then enclose the cosines. The native screen uses these intervals at dyadic scale \ensuremath{2^24.} Its multiply-and- round steps are upward, and the builder and verifier separately check integer inequalities that bound every unsigned-128-bit intermediate.
-
-\section*{6. The 5 \ensuremath{\times} 11 cyclotomic decomposition}
-
-The frequency sectors of root orders 1,5,11,55 have dimensions 1,4,10,40. Consequently
-
-\[
-\det C(a)=kN_5(a)N_{11}(a)N_{55}(a),\qquad
-N_m(a)=\operatorname{Res}(f,\Phi_m).
-\]
-
-All three cyclotomic degrees are even, so exchanging the resultant operands has positive sign. Their factors pair conjugately and the norms are nonnegative. The paired sector dimensions are 2,5,20.
-
-Let \ensuremath{r_i=\sum _{t\equiv i} (mod \ensuremath{5)}a_t} and \ensuremath{s_j=\sum _{t\equiv j} (mod \ensuremath{11)}a_t.} Then \ensuremath{0\le r_i\le 11} and \ensuremath{0\le s_j\le 5;} N5 depends only on r and N11 only on s. For either modulus m, write \ensuremath{h_i=\sum _{t\equiv i} (mod \ensuremath{m)}c_t.} This is the cyclic correlation of the folded margin vector. The sector moments are
-
-\[
-S_1^{(m)}=\frac{m\sum r_i^2-k^2}{2},\qquad
-S_2^{(m)}=\frac{m\sum h_i^2-k^4}{2}.
-\]
-
-Subtract the two small sectors from the full moments for the primitive 55 sector. For fixed r,s its first moment is
-
-\[
-T=\frac{55k+k^2-5\sum r_i^2-11\sum s_j^2}{2},
-\]
-
-and its norm is at most \ensuremath{(T/20)^20.} The exploratory calculation also applied this combined bound and the separate sector fourth moments. The final proof uses an even simpler necessary bound for each individual fold: if its sector has h pairs and sum T, the remaining 27\ensuremath{-}h pairs have sum R=k(55\ensuremath{-}k)/2\ensuremath{-}T, and
-
-\[
-(55-k)N_m\left(\frac{R}{27-h}\right)^{27-h}\ge M
-\]
-
-is necessary. Both inequalities are rational. Every bounded integer fold passing the necessary condition is enumerated, up to its full affine symmetry, and its norm is calculated exactly in a prime field. A Parseval bound proves that each such small norm is below the prime, so there is no modular ambiguity. The independent verifier checks every retained norm again by an integer resultant.
-
-\begin{center}
-\footnotesize
-\setlength{\tabcolsep}{4pt}
-\begin{tabular}{lrr}
-\toprule
-k & Mod-5 affine representatives & Mod-11 affine representatives \\
-\midrule
-25 & 17 & 321 \\
-26 & 27 & 560 \\
-27 & 26 & 660 \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-All unit orientations of their folded correlations are retained. Translation acts trivially on correlations. Independent translations of the two margin vectors lift to a translation of the original word by the Chinese remainder theorem. Therefore using the minimum rotation of each oriented margin loses no necessary binary lift.
-
-\section*{7. Difference-set obstruction and winner structure}
-
-The ideal weight-27 correlations would all equal 13, giving a cyclic (55,27,13) difference set. Here is a short algebraic nonexistence proof. Put \ensuremath{\alpha}=f(\ensuremath{\zeta}5). Ideal correlations imply \ensuremath{\alpha} conjugate(\ensuremath{\alpha})=14. Modulo 2, \ensuremath{\Phi}5 is irreducible since ord5(2)=4, so Z[\ensuremath{\zeta}5]/(2) is a field. The product is zero there; conjugation is an automorphism, so \ensuremath{\alpha} is divisible by 2. Writing \ensuremath{\alpha}=2\ensuremath{\beta} would make \ensuremath{\beta} conjugate(\ensuremath{\beta})=7/2, contrary to the fact that a rational algebraic integer is an integer. Published corroboration appears in Brai\'{c}, Theorem 4.4 and p.297, using p=2,w=5,j=2 and k\ensuremath{-}\ensuremath{\lambda}=14 [4].
-
-The maximizing word is not a two-level almost difference set in the usual sense [5]. Its nonzero correlations have three values: 13 occurs four times, 14 occurs 46 times, and 15 occurs four times. In the displayed canonical representative, the independent exceptional shifts are 2,6 (value 15) and 7,15 (value 13). The complement has E=4 about correlation 13. Its associated \ensuremath{\pm}1 periodic autocorrelations are \ensuremath{-}5,\ensuremath{-}1,3, with total nonzero-shift squared energy 182. We do not claim a Bernasconi ground-state theorem or a new algebraic construction. The trivial affine stabilizer rules out a nontrivial multiplier symmetry even after translation.
-
-The winner has
-
+For the canonical winner $w$, the exact folded data and cyclotomic norms are
 \begin{lstlisting}
+weight = 28
 mod-5 margin:  [5,4,8,6,5]
 mod-11 margin: [3,1,4,2,3,1,1,3,3,3,4]
 N5  = 131
 N11 = 434039
 N55 = 84603917386870862636041
 \end{lstlisting}
+Equation \eqref{eq:resultant-factorization} gives
+$28\cdot131\cdot434039\cdot84603917386870862636041=M$.
+The complement has the same three nontrivial norms and the zero-frequency
+factor changes from $28$ to $27$, giving the determinant displayed after
+Theorem~\ref{thm:main}.
 
-Their product times 28 is exactly M.
-
-\section*{8. Complete correlation-profile enumeration}
-
-For each remaining k enumerate every sorted multiset of 27 integer correlations in [0,k] with sum k(k\ensuremath{-}1)/2 and permitted square sum. A balanced-square lower bound prunes only impossible recursion branches. The multinomial coefficient gives the exact number of ordered profiles. First apply the capped moment bound to entire multisets. For each surviving multiset enumerate every coordinate assignment.
-
-A formal profile must have folded correlations matching retained margin vectors for both moduli. After this exact membership test, retain its lexicographically minimal representative under the effective 20-element unit group. Dyadic outward spectral products provide a safe first screen. Remaining products are evaluated exactly using two 61-bit Fourier fields and signed CRT. Even if a formal profile is not PSD, Cauchy--Schwarz and AM-GM give
-
+The nonzero correlations of the winner have the distribution
 \[
-\left|(55-k)\prod q_j\right|
-\le(55-k)\left(\frac{\sum q_j^2}{27}\right)^{27/2}.
+  13\text{ four times},\qquad
+  14\text{ forty-six times},\qquad
+  15\text{ four times}.
 \]
+Among the independent shifts $1\leq s\leq27$, the exceptional shifts are
+$2,6$ with value $15$ and $7,15$ with value $13$.  For the complement, the
+half-profile deviations from $13$ have square sum $4$.  If the word is
+converted to signs by $x_t=2a_t-1$, its nonzero periodic autocorrelations
+are $-5,-1,3$ with total squared energy $182$ over all $54$ nonzero shifts.
 
-A squared integer comparison proves that signed CRT capacity exceeds this bound. Only profiles with exact absolute product at least M become lift targets. For any realizable profile this is its actual complementary determinant, so the screening condition covers equality as well as a possible improvement.
+For completeness, the perfectly balanced weight-$27$ possibility would have
+$c_s=13$ for every nonzero shift, corresponding to a cyclic
+$(55,27,13)$ difference set.  It is impossible.  Indeed, with
+$\alpha=f_a(\zeta_5)$, where $\zeta_5$ is a primitive fifth root, the ideal
+correlations imply $\alpha\overline\alpha=14$.  The polynomial
+$\Phi_5$ is irreducible modulo $2$, since $\operatorname{ord}_5(2)=4$;
+hence $\mathbb Z[\zeta_5]/(2)$ is a field.  Reducing the norm equation
+modulo $2$ forces $\alpha=2\beta$.  Then
+$\beta\overline\beta=7/2$, impossible because a rational algebraic integer
+is an integer.  This obstruction is also discussed in the design literature
+\cite{braic}.  The actual winner is not being presented as a new difference
+set or as a two-level almost difference set; the exact classification comes
+from the exhaustive lift results.
 
+The global classification now follows.  Any word with determinant at least
+$M$ has a lower complementary weight $1\leq k\leq27$.  The exact weight
+screen excludes $k\leq24$.  For $k=25,26,27$, its moment identities place
+the correlation multiset in the enumerated finite family; the folded screens
+place both fold vectors among the retained representatives; and a unit
+transformation takes the paired correlations to one of the $2,316$ targets.
+The production lift certificate contains a transformed copy of the word.
+The two normalized lifted solutions both give complementary determinant $M$
+and have the same affine canonical representative. The newly completed
+independent full-fiber computation discharges the remaining union
+condition in the historical review snapshot.
+
+Finally, direct enumeration of the affine action on the canonical word gives
+$2200$ distinct words.  Its stabilizer therefore has size one, and the
+exhaustive lift classification shows that all equality cases lie in this one
+orbit.  This proves Theorem~\ref{thm:main}.
+
+\section{Computer-assisted certification}
+
+The proof separates discovery from certification.
+
+\begin{description}[leftmargin=!,labelwidth=31mm]
+\item[Heuristic stage.] Random or local search was used only to find a strong
+incumbent.  Search scores, partial jobs, and floating-point rankings are not
+evidence of maximality.
+\item[Rigorous stage.] Exact first- and fourth-moment bounds, rational
+outward intervals, exhaustive folded-profile coverage, exhaustive binary
+lifts, exact integer arithmetic, and deterministic certificate checks prove
+the global statement.
+\end{description}
+
+The final winner is checked through three mathematical routes:
+
+\begin{enumerate}[leftmargin=*,itemsep=2pt]
+\item finite-field Fourier determinants reconstructed by signed CRT;
+\item an exact integer matrix determinant using fraction-free elimination;
+\item the product of the three exact cyclotomic resultants.
+\end{enumerate}
+
+The production verifier does not import the search or certificate-builder
+module.  It re-derives the rational bounds, checks the Machin/Taylor cosine
+enclosures, verifies retained fold norms by resultants, recompiles the
+hash-identified native generators, regenerates the correlation profiles, and
+checks task identities, multiplicities, exact output words, determinants, and
+the affine classification.  Its optional full mode is a split-dependent
+six-plus-five replay of the native lift algorithm.  The final global
+certificate records the component SHA-256 hashes and the counts used in this
+paper; the independent completeness audit is a separate, explicitly
+qualified review layer.
+
+
+\section{Completeness statements and review status}
+\label{sec:completeness-status}
+
+The global argument uses three logically distinct finite statements.  We
+state them separately because reproducibility of a computation is not the
+same as an independently checkable certificate of its coverage.
+
+\begin{lemma}[Correlation-spectrum coverage]
+For each active weight $k\in\{25,26,27\}$, the integer moment equations,
+the fold screens, and the unit action reduce every necessary correlation
+profile to one of the finite profile records used in the certificate.
+\end{lemma}
+
+For unambiguous machine-readable transcription, the corresponding
+certificate integers are $2316$ correlation targets, $6845230$ explicit
+profile evaluations, $16084$ lift tasks, and $15487882832$ joined words.
+
+The clean-room profile evaluator
+\path|audit/completeness/run_cleanroom_profile_audit_v4.py| reconstructs the
+three ordered-profile families without importing the production verifier or
+calling a production executable.  It reports exact agreement of the 16
+profile-family set, exact agreement of the 2,316 target triples, and 982,589
+canonical profile records below the incumbent.  This is the independently
+checkable portion of the profile-spectrum reduction.
+
+\begin{lemma}[Pruning soundness]
+Every profile recorded below the incumbent in the exact profile-product
+stage is rigorously pruned for the purpose of reaching $M$; every retained
+profile is represented by a lift target and is not pruned by that exact
+profile-product comparison.
+\end{lemma}
+
+The clean-room records make this statement inspectable as a machine-readable
+table with fields \path|profile_id|, \path|profile_data|,
+\path|bound_type|, \path|exact_upper_bound|, \path|incumbent|, and
+\path|pruned|.  The separate rational boxed-moment rows remain part of the
+production bound certificate and are checked by the canonical verifier.
+
+\begin{lemma}[Lift completeness]
+Every binary word with determinant at least $M$ has a transformed
+representative in the union of the $16,084$ listed margin fibers,
+each of which is exhausted by production and independent implementations.
+The preceding profile and pruning lemmas therefore imply
+Theorem~\ref{thm:main}.
+\end{lemma}
+\begin{proof}
+The target and task sets were independently reconstructed in the
+earlier review. The new supplement exhausts their entire fibers with
+the separate typed-key implementation and checks exact task counts
+and word sets. CRT combines the two fold rotations into a translation
+modulo $55$, and unit normalization preserves the determinant.
+Thus the listed fibers cover a representative of every eligible word.
+\end{proof}
+
+The historical v2 independent lift report is preserved unchanged.
+Its previously missing full-fiber step is now supplied by
+\path|certificates/order55_sign/binary_companion/full_fiber_report.json|.
+The binary value and frozen original certificates are unchanged.
+
+\section{Reproducibility and availability}
+
+The production theorem is tied to commit
+\texttt{e77a1aa6afea16fe59a35f9c0de93f385f9b8781}.  The repository contains
+the exact certificate directory, the native source files, and the verifier.
+From the repository root, the fast publication checks are:
+\begin{lstlisting}
+python scripts/verify_order55_global.py
+python -m pytest
+python -m pip check
+\end{lstlisting}
+The split-dependent six-plus-five lift replay is requested with
+\begin{lstlisting}
+python scripts/verify_order55_global.py --full-lifts
+\end{lstlisting}
+The native replay requires a C++20 compiler with unsigned \path|__int128| support.
+The stored build commands and source hashes identify the exact native inputs;
+host-specific paths and elapsed times may differ, but the discrete counts,
+words, products, and classification must agree.
+
+The project repository is
+\url{https://github.com/dongxuelian2/order55-binary-circulant-maxdet}.
+The joint revision is prepared on \path|sign-circulant-order55|.
+Local OEIS drafts accompany the source.
+
+Qichao Wang and Daoyu Dong contributed equally to this work.
+
+
+\section{The companion sign-circulant maximum}\label{sec:sign}
+
+Write $D_{\pm}^{\mathrm{circ}}(55)$ for the maximum absolute determinant
+over sign circulants and $S_{\pm}(55)=D_{\pm}^{\mathrm{circ}}(55)/2^{54}$.
+These are OEIS A215723 and A215897 \cite{oeis-sign,oeis-sign-scaled}.
+All sign screening is regenerated; the old binary target set is not
+a completeness certificate for this different objective.
+
+\subsection{Exact bridge and complement reduction}
+\begin{lemma}[Binary-to-sign bridge]\label{lem:sign-bridge}
+For $a\in\{0,1\}^{55}$ of weight $0<k<55$ and $x=2a-\mathbf1$,
+\[
+ \det C(x)=2^{54}\frac{2k-55}{k}\det C(a),\qquad
+ S_{\pm}(55)=\max_{1\le k\le27}\frac{55-2k}{k}D_{\mathrm{circ}}(55,k).
+\]
+\end{lemma}
+\begin{proof}
+The identity $C(x)=2C(a)-J$ changes the eigenvalue on the all-ones
+line to $2k-55$ and doubles every nontrivial Fourier eigenvalue.
+It also holds when the circulant is singular. Conjugate pairing gives
+$\det C(a)=k\prod q_r$. Complementing $a$ negates $x$ and preserves
+absolute determinant. The constant endpoints have rank one.
+\end{proof}
+Thus the reduced objective is
+\[
+ R(a)=(55-2k)\prod_{r=1}^{27}q_r=(55-2k)N_5N_{11}N_{55}.
+\]
+For the encoding $x=2a-\mathbf1$, the signed row sum is $2k-55$;
+$55-2k$ is its magnitude on the reduced weights.
+In contrast, the complementary binary objective has coefficient $55-k$.
+The small-weight certificates in Appendix A transfer exactly by the
+bridge. The binary global theorem and complement duality further give
+the exact weight-$27$ sign value
+$M/28=4810503360527085547546682547469$.
+The sign upper-bound proof below does not require the binary global theorem.
+
+\subsection{Sign correlations and exact bounds}
+Put $\rho_s=\sum_i x_ix_{i+s}$. Expansion and orthogonality give
+\[
+ \rho_s=55-4k+4c_s,\quad \rho_s\equiv3\pmod4,\quad
+ 55+2\sum_{s=1}^{27}\rho_s=(2k-55)^2.
+\]
+For $p_r=|f_x(\zeta^r)|^2=4q_r$ and $\sigma=2k-55$,
+\[
+ \sigma^2+2\sum p_r=55^2,\qquad
+ \sigma^4+2\sum p_r^2=55\left(55^2+2\sum_{s=1}^{27}\rho_s^2\right).
+\]
+At fixed weight this is an invertible affine change of the integer
+correlations; the sign congruence adds no condition beyond that
+integrality. The implementation keeps the sparse binary deviations.
+
+The first-moment bound is
+\[
+ R(a)\le(55-2k)\left(\frac{k(55-k)}{54}\right)^{27}.
+\]
+The fourth-moment and capped-product lemmas above apply to $\prod q_r$,
+with every threshold multiplied by $55-2k$. All exclusions are strict
+integer or rational outward comparisons against the exact incumbent.
+For a mod-$5$/mod-$11$ fold pair $(r,s)$, put
+\[
+ T_{55}=\frac{55k+k^2-5\sum r_i^2-11\sum s_i^2}{2}.
+\]
+The joint-fold bound is
+\[
+ (55-2k)N_5(r)N_{11}(s)(T_{55}/20)^{20}.
+\]
+The primitive fourth moment subtracts the two folded fourth moments
+from the full fourth moment, so the same product lemma can be used
+in that sector. The recorded joint screen combines the first-sector
+bound with the global fourth-moment bound; all conservative survivors
+are subsequently resolved by complete profiles and lifts.
+
+\subsection{Complete screening and independent audit}
+The exact moment screen leaves $k=22,23,24,25,26$. Capped moments
+reduce $9,531,797,706$ ordered formal correlations to $731,378,844$
+explicit evaluations in $17$ multisets.
 \begin{center}
-\footnotesize
-\setlength{\tabcolsep}{4pt}
-\begin{tabular}{lrrrr}
+\small
+\begin{tabular}{@{}rrrrr@{}}
 \toprule
-k & Allowed profiles & Enumerated & Canonical & Lift targets \\
+$k$ & Formal profiles & Explicit profiles & Targets & Lift tasks\\
 \midrule
-25 & 407,277 & 2,925 & 55 & 55 \\
-26 & 32,178,654 & 816,102 & 22,375 & 281 \\
-27 & 6,043,753 & 6,026,203 & 155,558 & 1,980 \\
-Total & 38,629,684 & 6,845,230 & 177,988 & 2,316 \\
+22 & 17,383,860 & 17,383,860 & 0 & 0\\
+23 & 3,580,859,880 & 259,224,030 & 1,705 & 10,580\\
+24 & 5,501,039,895 & 435,495,645 & 10,647 & 77,862\\
+25 & 432,505,269 & 19,266,507 & 5,477 & 63,300\\
+26 & 8,802 & 8,802 & 6 & 30\\
 \bottomrule
 \end{tabular}
 \end{center}
+There are $17,835$ canonical targets and $151,772$ lift tasks.
+No target remains at weight $22$.
 
-The first column is an overapproximation of possible integer correlations, not a count of binary words. The explicitly enumerated columns are actual completed work, not projected throughput.
+The independent arithmetic checker parametrizes the two stationary
+values by their separation, verifies its own dyadic cosine enclosures,
+and generates multisets by descending multiplicities.
+An independent bounded-alphabet FKM necklace generator produces every
+cyclic fold representative; it shares no production affine-minimum test.
+All fold representative sets and their correlations agree exactly.
 
-\section*{9. Exhaustive binary torus lifts}
+An independent \texttt{next\_permutation} traversal computes every
+canonical algebraic product by CRT without production interval-product
+pruning. Its raw above-threshold set contains $255$ additional indefinite
+formal spectra. For every one, a recorded frequency and exact rational
+upper bound prove $q_j<0$, excluding a binary autocorrelation.
+After these explicit positive-semidefinite discharges, the independent
+and production target sets, including their products, are exactly equal.
 
-Identify the torus coordinate (i,j)\ensuremath{\in}Z5\ensuremath{\times}Z11 with 11i+45j modulo 55. Each of its 11 columns is one of 32 five-bit masks. For a target correlation profile, enumerate every oriented pair of compatible margins and normalize independent row and column translations. This gives 16,084 tasks.
+The production five-plus-six lift uses a sorted packed integer key.
+The independent six-plus-five implementation uses typed seven-coordinate
+hash keys with equality checks and tests every shift. Both exhaust all
+$151,772$ tasks and inspect $113,997,335,580$ joined words.
+Their joined counts and complete output sets agree task by task,
+returning exactly two normalized words.
 
-Split the columns into five and six. A half-assignment stores its binary word and a seven-coordinate signature: the five row counts and the two within-column correlation sums for shifts 11 and 22. The latter are additive across columns. The left half is sorted by its packed signature. For each right half, compute the exact complementary signature and join every matching left entry. No hash collision is used as equality: the packed integer signature is injective on the bounded coordinate ranges. Every joined word has the requested margins and these two correlations. Test every other independent shift by rotated 55-bit intersection and population count. A remaining match is a full binary lift.
+For global coverage, map any feasible word's correlation to its
+canonical unit representative. Its two folds then occur in the
+independent necklace lists in that orientation. The two fold rotations
+are simultaneously induced by one translation modulo $55$, by CRT.
+Consequently the Cartesian products of listed margin fibers contain
+a transformed representative of every feasible word. An independent
+task audit reconstructs all $151,772$ descriptors from those fold lists
+and checks their exact partition. The two full lift enumerations
+therefore prove global exhaustiveness.
 
-This is a complete meet-in-the-middle enumeration of each margin fiber. Nonnegative partial row counts and within-column correlations exceeding their targets can safely be pruned. No floating-point operation is involved. The computation tests 15,487,882,832 joined words and finds exactly two normalized solutions. The canonical verifier replays every task with a six-plus-five split and obtains identical joined-word counts and identical solution sets. This is a split-dependent cross-check using the same native lift implementation, not an independent full fiber-union proof; the clean-room audit validates the listed task partition and witnesses while the global fiber-union certificate remains open. A separate small fiber was compared with all 78,125 direct column assignments, using three different splits.
-
-\section*{10. Global maximality and classification proof}
-
-Any binary word with determinant at least M has a lower complementary weight k\ensuremath{\in}\{1,...,27\}. The exact weight screen excludes k\ensuremath{\le}24. For each remaining k, the moment equations place its correlation multiset in the complete enumerated list. Capped moment bounds exclude some multisets; the others are exhausted in their entirety. Its margins must pass both folded screens, and a unit transformation takes its paired correlations to one of the 2,316 retained representatives. Independent translations then take both oriented margins to recorded minimum rotations. The complete lift of that margin pair therefore contains a transformed copy of the word.
-
-The only two lifted words have complementary determinant M. Their higher-weight complements belong to the same affine class. Exact matrix determinants, finite-field Fourier CRT, and cyclotomic resultant products all agree. Thus no word exceeds M, and every word attaining M is in the reported class. Enumerating its affine action gives 2,200 distinct words, so the stabilizer has order one. This proves Theorem 1.
-
-\section*{11. Certification, completeness review, and reproducibility}
-
-The global JSON file binds a hash manifest and all component files. \path|verify_order55_global.py| imports neither the search nor the production certificate builder. It independently recomputes the rational moment and cap formulas, verifies a separate Machin/Taylor enclosure, checks all retained norms by resultants, recompiles hash-identified C++ sources, and replays the folded and correlation enumerations. It derives every required margin task afresh and checks task identities, multiplicities, output words, exact determinants, and affine classification. Its optional full mode replays every lift with a different split. This is a split-dependent replay, not an independent implementation. The external completeness review records the independent profile, task, witness, affine, small-order, and random-coverage checks, while the full order-55 fiber-union certificate remains incomplete.
-
-The current package is a review draft, not an arXiv-ready submission: an independent full fiber-union certificate (or equivalent branch-level partition/union proof) is still required. The exact theorem and incumbent are retained without weakening them.
-
-The finite-field primes are 2305843009213696591 and 2305843009213697141; each is prime and is 1 modulo 55. The winner residues are respectively 1234839479219971141 and 1202711640743500591. The builder and verifier check the applicable reconstruction and fixed-point intermediate bounds.
-
-On the recorded Windows host, use:
-
+\subsection{Winner and all equality cases}
+Both returned words are affine-equivalent to the weight-$23$ word
 \begin{lstlisting}
-& ./.venv/Scripts/python.exe scripts/build_order55_global.py
-& ./.venv/Scripts/python.exe scripts/verify_order55_global.py --full-lifts
-& ./.venv/Scripts/python.exe -m pytest
-& ./.venv/Scripts/python.exe -m pip check
+0000000000100110110100111001001110001010101100010010111
+\end{lstlisting}
+whose sign encoding is
+\begin{lstlisting}
+----------+--++-++-+--+++--+--+++---+-+-+-++---+--+-+++
+\end{lstlisting}
+Its exact norms are
+\[
+ N_5=131,\quad N_{11}=917467,\quad N_{55}=15268987821561877723321,
+\]
+and its binary determinant is
+\[
+ \det C(a)=42208491650900637654045811643791.
+\]
+Direct integer Bareiss on the sign matrix gives a negative determinant
+with absolute value
+\[
+ 297532404423965431213849494795385191907933028352.
+\]
+Modular Gaussian elimination over three independently checked primes
+and signed CRT agree, with sufficient capacity proved by Hadamard's
+bound. Both agree with $2^{54}(2k-55)N_5N_{11}N_{55}$.
+
+An independent pushforward-support orbit calculation gives $2200$
+words and trivial stabilizer. Global negatives have weight $32$ and
+row sum $9$, forming a disjoint second affine orbit, with canonical
+binary representative
+\begin{lstlisting}
+0000001101110110101010100110111101111011110011010001111
+\end{lstlisting}
+There are exactly $4400$ maximizing sign words, two affine orbits
+of size $2200$ with stabilizer one, and one affine-plus-negation class.
+This proves Theorem~\ref{thm:sign} and classifies all equality cases.
+
+\subsection{Comparison and regression}
+The sign winner is not induced by the binary global winner.
+Its weight-$23$ binary determinant falls below $D_{01}(55)$ by
+$92485602443857757677261299685341$. Its weight-$32$ complement has
+binary determinant $58724857949079148040411564026144$.
+The half binary correlations are $9$ seventeen times and $10$ ten times;
+the $54$ nontrivial sign correlations are $-1$ thirty-four times and
+$3$ twenty times. Relative to the old binary winner, the product of
+nontrivial Fourier pairs decreases but the absolute row-sum factor
+increases from $1$ to $9$. The sign objective improves by approximately
+$3.43$, the ratio of the two exact normalized integers.
+
+At orders $15$ and $21$, direct Gray-code sign Fourier enumeration
+covers all $2^{15}$ and $2^{21}$ words. The reduced sign moment/profile
+pipeline followed by a CRT-column split lift agrees on the maximum,
+weight reduction, profile coverage, lift coverage and complete winner
+sets. The normalized maxima are $23859$ and $39337984$, with $480$
+and $84$ winning words. A further $707$ exact bridge and moment checks
+include all words at $3,5,7,9$ and one sampled word at every reduced
+weight at order $55$.
+
+\subsection{Public sources and reproducibility}
+The check on 11 September 2026 inspected both OEIS entries, the JIS
+article and the latest Brent--Yedidia revision. The OEIS linked tables
+are described as ending at $52$, whereas arXiv v6 Table 4 gives sign
+values through $53$. Searches of the exact new integers, both encodings,
+arXiv, GitHub, Zenodo and the general web located no earlier exact
+sign-$55$ determination. To the best of our knowledge this is the
+missing companion result; the search does not establish absolute priority.
+
+All sign certificates are under \path|certificates/order55_sign/|.
+The ordinary verifier rechecks hashes, exact winner arithmetic, weight
+bounds, target sets, negative-spectrum certificates, task records and
+orbit classification. The second command recompiles and independently
+reruns the complete proof without any heuristic search:
+\begin{lstlisting}
+python scripts/verify_order55_sign.py
+python scripts/verify_order55_sign.py --replay
 \end{lstlisting}
 
-The same Python entry points accept an ordinary Python interpreter with SymPy and the package installed. Native compilation needs Clang/GCC C++20, unsigned \path|__int128|, and C++20 population count. No upstream repository, stochastic search, GPU, network access, or proprietary solver is needed to reconstruct the final proof. The stored C++ build commands and source hashes identify the original computation. Paths and elapsed times may differ across hosts; the discrete coverage counts, words, profile products, and classification must agree.
+\section{Conclusion}
 
-\section*{12. Prior-work check}
+We have determined the exact maximum determinants of $55\times55$
+circulants over both alphabets and classified every equality case.  The essential global
+step is the exhaustive chain from weight reduction to folded correlation
+profiles and then to binary torus lifts.  The factorization $55=5\cdot11$
+provides the cyclotomic sectors that make this chain finite and auditable,
+while the final exact arithmetic removes any dependence on numerical
+rounding.  The resulting value is
+\[
+  D_{01}(55)=\M,
+\]
+with one affine class of $2200$ maximizers. The companion sign maximum is
+\[
+ 16516366298178510386365752382353\cdot2^{54},
+\]
+with $4400$ words in
+two affine orbits paired by negation.
 
-On 2026-09-09 the check included the OEIS entry and b-file, Brent's maximal determinant pages, the latest Brent--Yedidia arXiv revision, ALETHEIA-54, and web queries targeting arXiv, GitHub, Zenodo, and the exact determinant integer. No prior exact order-55 determination was located. Search engines have incomplete coverage; this is not an absolute-priority claim.
+\appendix
+\section{Previously certified small-weight strata}
 
-We found no prior published exact determination in the sources checked
-as of 2026-09-09.
-
-The detailed retrieval log is in \path|references/order55/SOURCES.md|.
-
-\section*{Appendix A. Previously established small-weight strata}
-
-The frozen starting repository independently certified \ensuremath{D_{\rm circ}(55,k)} for k=1,...,7. Complement duality immediately supplies the paired high-weight strata and hence additional supporting bounds in the global problem. The present global screen does not need to rerun their large subset exhaustions. Their existing certificate and verifier are retained.
-
+The starting repository also contains an independent exact certificate for
+$D_{\mathrm{circ}}(55,k)$ with $1\leq k\leq7$.  These values are not a
+separate headline result; they are supporting fixed-weight strata and can be
+paired with their complements using \eqref{eq:weight-pair}.
 \begin{center}
-\footnotesize
-\setlength{\tabcolsep}{4pt}
-\begin{tabular}{lr}
+\small
+\begin{tabular}{@{}rr@{}}
 \toprule
-k & \ensuremath{D_{\rm circ}(55,k)} \\
+$k$ & $D_{\mathrm{circ}}(55,k)$\\
 \midrule
-1 & 1 \\
-2 & 2048 \\
-3 & 1564031349 \\
-4 & 6424318816256 \\
-5 & 12556202952818275 \\
-6 & 4342461217049330166 \\
-7 & 570999857161750276477 \\
+1 & 1\\
+2 & 2048\\
+3 & 1564031349\\
+4 & 6424318816256\\
+5 & 12556202952818275\\
+6 & 4342461217049330166\\
+7 & 570999857161750276477\\
 \bottomrule
 \end{tabular}
 \end{center}
 
-\section*{References}
+\bibliographystyle{unsrt}
+\bibliography{references}
 
-\par\medskip\noindent 1. R. P. Brent and A. B. Yedidia, \emph{Computation of Maximal Determinants of Binary Circulant Matrices}, Journal of Integer Sequences 21 (2018), Article 18.5.6; updated arXiv:1801.00399v6, 20 February 2021. \url{https://arxiv.org/abs/1801.00399v6}
-\par\medskip\noindent 2. OEIS Foundation, \emph{A086432: Maximum determinant of binary circulants}, entry and b-file inspected 9 September 2026. \url{https://oeis.org/A086432}, \url{https://oeis.org/A086432/b086432.txt}
-\par\medskip\noindent 3. K. Terauchi, \emph{ALETHEIA-54}, upstream commit c1332afa5d406373ec47f63dc3f187aee4a6cecf, retrieved and checked 9 September 2026. Source MIT; documentation and proof data CC BY 4.0. \url{https://github.com/ruu413/aletheia-54}
-\par\medskip\noindent 4. S. Brai\'{c}, \emph{Primitive symmetric designs with at most 255 points}, Glasnik Matematicki 45(65) (2010), 291--305, Theorem 4.4 and p.297. \url{https://web.math.pmf.unizg.hr/glasnik/45.2/45(2)-01.pdf} See also E. S. Lander, \emph{Symmetric Designs: An Algebraic Approach}, Cambridge University Press, 1983, pp.131,134, cited there.
-\par\medskip\noindent 5. K. Nowak, \emph{A Survey on Almost Difference Sets}, arXiv:1409.0114v1, 30 August 2014. \url{https://arxiv.org/abs/1409.0114v1}
 \end{document}

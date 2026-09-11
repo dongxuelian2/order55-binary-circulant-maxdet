@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "pages": 14,
+  "all_pages_visually_reviewed": true,
+  "theorem_table_winner_pages_reviewed_at_readable_resolution": [
+    2,
+    11,
+    12
+  ],
+  "typesetting_overflows": 0,
+  "undefined_references": 0,
+  "binary_manuscript_consistency": "PASS",
+  "sign_manuscript_and_oeis_transcription": "PASS",
+  "repository_tests": "30 passed",
+  "sign_verifier": "GLOBAL MAXIMUM: PASS",
+  "pdf_sha256": "cea5c5bd7acaec20b571920347f3e53220d3b52ac783ac7d20f2c4ae42fd1366",
+  "original_binary_certificates_unchanged": true,
+  "original_A086432_draft_unchanged": true,
+  "original_checkout_clean": true
+}

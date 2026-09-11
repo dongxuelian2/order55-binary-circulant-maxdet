@@ -1,6 +1,6 @@
-# The Maximum Determinant of a 55 × 55 Binary Circulant Matrix
+# Maximum Determinants of 55 × 55 Circulant Matrices over {0,1} and {-1,1}
 
-Reproducible computational research note — 9 September 2026
+Qichao Wang and Daoyu Dong; equal contribution. Joint revision, 11 September 2026.
 
 ## Abstract
 
@@ -25,6 +25,12 @@ norms, regenerates the profile enumerations, and checks all lifts using a
 different column split. Every component is SHA-256-bound to the global
 certificate. Neither floating-point scores nor an uncompleted search are
 used as evidence of maximality.
+
+The companion sign maximum is now also exact:
+297532404423965431213849494795385191907933028352, or
+16516366298178510386365752382353 after division by 2^54.
+Its 4,400 maximizing words have weights 23 and 32 and form two affine
+orbits paired by negation. All new independent audits pass.
 
 ## 1. Introduction and previous exact frontier
 
@@ -358,7 +364,7 @@ normalized solutions. The canonical verifier replays every task with a six-plus-
 and obtains identical joined-word counts and identical solution sets. This is
 a split-dependent cross-check using the same native lift implementation, not an
 independent full fiber-union proof; the clean-room audit validates the listed
-task partition and witnesses while the global fiber-union certificate remains open. A separate small fiber was compared with all 78,125 direct
+task partition and witnesses. The later independent full-fiber supplement now completes the global union certificate. A separate small fiber was compared with all 78,125 direct
 column assignments, using three different splits.
 
 ## 10. Global maximality and classification proof
@@ -393,10 +399,9 @@ margin task afresh and checks task identities, multiplicities, output
 words, exact determinants, and affine classification. Its optional full mode replays every lift with a different split. This is
 a split-dependent replay, not an independent implementation. The external
 completeness review records the independent profile, task, witness, affine,
-small-order, and random-coverage checks, while the full order-55 fiber-union
-certificate remains incomplete.
+small-order, and random-coverage checks, and now includes the completed independent full order-55 fiber-union supplement.
 
-The current package is a review draft, not an arXiv-ready submission: an independent full fiber-union certificate (or equivalent branch-level partition/union proof) is still required. The exact theorem and incumbent are retained without weakening them.
+The independent full binary fiber-union supplement is now complete in certificates/order55_sign/binary_companion/full_fiber_report.json; the historical v2 review snapshot is preserved unchanged.
 
 The finite-field primes are 2305843009213696591 and 2305843009213697141;
 each is prime and is 1 modulo 55. The winner residues are respectively
@@ -433,6 +438,93 @@ engines have incomplete coverage; this is not an absolute-priority claim.
 > as of 2026-09-09.
 
 The detailed retrieval log is in `references/order55/SOURCES.md`.
+
+
+## 13. Exact sign-circulant companion theorem
+
+**Theorem 2.**
+\[
+D_{\pm}^{\mathrm{circ}}(55)=297532404423965431213849494795385191907933028352,
+\]
+\[
+S_{\pm}(55)=16516366298178510386365752382353.
+\]
+The winning weights are 23 and 32, with signed row sums -9 and 9.
+There are 4,400 maximizing sign words: two affine orbits of size 2,200
+with trivial stabilizers, and one affine-plus-negation class.
+
+For x=2a-1, the trivial Fourier eigenvalue is 2k-55 and all others double:
+\[
+\det C(2a-\mathbf1)=2^{54}\frac{2k-55}{k}\det C(a).
+\]
+Consequently
+\[
+S_{\pm}(55)=\max_{1\le k\le27}\frac{55-2k}{k}D_{\mathrm{circ}}(55,k).
+\]
+The complete proof uses newly derived sign thresholds throughout.
+
+The moment bounds leave k=22,...,26. Capped bounds reduce 9,531,797,706
+formal ordered correlations to 731,378,844 explicit evaluations in
+17 multisets. They retain 17,835 canonical targets and 151,772 margin
+fibers. Both independent lift implementations inspect 113,997,335,580
+joined words and agree on every task and both normalized outputs.
+
+The independent audit reconstructs all multisets, FKM-necklace fold
+representatives, and ordered profiles. Its 255 extra indefinite
+algebraic spectra are each discharged by an exact negative-eigenvalue
+upper bound. The realizability-relevant target sets then match exactly.
+An independent reconstruction of every Cartesian margin fiber, together
+with simultaneous CRT translation of the two folds, proves coverage of
+all binary words and hence all sign words.
+
+Canonical binary and sign encodings:
+~~~text
+0000000000100110110100111001001110001010101100010010111
+----------+--++-++-+--+++--+--+++---+-+-+-++---+--+-+++
+~~~
+The second affine orbit has canonical binary encoding
+~~~text
+0000001101110110101010100110111101111011110011010001111
+~~~
+Bareiss, modular Gaussian elimination plus CRT, and cyclotomic
+resultants agree, with
+~~~text
+N5 = 131
+N11 = 917467
+N55 = 15268987821561877723321
+~~~
+The weight-23 binary determinant is 42208491650900637654045811643791,
+a shortfall of 92485602443857757677261299685341 from the binary maximum.
+Its weight-32 complement has determinant 58724857949079148040411564026144.
+Binary nontrivial correlations are 9 thirty-four times and 10 twenty
+times; sign correlations are -1 thirty-four times and 3 twenty times.
+The absolute row-sum factor grows from 1 to 9, compensating for the
+smaller nontrivial Fourier product.
+
+For sigma=2k-55, rho_s=55-4k+4c_s and p_r=4q_r,
+\[
+55+2\sum\rho_s=\sigma^2,\quad \sigma^2+2\sum p_r=55^2,\quad
+\sigma^4+2\sum p_r^2=55(55^2+2\sum\rho_s^2).
+\]
+All sums here run through the 27 paired nonzero shifts or frequencies.
+The sign congruence rho_s=3 mod 4 is equivalent to binary integrality.
+
+Full-domain sign regressions at 15 and 21 agree on maximum, weight
+reduction, profile coverage, lift coverage and every winning word:
+normalized maxima 23859 and 39337984, with 480 and 84 winners.
+The bridge/moment regression passes 707 exact cases.
+
+Verify the certificate or recompile and replay the full proof:
+~~~powershell
+python scripts/verify_order55_sign.py
+python scripts/verify_order55_sign.py --replay
+~~~
+The formal typeset derivation is in paper/order55_global/arxiv/main.tex.
+The public-source check on 11 September 2026 found no prior exact sign-55
+value in the inspected sources. OEIS links tables through 52, whereas
+Brent-Yedidia arXiv v6 Table 4 includes 53. Exact values and encodings
+were searched again. To the best of our knowledge this is the missing
+companion result; no absolute-priority claim is made.
 
 ## Appendix A. Previously established small-weight strata
 

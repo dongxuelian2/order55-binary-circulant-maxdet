@@ -1,82 +1,82 @@
-# Maximal determinant: exact binary circulant order 55
+# Maximum determinants of order-55 circulants over both binary alphabets
 
-## Result
+The exact global maxima are:
 
-```text
-D_01(55) = 134694094094758395331307111329132
-```
+~~~text
+D_01(55)      = 134694094094758395331307111329132
+D_pm_circ(55) = 297532404423965431213849494795385191907933028352
+S_pm(55)      = 16516366298178510386365752382353
+~~~
 
-All maximizing 55-bit words have weight 28 and form exactly one affine
-class of size 2,200, with trivial stabilizer. Its lexicographically least
-representative is
+The sign normalization is exactly D_pm_circ(55) = 2^54 S_pm(55).
+The 0/1 maximum has 2,200 weight-28 maximizers in one affine orbit.
+The sign maximum has 4,400 maximizers, of weights 23 and 32, in two
+affine orbits of size 2,200 with trivial stabilizers. Global negation
+pairs those orbits into one equivalence class.
 
-```text
-0000000100011111011011001101011011010100011110101000111
-```
+Canonical lower-weight binary encoding of the sign winner:
 
-This is the exact global theorem claim over all `2^55` binary circulants.
-The production certificate records the complete reduction and the existing
-split-dependent lift replay; an external completeness audit still requires an
-independent full fiber-union certificate. This checkout is therefore a review
-draft, not an arXiv-ready submission.
+~~~text
+0000000000100110110100111001001110001010101100010010111
+~~~
 
-- Paper: [Markdown](paper/order55_global/manuscript.md),
-  [LaTeX](paper/order55_global/manuscript.tex),
-  [PDF](output/pdf/order55_global.pdf).
-- [Global certificate](certificates/order55_global/global.json) and
-  [winner classification](certificates/order55_global/winner.json).
-- [Production certificate verifier](scripts/verify_order55_global.py).
-- [Source and novelty record](references/order55/SOURCES.md).
-- [OEIS update draft](paper/order55_global/oeis_update_draft.md), not submitted.
+For x=2a-1 with binary weight k,
+det C(x)=2^54 (2k-55) det C(a)/k. The sign optimum differs from the
+binary optimum; every sign-dependent pruning threshold was regenerated.
 
-## Reproduce
+## Proof and audit
 
-Install Python 3.11+ with this project (`python -m pip install -e .`) and
-Clang with C++20 and unsigned `__int128` support. No external proof repository
-or stochastic search is needed for the final certificate.
+The sign proof reduces 9,531,797,706 formally allowed ordered correlations
+to 731,378,844 explicit profile evaluations, 17,835 targets, and 151,772
+binary margin tasks. Production and independent full lift implementations
+each inspect 113,997,335,580 joined words and agree task by task.
 
-```powershell
-& ./.venv/Scripts/python.exe scripts/build_order55_global.py
-& ./.venv/Scripts/python.exe scripts/verify_order55_global.py --full-lifts
-& ./.venv/Scripts/python.exe -m pytest
-& ./.venv/Scripts/python.exe -m pip check
-```
+Independent arithmetic, multiset, FKM-necklace fold, profile, fiber-union,
+and affine audits pass. The raw independent algebraic profile set has
+255 additional indefinite spectra, each excluded by an explicit rational
+negative-eigenvalue upper bound. The remaining target sets agree exactly.
+Full sign regressions at 15 and 21 compare all words and all equality cases.
 
-On other platforms use the installed Python interpreter instead of the
-Windows venv path. The builder compiles native executables itself. For a
-separate reproduction directory, pass `--output PATH`. The verifier accepts
-that directory as its positional argument.
+The original 0/1 certificates are preserved. The independent full binary
+fiber supplement now resolves the outstanding condition in the historical
+v2 review snapshot; all 16,084 original tasks agree with production.
 
-The ordinary verifier recomputes all bounds and norms, recompiles the
-hash-bound generators, regenerates all folded and correlation profiles, and
-checks the listed task coverage. `--full-lifts` additionally repeats every
-binary lift with a different 6+5 split. Both lift runs completed successfully,
-but the second run is a split-dependent replay of the same native algorithm,
-not an independent full fiber-union proof.
+- Joint paper: [PDF](output/pdf/order55_joint.pdf),
+  [formal LaTeX](paper/order55_global/arxiv/main.tex),
+  [Markdown](paper/order55_global/manuscript.md).
+- Sign [global certificate](certificates/order55_sign/global.json),
+  [winner](certificates/order55_sign/winner.json),
+  [classification](certificates/order55_sign/classification.json).
+- Sign [profile audit](certificates/order55_sign/cleanroom_profile_report.json)
+  and [full fiber audit](certificates/order55_sign/cleanroom_lift_report.json).
+- Original [binary certificate](certificates/order55_global/global.json).
+- Completed [binary full-fiber supplement](certificates/order55_sign/binary_companion/full_fiber_report.json).
+- [Source check](research/order55_sign/sources.md) and
+  [final novelty record](certificates/order55_sign/novelty_check.json).
 
-The proof reduces 38,629,684 formally allowed ordered correlation profiles
-to 6,845,230 explicit profile evaluations, 2,316 correlation targets, and
-16,084 listed margin tasks. The production lift tests 15,487,882,832 joined words.
-Two normalized solutions give the same affine class. The winner has three
-exact checks: Fourier/CRT, SymPy integer determinant, and
-cyclotomic resultant product.
+## Verify and reproduce
 
-The certificate stores exact source and output hashes. Preserve the bytes
-of certificate files; their `.gitattributes` rules disable line-ending
-conversion. Elapsed times and host-specific command paths may differ during
-regeneration; mathematical counts, targets, and classification must agree.
+Use Python 3.11+ with SymPy and Clang/GCC supporting C++20 and unsigned
+128-bit integers. The proof scripts select this checkout's source tree.
 
-## Supporting results and research history
+~~~powershell
+python scripts/verify_order55_sign.py
+python scripts/verify_order55_sign.py --replay
+python scripts/render_order55_paper.py
+~~~
 
-The previously certified `D_circ(55,k)` values for `1 <= k <= 7` remain in
-`certificates/order55_fixed_weight_1_7.json` and are discussed in the paper's
-appendix. Run `scripts/verify_structured.py` to audit them.
+The first command checks the frozen sources and assets, exact winner,
+weight bounds, target sets and negative-spectrum discharges, full task
+records, and all maximizing words. The replay command recompiles and
+regenerates the complete sign pipeline, both independent audits, and
+full small-order regression. It requires no heuristic search or network.
+Paths and elapsed times can differ; mathematical counts and word sets
+must agree.
 
-Exploratory `scripts/order55_*.py` programs use scratch files under `results/`
-and sometimes the separately retrieved ALETHEIA source. They are not
-needed for the final proof. The final entry points are
-`build_order55_global.py` and `verify_order55_global.py`.
+The existing binary verifier and fixed-weight-1..7 certificates remain
+available. The new sign global upper bound does not depend on the old
+binary global theorem.
 
-The source checks on 2026-09-09 located no prior published exact order-55
-determination in the sources inspected; this is not an absolute-priority
-claim. No remote publication or OEIS submission has been performed.
+The work is isolated on branch sign-circulant-order55. No remote push,
+publication, or OEIS submission was performed. The OEIS drafts for both
+sign sequences accompany the paper; the A086432 draft is preserved.
