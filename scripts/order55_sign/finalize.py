@@ -30,7 +30,7 @@ assets={p.relative_to(OUT).as_posix():sha(p) for p in sorted(OUT.rglob("*")) if 
 write("hash_manifest.json",assets)
 write("global.json",dict(status="COMPLETE",order=55,alphabet=[-1,1],maximum_normalized=str(M),maximum_raw=str(raw),
  exact_global_upper_bound_normalized=str(M),global_completeness="PASS",cleanroom_profile_audit="PASS",cleanroom_lift_audit="PASS",
- small_order_regression="PASS",winning_weights=[c["weight"] for c in classification["classes"]],winning_row_sums=[c["row_sum"] for c in classification["classes"]],
+ small_order_regression="PASS",novelty_check="PASS (bounded search)",winning_weights=[c["weight"] for c in classification["classes"]],winning_row_sums=[c["row_sum"] for c in classification["classes"]],
  maximizing_sign_words=classification["total_maximizing_sign_words"],affine_orbits=classification["affine_orbits"],
  affine_plus_negation_classes=classification["affine_plus_negation_classes"],screened_weights=list(range(1,28)),
  moment_active_weights=[22,23,24,25,26],weights_with_lift_targets=[23,24,25,26],

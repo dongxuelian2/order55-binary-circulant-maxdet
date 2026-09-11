@@ -31,6 +31,7 @@ M=int(w["normalized"]);require(int(g["maximum_normalized"])==M,"Wrong global nor
 require(int(g["maximum_raw"])==M*2**54,"Wrong raw determinant")
 require(weight_screen(M)==read("weight_screen.json"),"Weight screen mismatch")
 require(read("bridge_regression.json")["status"]=="PASS","Bridge failure")
+require(read("novelty_check.json")["status"]=="PASS","Public-source check incomplete")
 require(read("small_order_regression.json")["status"]=="PASS","Small regression failure")
 cp=read("cleanroom_profile_report.json");cl=read("cleanroom_lift_report.json")
 require(cp["status"]==cl["status"]=="PASS","Independent audit incomplete")

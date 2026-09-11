@@ -12,6 +12,7 @@
   "cleanroom_profile_audit": "PASS",
   "cleanroom_lift_audit": "PASS",
   "small_order_regression": "PASS",
+  "novelty_check": "PASS (bounded search)",
   "winning_weights": [
     23,
     32
@@ -73,5 +74,5 @@
   "lift_tasks": 151772,
   "joined_words_per_full_lift": 113997335580,
   "old_binary_global_theorem_used_for_sign_upper_bound": false,
-  "hash_manifest_sha256": "a5a36f91b78d01ed73affeaf9a95aa6e8588a32fd9907bbc1169573899471fae"
+  "hash_manifest_sha256": "0b7ffd525a4b0c4935077e001e6ab3ce3174f09576e92da54e044ff3dae54d53"
 }
