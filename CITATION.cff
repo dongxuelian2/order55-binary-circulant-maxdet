@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this proof code or certificate, please cite the accompanying manuscript."
+title: "order55-binary-circulant-maxdet"
+type: software
+authors:
+  - family-names: Wang
+    given-names: Qichao
+  - family-names: Dong
+    given-names: Daoyu
+repository-code: "https://github.com/dongxuelian2/order55-binary-circulant-maxdet"
+version: 1.0.0
+date-released: 2026-09-11
+preferred-citation:
+  type: article
+  title: "Cyclotomic-Correlation Reduction for Binary Circulants: The Exact Order-55 Maximum"
+  authors:
+    - family-names: Wang
+      given-names: Qichao
+    - family-names: Dong
+      given-names: Daoyu
+  year: 2026
