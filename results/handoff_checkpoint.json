@@ -1,0 +1,79 @@
+{
+  "project": "order15-mu3-maximal-determinant",
+  "snapshot_date": "2026-09-14",
+  "question": "Exact maximum of |det(H)|^2 for 15x15 matrices over {1, omega, omega^2}",
+  "status": "maximality_open",
+  "record": {
+    "determinant_eisenstein": {"a": "604661760", "b": "241864704", "expression": "604661760 + 241864704 omega"},
+    "squared_norm": "277868041444786176",
+    "factorization": "2^22 * 3^20 * 19",
+    "magnitude": "2^11 * 3^10 * sqrt(19)"
+  },
+  "bounds": {
+    "hadamard_squared": "437893890380859375",
+    "squared_hadamard_ratio_lower": "19365101568/30517578125",
+    "squared_hadamard_ratio_upper": "60153061831/91552734375",
+    "rigorous_integer_upper": "287710229992756239",
+    "upper_source": "Q>=153 trace envelope after exact Q<144, Q=144, and Q=150 branch certificates",
+    "q153_tail": {
+      "maximizing_shell": 153,
+      "shells_checked": [153, 159, 162, 168],
+      "conservatively_evaluated_shells": [156, 165],
+      "raw_numerator": "4390109711308703852790952170105118742820120857938246625625923457443194688077198825750898313549541506654263588326719695607746007485022336768745484118248654154487852748400755063310142214587367706377247690112608160185929460083873643602509551",
+      "raw_denominator": "15258789062500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "raw_floor": "287710230040327215",
+      "divisor": "3^14",
+      "divisibility_rounded_candidate": "287710230035802960",
+      "non_norm_multiples_skipped": 9,
+      "sieved_candidate": "287710229992756239"
+    }
+  },
+  "gaps": {
+    "squared_additive": "9842188547970063",
+    "squared_ratio": "60153061831/58095304704",
+    "squared_ratio_decimal": 1.035420368952094,
+    "gap_percent_of_record": 3.5420368952093964,
+    "record_percent_of_hadamard_squared": 63.4555648180224,
+    "upper_percent_of_hadamard_squared": 65.70318433594026,
+    "determinant_magnitude_ratios": {
+      "display_only": true,
+      "proof_input": false,
+      "record_over_hadamard": 0.7965900126038639,
+      "upper_over_hadamard": 0.8105750078551661,
+      "interval_percent": "79.6590% to 81.0575%"
+    }
+  },
+  "structural_frontier": {
+    "strict_counterexample_energy_bound": "Q <= 168",
+    "ruled_out_by_trace_stability": "Q >= 171",
+    "color_congruence": {
+      "(15,0,0)": "Q ≡ 0 (mod 9)",
+      "(13,1,1)": "Q ≡ 0 (mod 9)",
+      "(14,1,0)": "Q ≡ 6 (mod 9)",
+      "(13,2,0)": "Q ≡ 6 (mod 9)",
+      "impossible": "Q ≡ 3 (mod 9)"
+    },
+    "tail_only_shells": [153, 159, 162, 168],
+    "conservatively_evaluated_tail_shells": [156, 165],
+    "remaining_color_partitions": ["(15,0,0)", "(14,1,0)", "(13,2,0)", "(13,1,1)"],
+    "interpretation": "No exact Q=153,159,162,168 realizability enumeration is archived; the continuous trace envelope is the remaining mathematical gap. Q=156 and Q=165 are harmless conservative verifier evaluations."
+  },
+  "replay": {
+    "verify_benchmark": {"status": "passed", "exit_code": 0},
+    "verify_pre_q144_audit": {"status": "passed", "exit_code": 0, "scope": "all exact branch audits with Q<144"},
+    "verify_q144_boundary": {"status": "passed", "exit_code": 0},
+    "verify_q150_boundary": {"status": "passed", "exit_code": 0},
+    "verify_aggregate_upper": {"status": "passed", "exit_code": 0, "maximizing_source": "Q>=153 trace envelope"},
+    "pytest_collection": 110,
+    "full_pytest_status": "passed",
+    "full_pytest_passed": 110,
+    "full_pytest_failed": 0,
+    "full_pytest_warnings": 3,
+    "full_pytest_elapsed_seconds": 804.08
+  },
+  "closed_stages": ["Q<60 structural", "Q=60", "Q=69", "Q=78", "Q=81", "Q=87", "Q=90", "Q=96", "Q=99", "Q=105", "Q=108", "Q=114", "Q=117", "Q=123", "Q=126", "Q=132", "Q=135", "Q=141", "Q=144", "Q=150"],
+  "partial_or_unknown": ["SAT timeout orbits in realizability_runs.json", "isolated thirteen-unit Q=117 historical search", "Q=153,159,162,168 exact support enumeration"],
+  "key_scripts": ["order15_mu3/scripts/verify_pre_q144_audit.py", "order15_mu3/scripts/verify_q144_boundary.py", "order15_mu3/scripts/verify_q150_boundary.py", "order15_mu3/scripts/verify_aggregate_upper.py", "order15_mu3/scripts/verify_trace_stability.py"],
+  "handoff_docs": ["docs/HANDOFF.md", "docs/CURRENT_STATUS.md", "docs/REPRODUCTION.md", "docs/CERTIFICATE_MAP.md", "docs/REMAINING_FRONTIER.md"],
+  "omitted_artifacts": [".venv", "__pycache__", ".pytest_cache", "dist", "build", "credentials", "uncommitted solver logs"]
+}

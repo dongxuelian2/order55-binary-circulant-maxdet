@@ -136,6 +136,10 @@ The existing proof-critical generator/verifier sources and the stored certificat
 - `certificates/order55_global/` — immutable machine-readable proof data.
 - `tests/` — focused exact-arithmetic tests.
 
+## Order-15 third-root research track
+
+The repository also contains the separate `order15_mu3/` research track for the order-15 third-root maximal-determinant problem.  This work is intentionally kept distinct from the proved order-55 binary-circulant theorem above.  The current rigorous order-15 record is accompanied by exact branch certificates through Q=150 and shellwise tail certificates for the only genuine remaining high-energy shells `Q=153,159,162,168`; `Q>=171` is below the record by trace stability.  See `order15_mu3/reports/CURRENT_STATUS.md` and `archive/stages/Q150-Q153.md` for the current frontier.
+
 ## Scope
 
-The theorem concerns **55×55 binary circulant matrices**. It is not a claim about unrestricted binary matrices or unrestricted `{±1}` matrices. The repository separates exploratory discovery from the finite proof: only the exact threshold, mathematical reductions, exhaustive enumerations and exact determinant checks enter the theorem.
+The order-55 theorem concerns **55×55 binary circulant matrices**. It is not a claim about unrestricted binary matrices or unrestricted `{±1}` matrices. The repository separates exploratory discovery from the finite proof: only the exact threshold, mathematical reductions, exhaustive enumerations and exact determinant checks enter the theorem. The order-15 third-root material is a separate ongoing research program and is not part of that theorem.

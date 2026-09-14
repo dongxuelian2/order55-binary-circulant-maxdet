@@ -5,15 +5,18 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "order55-binary-circulant-maxdet"
 version = "1.0.0"
-description = "Exact verification code for the maximum determinant of a 55x55 binary circulant matrix"
+description = "Exact verification code for binary circulant maximal determinant research"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "numpy>=1.26",
     "sympy>=1.12",
 ]
 
 [project.optional-dependencies]
 dev = ["pytest>=8.0"]
+sat = ["z3-solver>=5.1", "python-sat>=1.9.dev15"]
+graph = ["networkx>=3.6"]
 
 [tool.setuptools]
 package-dir = {"" = "src"}
