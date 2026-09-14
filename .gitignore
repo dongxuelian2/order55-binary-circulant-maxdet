@@ -12,17 +12,11 @@ __pycache__/
 build/
 dist/
 
-# Coverage and local tooling
-.coverage
-htmlcov/
-.tox/
+# Native build products
+native/*.exe
 
-# Experimental data and generated results (keep directory placeholders)
-data/*
-!data/.gitkeep
-results/*
-!results/.gitkeep
-!results/handoff_checkpoint.json
-
-# Local paper-rendering intermediates
-/tmp/pdfs/
+# Local paper build products
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.pdf
