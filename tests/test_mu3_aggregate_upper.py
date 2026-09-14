@@ -1,10 +1,17 @@
 from order15_mu3.scripts.verify_aggregate_upper import certificate
 
 
-def test_exact_branch_aggregate_improves_global_upper() -> None:
+NEW_UPPER = 287677100533178196
+OLD_UPPER = 287710229992756239
+
+
+def test_exact_branch_aggregate_after_tail_closure() -> None:
     result = certificate()
-    assert result["rigorous_integer_upper"] == 287710229992756239
-    assert result["tail_maximizing_energy"] == 153
-    assert result["non_norm_multiples_skipped"] == 9
-    assert result["rigorous_integer_upper"] < 293695860429200709
-    assert result["squared_gap_factor"] < 1.057
+    assert result["closed_post_q150_shells"] == [153, 159, 162, 168]
+    assert result["counterexample_energy_bound"] == "Q <= 150"
+    assert result["maximizing_source"] == "Q=150 exact boundary"
+    assert result["rigorous_integer_upper"] == NEW_UPPER
+    assert result["non_norm_multiples_skipped"] == 6
+    assert result["rigorous_integer_upper"] < OLD_UPPER
+    assert result["normalized_lower_percent"] < result["normalized_upper_percent"]
+    assert result["normalized_upper_percent"] < 81.053
