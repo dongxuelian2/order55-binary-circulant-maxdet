@@ -1,0 +1,66 @@
+name: mu3 reaggregate fast
+
+on:
+  push:
+    branches:
+      - research/reaggregate-after-tail-closure
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: python -m pip install -e '.[graph]'
+      - name: Fast arithmetic reaggregation
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction
+          from math import sqrt
+          import order15_mu3.scripts.verify_pre_q144_audit as pre
+          from order15_mu3.scripts.verify_bounds import is_rational_eisenstein_norm
+          from order15_mu3.scripts.verify_q144_boundary import certificate as q144_certificate
+          from order15_mu3.scripts.verify_q150_boundary import certificate as q150_certificate
+          from order15_mu3.scripts.verify_trace_stability import BENCHMARK
+
+          # These two SAT conclusions are already committed exact certificates;
+          # bypass re-solving them while recomputing the arithmetic aggregate.
+          pre.energy9_top_obstruction = lambda: {"next_arithmetic_energy9_upper": 289220156718750000}
+          pre.energy9_second_obstruction = lambda: {"next_arithmetic_energy9_upper": pre.ENERGY9_REFINED_UPPER}
+
+          earlier = pre.certificate()
+          q144 = q144_certificate()
+          q150 = q150_certificate()
+          sources = {
+              "Q<144 exact branch aggregate": Fraction(earlier["certified_upper_numerator"], earlier["certified_upper_denominator"]),
+              "Q=144 exact boundary": Fraction(q144["certified_upper_numerator"], q144["certified_upper_denominator"]),
+              "Q=150 exact boundary": Fraction(q150["certified_upper_numerator"], q150["certified_upper_denominator"]),
+          }
+          source = max(sources, key=sources.get)
+          raw = sources[source]
+          top = (raw.numerator - 1) // raw.denominator
+          divisor = 3**14
+          candidate = top // divisor * divisor
+          skipped = 0
+          while not is_rational_eisenstein_norm(candidate):
+              candidate -= divisor
+              skipped += 1
+          hadamard_squared = 15**15
+          result = {
+              "sources": {k: {"numerator": v.numerator, "denominator": v.denominator, "decimal": float(v)} for k, v in sources.items()},
+              "maximizing_source": source,
+              "integer_ceiling_minus_one": top,
+              "non_norm_multiples_skipped": skipped,
+              "rigorous_integer_upper": candidate,
+              "benchmark": BENCHMARK,
+              "normalized_lower_percent": 100*sqrt(BENCHMARK/hadamard_squared),
+              "normalized_upper_percent": 100*sqrt(candidate/hadamard_squared),
+          }
+          print(json.dumps(result, indent=2))
+          PY
