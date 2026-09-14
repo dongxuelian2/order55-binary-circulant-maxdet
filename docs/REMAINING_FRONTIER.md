@@ -7,12 +7,31 @@ satisfy
 
 `Q <= 150`.
 
-Exact maximality is still open because the existing Q=150 and earlier branch
-certificates were designed as a descending envelope chain: for example the
-Q=150 certificate places that shell below the old Q=153 trace envelope, not
-necessarily below the published record itself.  The next mathematical frontier
-is therefore to sharpen the Q=150 boundary against the record and then continue
-downward only if necessary.
+The post-tail aggregate has now been recomputed.  The exact record is
+
+`277868041444786176 <= D_3(15)`
+
+and the current rigorous aggregate upper is
+
+`D_3(15) <= 287687522570016537`.
+
+In the Hadamard-normalized scale
+`R_15 = 100 |det H| / 15^(15/2)`, this is
+
+`79.6590012604% <= R_15 <= 81.0543020059%`.
+
+The old Q=153 trace envelope no longer controls the upper bound.  The new
+numerical bottleneck is a Q=126 all-same-color weighted-K5 branch with twelve
+support edges, seven isolates, and eigenvalue cap `287/10`.  Its exact rational
+KKT upper is approximately `2.876875225936136e17`; after the mandatory `3^14`
+divisibility and rational Eisenstein-norm sieve, four non-norm multiples are
+skipped and the integer upper above results.
+
+This creates an important distinction.  **Q=150 is the highest unresolved
+energy shell**, so it remains the natural top-down structural frontier.
+However, **Q=126 currently controls the global numerical upper**, so improving
+that weighted-K5 certificate is the most direct way to narrow the displayed
+upper/lower interval.
 
 ## Final tail closure
 
@@ -97,16 +116,14 @@ then close all three cases exactly.  Hence Q=153 is closed.
 
 ## New frontier
 
-The strongest tail statement is now:
+The strongest tail statement remains
 
 `strict counterexample => Q <= 150`.
 
-The next useful target is Q=150 itself.  Its current certificate is a boundary
-comparison against the former Q=153 envelope, so the right continuation is to
-reuse the new Schur--Cauchy and componentwise techniques on the Q=150 residual
-allocations and compare them directly with the published record.  Only after a
-strict record-level Q=150 closure should the aggregate integer bound be
-recomputed and the machine checkpoint updated.
+For structural closure, continue with Q=150 and descend only when necessary.
+For the fastest improvement of the numerical global bound, sharpen the Q=126
+twelve-edge weighted-K5 / seven-isolate branch first.  Both directions reuse
+existing exact support, Schur, and capped-eigenvalue machinery.
 
 All final claims remain exact integer/rational certificates; floating-point
 spectra are not proof inputs.
