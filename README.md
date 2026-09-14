@@ -1,105 +1,145 @@
-# Maximal determinant research workspace
+# Binary circulant maximal determinant at order 55
 
-## Order-15 μ₃ handoff (2026-09-14)
+This repository accompanies the manuscript **“Cyclotomic–Correlation Reduction for Binary Circulants: The Exact Order-55 Maximum.”** It contains the exact finite-enumeration code and the machine-readable proof data used in the order-55 classification.
 
-The repository also contains the ongoing exact maximal-determinant investigation
-for 15×15 matrices over the third roots of unity.  The published construction
-has
+## Main result
 
-```text
-D_record = |det(H)|² = 277868041444786176 = 2²²·3²⁰·19.
-```
-
-The consolidated unmocked replay of every exact branch with `Q<144` completed
-with exit code 0.  The aggregate certificate then closes `Q=144` and `Q=150`
-and applies the trace envelope for `Q≥153`; the current rigorous integer upper
-bound is recorded in [docs/HANDOFF.md](docs/HANDOFF.md) and
-[results/handoff_checkpoint.json](results/handoff_checkpoint.json).  Exact
-maximality is not proved.  Start with [docs/COLLABORATOR_QUICKSTART.md](docs/COLLABORATOR_QUICKSTART.md)
-and [docs/HANDOFF.md](docs/HANDOFF.md); the machine-readable checkpoint is the
-single source of truth for the archived run.
-
-The older binary-circulant order-55 project remains below.
-
-# Maximal determinant: exact binary circulant order 55
-
-## Result
+For binary circulant matrices of order 55,
 
 ```text
 D_01(55) = 134694094094758395331307111329132
 ```
 
-All maximizing 55-bit words have weight 28 and form exactly one affine
-class of size 2,200, with trivial stabilizer. Its lexicographically least
-representative is
+Every maximizing word has weight 28. The maximizers form a single affine-equivalence class under `i -> u i + t (mod 55)`, with 2,200 words and trivial stabilizer. A lexicographically least representative is
 
 ```text
 0000000100011111011011001101011011010100011110101000111
 ```
 
-This is the exact global theorem claim over all `2^55` binary circulants.
-The production certificate records the complete reduction and the existing
-split-dependent lift replay; an external completeness audit still requires an
-independent full fiber-union certificate. This checkout is therefore a review
-draft, not an arXiv-ready submission.
+The exact cyclotomic factors of this representative are
 
-- Paper: [Markdown](paper/order55_global/manuscript.md),
-  [LaTeX](paper/order55_global/manuscript.tex),
-  [PDF](output/pdf/order55_global.pdf).
-- [Global certificate](certificates/order55_global/global.json) and
-  [winner classification](certificates/order55_global/winner.json).
-- [Production certificate verifier](scripts/verify_order55_global.py).
-- [Source and novelty record](references/order55/SOURCES.md).
-- [OEIS update draft](paper/order55_global/oeis_update_draft.md), not submitted.
-
-## Reproduce
-
-Install Python 3.11+ with this project (`python -m pip install -e .`) and
-Clang with C++20 and unsigned `__int128` support. No external proof repository
-or stochastic search is needed for the final certificate.
-
-```powershell
-& ./.venv/Scripts/python.exe scripts/build_order55_global.py
-& ./.venv/Scripts/python.exe scripts/verify_order55_global.py --full-lifts
-& ./.venv/Scripts/python.exe -m pytest
-& ./.venv/Scripts/python.exe -m pip check
+```text
+N_5  = 131
+N_11 = 434039
+N_55 = 84603917386870862636041
 ```
 
-On other platforms use the installed Python interpreter instead of the
-Windows venv path. The builder compiles native executables itself. For a
-separate reproduction directory, pass `--output PATH`. The verifier accepts
-that directory as its positional argument.
+and `28 * N_5 * N_11 * N_55` equals the displayed maximum.
 
-The ordinary verifier recomputes all bounds and norms, recompiles the
-hash-bound generators, regenerates all folded and correlation profiles, and
-checks the listed task coverage. `--full-lifts` additionally repeats every
-binary lift with a different 6+5 split. Both lift runs completed successfully,
-but the second run is a split-dependent replay of the same native algorithm,
-not an independent full fiber-union proof.
+## What the proof does
 
-The proof reduces 38,629,684 formally allowed ordered correlation profiles
-to 6,845,230 explicit profile evaluations, 2,316 correlation targets, and
-16,084 listed margin tasks. The production lift tests 15,487,882,832 joined words.
-Two normalized solutions give the same affine class. The winner has three
-exact checks: Fourier/CRT, SymPy integer determinant, and
-cyclotomic resultant product.
+The proof is a finite computer-assisted proof with explicit mathematical coverage arguments. It does not rely on a heuristic search having explored “enough” words, and it does not require a second independently written lift program as a logical assumption.
 
-The certificate stores exact source and output hashes. Preserve the bytes
-of certificate files; their `.gitattributes` rules disable line-ending
-conversion. Elapsed times and host-specific command paths may differ during
-regeneration; mathematical counts, targets, and classification must agree.
+The reduction is:
 
-## Supporting results and research history
+```text
+all 2^55 binary words
+  -> complement + exact weight bounds
+  -> 5- and 11-fold cyclotomic constraints
+  -> complete correlation-multiset recursion
+  -> exact ordered correlation-profile screening
+  -> 2,316 correlation targets
+  -> 16,084 margin/correlation lift tasks
+  -> exhaustive 5+6 meet-in-the-middle binary fibers
+  -> one maximizing affine class
+```
 
-The previously certified `D_circ(55,k)` values for `1 <= k <= 7` remain in
-`certificates/order55_fixed_weight_1_7.json` and are discussed in the paper's
-appendix. Run `scripts/verify_structured.py` to audit them.
+The manuscript proves the completeness of the fold enumeration, the correlation-multiset recursion, the target reduction, and the meet-in-the-middle lift. The code executes those finite reductions and records their outputs.
 
-Exploratory `scripts/order55_*.py` programs use scratch files under `results/`
-and sometimes the separately retrieved ALETHEIA source. They are not
-needed for the final proof. The final entry points are
-`build_order55_global.py` and `verify_order55_global.py`.
+## Paper
 
-The source checks on 2026-09-09 located no prior published exact order-55
-determination in the sources inspected; this is not an absolute-priority
-claim. No remote publication or OEIS submission has been performed.
+The current single-file LaTeX manuscript is:
+
+- [`paper/main.tex`](paper/main.tex)
+
+All references are embedded in that file, so there is no separate BibTeX database. Compile it with two ordinary `pdflatex` passes:
+
+```bash
+cd paper
+pdflatex main.tex
+pdflatex main.tex
+```
+
+A detailed map from mathematical proof obligations to source files and certificate artifacts is in [`PROOF_MAP.md`](PROOF_MAP.md).
+
+## Reproduce the stored certificate
+
+Requirements:
+
+- Python 3.11+
+- SymPy
+- Clang/LLVM (or another compatible compiler) with C++20 and unsigned `__int128` support
+
+Install the package and run the verifier:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install -e '.[dev]'
+python scripts/verify_order55_global.py
+python -m pytest
+```
+
+To regenerate the full finite enumeration before verification:
+
+```bash
+python scripts/build_order55_global.py --workers 8
+python scripts/verify_order55_global.py
+```
+
+The optional `--full-lifts` mode repeats every binary lift using the complementary 6+5 split. It is a consistency check; the completeness of the 5+6 enumeration follows from the meet-in-the-middle lemma in the manuscript.
+
+## Certificate summary
+
+The committed `certificates/order55_global/global.json` records:
+
+```text
+status               COMPLETE
+active weights        25, 26, 27
+correlation targets   2,316
+lift tasks             16,084
+joined words           15,487,882,832
+affine classes         1
+maximizing words       2,200
+```
+
+The two primes used for exact signed CRT reconstruction are
+
+```text
+P_1 = 2305843009213696591
+P_2 = 2305843009213697141
+```
+
+The SHA-256 digest of the certificate manifest recorded by `global.json` is
+
+```text
+b73a12c5b8502ac5cba20f5164ff351ba5df1a208d7cd2e67f45c359d7eedfc5
+```
+
+### Integrity note
+
+The existing proof-critical generator/verifier sources and the stored certificate are intentionally kept byte-for-byte unchanged in this manuscript-only repository revision, because `source_hashes.json`, `hash_manifest.json`, and `global.json` bind those exact source bytes to the committed proof data. Historical internal names such as `*_audit.json` and the word `audit` in the verifier are therefore artifact nomenclature, not a statement that publication depends on an unfinished external audit. Changing those files would require regenerating and re-hashing the certificate.
+
+`build.json` also contains the original machine’s absolute Windows paths. Those paths are nonsemantic provenance fields; the verifier resolves the committed source files by basename and checks their SHA-256 values. Compiler flags, source hashes, exact output files, counts, words, and determinant values are the relevant reproducibility data.
+
+## Repository layout
+
+- `paper/main.tex` — current journal-oriented manuscript, including references and the full weight table.
+- `PROOF_MAP.md` — proof obligation → algorithm → artifact map.
+- `scripts/build_order55_global.py` — regenerates the finite enumeration.
+- `scripts/verify_order55_global.py` — verifies the stored enumeration, hashes, bounds, targets, witnesses, determinant and affine classification.
+- `native/order55_profiles.cpp` — exhaustive 5- and 11-fold profile enumeration.
+- `native/order55_correlation_screen.cpp` — exact ordered correlation-profile screening and CRT product reconstruction.
+- `native/order55_torus_lift.cpp` — exhaustive meet-in-the-middle binary lift.
+- `src/maxdet/order55.py` — exact circulant identities, determinant reconstruction and moment bounds.
+- `src/maxdet/boxed_moment.py` — moment product bound with a spectral cap.
+- `certificates/order55_global/` — immutable machine-readable proof data.
+- `tests/` — focused exact-arithmetic tests.
+
+## Order-15 third-root research track
+
+The repository also contains the separate `order15_mu3/` research track for the order-15 third-root maximal-determinant problem.  This work is intentionally kept distinct from the proved order-55 binary-circulant theorem above.  The current rigorous order-15 record is accompanied by exact branch certificates through Q=150 and shellwise tail certificates for the only genuine remaining high-energy shells `Q=153,159,162,168`; `Q>=171` is below the record by trace stability.  See `order15_mu3/reports/CURRENT_STATUS.md` and `archive/stages/Q150-Q153.md` for the current frontier.
+
+## Scope
+
+The order-55 theorem concerns **55×55 binary circulant matrices**. It is not a claim about unrestricted binary matrices or unrestricted `{±1}` matrices. The repository separates exploratory discovery from the finite proof: only the exact threshold, mathematical reductions, exhaustive enumerations and exact determinant checks enter the theorem. The order-15 third-root material is a separate ongoing research program and is not part of that theorem.
