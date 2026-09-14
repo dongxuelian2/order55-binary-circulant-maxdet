@@ -1,16 +1,26 @@
 # Current status (2026-09-14)
 
-- **Current exact record:** recovered and exactly verified published `M15`,
+- **Current exact record / lower bound:** recovered and exactly verified published `M15`,
   `det=604661760+241864704 omega` and
   `|det|^2 = 2^22 3^20 19 = 277868041444786176`.
-- **Committed aggregate upper before this tail closure:**
-  `287710229992756239`, from the pre-Q144 replay, exact Q=144/Q=150 boundary
-  certificates, the former Q=153 trace envelope, `3^14` divisibility, and the
-  Eisenstein norm sieve.  This aggregate number has not yet been recomputed
-  against the new tail theorem because the next controlling frontier is Q=150.
-- **Exact maximality proved:** no.  The tail is now finished, but the existing
-  Q=150 certificate compares that shell with the old Q=153 envelope rather
-  than directly with the record.
+- **Post-tail rigorous aggregate upper:** `287687522570016537` for `|det H|^2`.
+  In the Hadamard-normalized scale `100 |det H| / 15^(15/2)`, the rigorous
+  interval is
+  `79.6590012604% <= R_15 <= 81.0543020059%`.
+- **Arithmetic post-processing:** the controlling strict rational bound is
+  rounded down to the largest possible integer, restricted to multiples of
+  `3^14`, then filtered by the rational Eisenstein-norm criterion.  Four
+  divisible non-norm candidates are skipped before reaching the displayed
+  integer upper.
+- **Numerical bottleneck:** after removing the post-Q150 tail, the largest
+  surviving analytic source is no longer Q=153 or Q=150.  It is a Q=126
+  all-same-color weighted-K5 branch with twelve support edges, seven isolates,
+  and the exact rational eigenvalue cap `287/10`.  Its KKT product is about
+  `2.876875225936136e17`, slightly above the Q=150 boundary bound.
+- **Energy frontier versus numerical bottleneck:** the highest energy at which
+  a strict counterexample can still occur is Q=150, but the loosest currently
+  certified determinant upper occurs at Q=126.  These are different notions.
+- **Exact maximality proved:** no.
 - **Strongest verified tail theorem:** every strict counterexample satisfies
   `Q<=150`.  The only genuine post-Q150 shells were `Q=153,159,162,168`; all
   four are now strictly below the published record, while trace stability
@@ -20,30 +30,15 @@
   sparse size-13 abstract-Gram enumeration, rational Sylvester spectral
   brackets, Schur residual bounds, exact internal determinant maxima, and
   weighted Motzkin--Straus spectral caps.
-- **Q=153 sparse size-13 closure:** the four former `(13,1,1)` residual
-  allocations `(e,c,r)=(27,78,48),(27,87,39),(36,78,39),(54,78,21)` are
-  eliminated by a two-hub Schur--Cauchy inequality retaining the mandatory
-  outside Gram norm.
-- **Q=153 all-same closure:** if the support has at most four isolates, the
-  17-unit energy budget forbids K6 and the clique-five spectral cap is below
-  the record.  At least eight isolates force at least eight 15-eigenvalues on
-  the opposite Gram through `AH=HB`, again below the record.  The intermediate
-  isolate counts 5, 6, and 7 reduce to exact K6 boundary supports and are
-  closed by Fischer/Schur bounds.
-- **Q=159 closure:** the final `(13,2,0)` sparse allocation `(54,78,27)` is
-  removed by the same Schur--Cauchy bound.  For `(14,1,0)`, componentwise
-  Schur bounds close internal energies 99 and 108 and every disconnected
-  energy-117 allocation.  The sole connected boundary is a 14-vertex tree
-  with thirteen norm-9 edges.  Exact matching-polynomial enumeration of all
-  3,159 unlabeled trees gives the unique maximum at `P14`, with internal Gram
-  determinant `16802420983158456`; its final Schur bound is below the record.
-  Replay: `scripts/verify_tail_final_closure.py`.
-- **New frontier:** Q=150.  The natural continuation is to reuse the new
-  Schur--Cauchy/component methods on the Q=150 residual allocations and compare
-  them directly with the published record.  If Q=150 closes, the aggregate
-  certificate should then be recomputed and the next lower boundary attacked
-  only if it controls the resulting upper.
-- **Completed Q=117 partial searches:** every mixed isolated and mixed
-  no-isolate partition is empty above the record; the no-isolate thirteen-unit
-  layer has 10,329 exact profiles and no arithmetic survivor.  These remain
-  useful supporting certificates for the lower-energy structure.
+- **Q=153 closure:** the former sparse `(13,1,1)` residual allocations are
+  eliminated by a two-hub Schur--Cauchy inequality; the all-same branch is
+  closed by the clique/isolate/intertwining split in
+  `scripts/verify_tail_final_closure.py`.
+- **Q=159 closure:** the final sparse `(13,2,0)` allocation is removed by the
+  same Schur--Cauchy bound.  The `(14,1,0)` boundary reduces to all 3,159
+  unlabeled order-14 trees; exact matching-polynomial enumeration has unique
+  maximum at `P14`, still below the record.
+- **Next research targets:** Q=150 remains the highest unresolved shell, while
+  the Q=126 twelve-edge weighted-K5 branch is the best target for lowering the
+  *global numerical upper bound*.  A final proof must eventually bring every
+  remaining record-level branch down to the published record.
