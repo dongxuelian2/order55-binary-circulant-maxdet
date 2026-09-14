@@ -1,3 +1,26 @@
+# Maximal determinant research workspace
+
+## Order-15 μ₃ handoff (2026-09-14)
+
+The repository also contains the ongoing exact maximal-determinant investigation
+for 15×15 matrices over the third roots of unity.  The published construction
+has
+
+```text
+D_record = |det(H)|² = 277868041444786176 = 2²²·3²⁰·19.
+```
+
+The consolidated unmocked replay of every exact branch with `Q<144` completed
+with exit code 0.  The aggregate certificate then closes `Q=144` and `Q=150`
+and applies the trace envelope for `Q≥153`; the current rigorous integer upper
+bound is recorded in [docs/HANDOFF.md](docs/HANDOFF.md) and
+[results/handoff_checkpoint.json](results/handoff_checkpoint.json).  Exact
+maximality is not proved.  Start with [docs/COLLABORATOR_QUICKSTART.md](docs/COLLABORATOR_QUICKSTART.md)
+and [docs/HANDOFF.md](docs/HANDOFF.md); the machine-readable checkpoint is the
+single source of truth for the archived run.
+
+The older binary-circulant order-55 project remains below.
+
 # Maximal determinant: exact binary circulant order 55
 
 ## Result

@@ -22,6 +22,7 @@ data/*
 !data/.gitkeep
 results/*
 !results/.gitkeep
+!results/handoff_checkpoint.json
 
 # Local paper-rendering intermediates
 /tmp/pdfs/
