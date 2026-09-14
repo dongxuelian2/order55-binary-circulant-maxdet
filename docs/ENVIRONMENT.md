@@ -50,3 +50,34 @@ virtual-environment interpreter explicitly.
   this is not an independent full fiber-union proof.
 - Paper: 8-page PDF generated with local TeX Live 2024 and visually checked
   after Poppler rendering; no overfull-box or LaTeX warning remains.
+
+## Order-15 μ₃ archival replay (2026-09-14)
+
+The successful archived replay used `E:\maximal determinant\.venv\Scripts\python.exe`
+with Python 3.13.1 and these installed packages:
+
+- SymPy 1.14.0
+- NumPy 2.5.3
+- SciPy 1.18.1
+- NetworkX 3.6.1
+- z3-solver 5.1.0.0
+- python-sat 1.9.dev15
+- pytest 9.1.1
+
+The full suite result for the handoff was 110 passed with 3 harmless NetworkX
+warnings.  These versions were queried from the active virtual environment;
+they are recorded here as provenance, not as mathematical inputs.
+
+### Clean-environment installation
+
+From a fresh checkout on Windows PowerShell:
+
+```powershell
+py -3.13 -m venv .venv
+& .\.venv\Scripts\python.exe -m pip install -e ".[sat,graph]"
+& .\.venv\Scripts\python.exe -m pytest -q
+```
+
+Then run `order15_mu3\scripts\replay_checkpoint.ps1` for the deterministic
+certificate replay.  The generic `python` shim on the archival host was not
+used; the explicit virtual-environment interpreter was.

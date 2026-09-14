@@ -20,8 +20,9 @@
   `60153061831/58095304704 ≈ 1.03542036895` and the additive squared gap is
   `9842188547970063`.  The open mathematical
   frontier is the unenumerated high-energy tail represented by the Q=153
-  trace envelope (Q=156,159,162,165,168 are lower by monotonicity; Q>=171 is
-  below the record by trace stability).
+  trace envelope.  The color congruence leaves genuine shells Q=153,159,162,168;
+  the aggregate verifier also evaluates Q=156 and Q=165 conservatively.  Q>=171
+  is below the record by trace stability.
 - **Completed Q=117 partial searches:** every mixed isolated and mixed
   no-isolate partition is empty above the record; the no-isolate thirteen-unit
   layer has 10,329 exact profiles and no arithmetic survivor.  These are

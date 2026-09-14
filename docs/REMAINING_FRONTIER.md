@@ -7,18 +7,28 @@ high-energy bound.
 
 ## Tail shells
 
-`Q=153,156,159,162,165,168` are the admissible shells in the trace tail.  The
-stationary two-level product is largest at Q=153; the other shells are
-strictly smaller.  `Q≥171` is below the published record by the independent
-trace-stability certificate.  The aggregate verifier combines this tail with
-the exact Q=144 and Q=150 branch closures, then applies `3^14` divisibility and
-the rational Eisenstein norm test.
+The proved row/column color congruence gives the actual shell filter:
+
+- `(15,0,0)` and `(13,1,1)` have `Q ≡ 0 (mod 9)`;
+- `(14,1,0)` and `(13,2,0)` have `Q ≡ 6 (mod 9)`.
+
+Therefore `Q ≡ 3 (mod 9)` is impossible.  The genuine admissible shells in
+the tail are consequently `Q=153,159,162,168`.  The current aggregate
+verifier conservatively evaluates Q=156 and Q=165 as well (its generic
+`range(153,169,3)` loop); those harmless extra evaluations do not change the
+Q=153 maximizing envelope or the certified integer upper.
+
+The stationary two-level product is largest at Q=153; the other genuine
+shells are strictly smaller.  `Q≥171` is below the published record by the
+independent trace-stability certificate.  The aggregate verifier combines
+this tail with the exact Q=144 and Q=150 branch closures, then applies `3^14`
+divisibility and the rational Eisenstein norm test.
 
 ## What a successful continuation must do
 
-1. Prove a structural restriction on Gram supports/phases at Q=153–168 that
-   lowers the trace envelope, or enumerate every realizable support at those
-   shells with exact arithmetic.
+1. Prove a structural restriction on Gram supports/phases at the genuine
+   Q=153,159,162,168 shells that lowers the trace envelope, or enumerate every
+   realizable support at those shells with exact arithmetic.
 2. Keep both row and column μ₃ constraints; a one-sided Gram catalogue is not
    sufficient because the intertwining identity is a central obstruction.
 3. Emit exact rational bounds and a deterministic replay script.  Floating

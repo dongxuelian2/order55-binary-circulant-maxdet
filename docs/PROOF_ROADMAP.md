@@ -21,7 +21,10 @@ envelope, not at equality with the record.
    Q=150 boundaries, and the Q≥153 trace envelope.  Round down using
    `3^14` divisibility and reject non-Eisenstein norms.  This is a rigorous
    integer upper, not a candidate construction.
-6. **Missing step for maximality.**  Close the Q=153–168 tail by a structural
-   realizability theorem, or find a sharper spectral/phase constraint.  A
+6. **Missing step for maximality.**  Close the genuine Q=153,159,162,168 tail
+   by a structural realizability theorem, or find a sharper spectral/phase
+   constraint.  The aggregate verifier also checks Q=156 and Q=165
+   conservatively because its loop is generic; those shells are impossible by
+   color congruence and do not affect the bound.  A
    successful result must be independently replayable and preserve the exact
    integer-norm sieve.

@@ -24,7 +24,7 @@ M15 transcription + μ₃ ring arithmetic
         │                                   │             │
         │                                   └──────┬──────┘
         │                                          │
-        └── Q=153…168 trace envelope; Q≥171 below record
+        └── Q=153,159,162,168 trace envelope; Q≥171 below record
                                                    │
                               3^14 divisibility + Eisenstein norm sieve
                                                    │
@@ -32,5 +32,5 @@ M15 transcription + μ₃ ring arithmetic
 ```
 
 The dashed conceptual endpoint is deliberate: no branch currently proves
-that the upper bound is attained or that the Q=153–168 trace envelope is
-realizable.
+that the upper bound is attained or that the genuine Q=153,159,162,168 trace
+envelope is realizable.
