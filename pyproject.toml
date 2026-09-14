@@ -3,20 +3,18 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "maximal-determinant"
-version = "0.1.0"
-description = "Lightweight baseline infrastructure for the ±1 maximal determinant problem"
+name = "order55-binary-circulant-maxdet"
+version = "1.0.0"
+description = "Exact verification code for binary circulant maximal determinant research"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "numpy>=1.26",
-    "scipy>=1.11",
     "sympy>=1.12",
-    "pytest>=8.0",
 ]
 
 [project.optional-dependencies]
-numba = ["numba>=0.60"]
+dev = ["pytest>=8.0"]
 sat = ["z3-solver>=5.1", "python-sat>=1.9.dev15"]
 graph = ["networkx>=3.6"]
 
