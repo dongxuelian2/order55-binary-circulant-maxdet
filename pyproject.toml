@@ -15,8 +15,6 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest>=8.0"]
-sat = ["z3-solver>=5.1", "python-sat>=1.9.dev15"]
-graph = ["networkx>=3.6"]
 
 [tool.setuptools]
 package-dir = {"" = "src"}

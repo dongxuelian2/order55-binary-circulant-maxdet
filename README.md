@@ -138,8 +138,8 @@ The existing proof-critical generator/verifier sources and the stored certificat
 
 ## Order-15 third-root research track
 
-The repository also contains the separate `order15_mu3/` research track for the order-15 third-root maximal-determinant problem.  This work is intentionally kept distinct from the proved order-55 binary-circulant theorem above.  The current rigorous order-15 record is accompanied by exact branch certificates through Q=150, and the complete post-Q150 tail has now been eliminated: the genuine shells `Q=153,159,162,168` are all below the record and `Q>=171` was already excluded by trace stability.  Thus every strict counterexample must satisfy `Q<=150`.  See `order15_mu3/reports/CURRENT_STATUS.md` and `docs/REMAINING_FRONTIER.md` for the current frontier.
+The separate order-15 third-root research has moved to [order15-mu3-maxdet](https://github.com/ddy314/order15-mu3-maxdet). Its sources, historical records and independent audit are maintained there.
 
 ## Scope
 
-The order-55 theorem concerns **55×55 binary circulant matrices**. It is not a claim about unrestricted binary matrices or unrestricted `{±1}` matrices. The repository separates exploratory discovery from the finite proof: only the exact threshold, mathematical reductions, exhaustive enumerations and exact determinant checks enter the theorem. The order-15 third-root material is a separate ongoing research program and is not part of that theorem.
+The order-55 theorem concerns **55×55 binary circulant matrices**. It is not a claim about unrestricted binary matrices or unrestricted `{±1}` matrices. The repository separates exploratory discovery from the finite proof: only the exact threshold, mathematical reductions, exhaustive enumerations and exact determinant checks enter the theorem.
