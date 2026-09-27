@@ -1,4 +1,0 @@
-Production theorem commit: e77a1aa6afea16fe59a35f9c0de93f385f9b8781
-Packaging branch: codex/order55-arxiv-package
-Packaging commit: see the final Git commit that contains this file; the exact hash is reported at handoff
-Working tree note: pre-existing untracked audit/order55 material is preserved and is not part of this package.

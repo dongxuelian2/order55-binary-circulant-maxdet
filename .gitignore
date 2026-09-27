@@ -12,10 +12,9 @@ __pycache__/
 build/
 dist/
 
-# Coverage and local tooling
-.coverage
-htmlcov/
-.tox/
+# Native build products
+native/*.exe
+native/order55_sign/*.exe
 
 # Experimental data and generated results (keep directory placeholders)
 data/*
@@ -25,6 +24,7 @@ results/*
 
 # Local paper-rendering intermediates
 /tmp/pdfs/
-
-# Rebuilt sign research executables
-native/order55_sign/*.exe
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.pdf

@@ -7,6 +7,8 @@ authors:
     given-names: Qichao
     affiliation: Hebei University of Technology
 repository-code: https://github.com/dongxuelian2/order55-binary-circulant-maxdet
+version: 1.0.0
+date-released: 2026-09-27
 preferred-citation:
   type: article
   title: "Maximum Determinants of 55 x 55 Circulant Matrices over {0,1} and {-1,1}"
