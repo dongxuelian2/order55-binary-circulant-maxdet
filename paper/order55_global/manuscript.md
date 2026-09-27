@@ -1,6 +1,6 @@
 # Maximum Determinants of 55 × 55 Circulant Matrices over {0,1} and {-1,1}
 
-Qichao Wang and Daoyu Dong; equal contribution. Joint revision, 11 September 2026.
+Qichao Wang, Hebei University of Technology. Joint revision, 2026.
 
 ## Abstract
 

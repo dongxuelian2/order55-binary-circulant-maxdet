@@ -16,7 +16,7 @@
   citecolor=blue,
   urlcolor=blue,
   pdftitle={Maximum Determinants of 55 by 55 Circulant Matrices over 0,1 and -1,1},
-  pdfauthor={Qichao Wang and Daoyu Dong}
+  pdfauthor={Qichao Wang}
 }
 \urlstyle{same}
 \setlength{\parindent}{0pt}
@@ -49,10 +49,6 @@
 \author{
   Qichao Wang\\
   Hebei University of Technology
-  \and
-  Daoyu Dong\\
-  University of Electronic Science and Technology of China
-  \thanks{Qichao Wang and Daoyu Dong contributed equally to this work.}
 }
 \date{}
 
@@ -691,10 +687,11 @@ words, products, and classification must agree.
 
 The project repository is
 \url{https://github.com/dongxuelian2/order55-binary-circulant-maxdet}.
-The joint revision is prepared on \path|sign-circulant-order55|.
-Local OEIS drafts accompany the source.
-
-Qichao Wang and Daoyu Dong contributed equally to this work.
+The joint manuscript and OEIS text are included in this publication release.
+The versioned PDF is attached to the project release.
+The stored sign proof is checked by\\
+\path|python scripts/verify_order55_sign.py|; a full independent replay
+can be requested with the \path|--replay| option.
 
 
 \section{The companion sign-circulant maximum}\label{sec:sign}
@@ -892,7 +889,7 @@ missing companion result; the search does not establish absolute priority.
 All sign certificates are under \path|certificates/order55_sign/|.
 The ordinary verifier rechecks hashes, exact winner arithmetic, weight
 bounds, target sets, negative-spectrum certificates, task records and
-orbit classification. The second command recompiles and independently
+orbit classification. The optional second command recompiles and independently
 reruns the complete proof without any heuristic search:
 \begin{lstlisting}
 python scripts/verify_order55_sign.py

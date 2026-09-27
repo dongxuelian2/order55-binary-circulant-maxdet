@@ -13,6 +13,7 @@ for stage in ("pdflatex","bibtex","pdflatex","pdflatex"):
  run=subprocess.run(cmd,cwd=work,capture_output=True)
  if run.returncode:print(run.stdout.decode(errors="replace"));raise SystemExit(run.returncode)
 pdf=work/"main.pdf"
-for path in (out/"order55_joint.pdf",out/"order55_global.pdf",paper/"arxiv/main.pdf"):shutil.copyfile(pdf,path)
+dist=ROOT/"dist";dist.mkdir(parents=True,exist_ok=True)
+for path in (dist/"order55-circulant-maxdet-v1.0.0.pdf",out/"order55_joint.pdf",out/"order55_global.pdf",paper/"arxiv/main.pdf"):shutil.copyfile(pdf,path)
 shutil.copyfile(source,paper/"manuscript.tex")
 print(out/"order55_joint.pdf")

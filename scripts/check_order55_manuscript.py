@@ -73,13 +73,7 @@ def main() -> int:
 
     required(manuscript, "Qichao Wang", "author Qichao Wang")
     required(manuscript, "Hebei University of Technology", "Qichao affiliation")
-    required(manuscript, "Daoyu Dong", "author Daoyu Dong")
-    required(
-        manuscript,
-        "University of Electronic Science and Technology of China",
-        "Daoyu affiliation",
-    )
-    required(manuscript, "contributed equally", "equal contribution statement")
+    required(manuscript, "pdfauthor={Qichao Wang}", "single-author PDF metadata")
     required(manuscript, "D_{01}(55)", "D_01 notation")
 
     for bad in ("TODO", "TBD", "YOUR EMAIL", "INSERT HERE"):
