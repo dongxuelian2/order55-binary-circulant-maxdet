@@ -15,7 +15,7 @@ orbits paired by global negation.
 ## Publication and proof packages
 
 - Joint single-author manuscript: [LaTeX source](paper/order55_global/arxiv/main.tex)
-  and [versioned PDF](https://github.com/dongxuelian2/order55-binary-circulant-maxdet/releases/download/order55-v1.0.0/order55-circulant-maxdet-v1.0.0.pdf).
+  and [commit-pinned PDF](https://raw.githubusercontent.com/dongxuelian2/order55-binary-circulant-maxdet/e2204cc7d784cb264f47f0820b1fb71487cb0ecc/output/pdf/order55_joint.pdf) and [v1.0.0 release](https://github.com/dongxuelian2/order55-binary-circulant-maxdet/releases/tag/order55-v1.0.0).
 - Binary proof: [certificate](certificates/order55_global/global.json),
   [verifier](scripts/verify_order55_global.py), and [proof map](PROOF_MAP.md).
 - Sign proof: [certificate](certificates/order55_sign/global.json),

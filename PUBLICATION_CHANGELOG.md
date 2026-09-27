@@ -21,3 +21,7 @@ The old tracked arXiv review bundle was removed by the newer main history; its
 Git objects remain recoverable. The historical research script
 esearch/order55_sign/upgrade_paper.py retains its previous draft string as
 provenance and is not used as current publication metadata.
+
+The v1.0.0 release PDF digest was verified against the commit-pinned
+output/pdf/order55_joint.pdf object. OEIS and citation links use that
+commit-pinned URL; the release page remains linked for discovery.

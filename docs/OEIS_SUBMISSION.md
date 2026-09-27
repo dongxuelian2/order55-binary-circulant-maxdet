@@ -2,7 +2,9 @@
 
 Paper: Maximum Determinants of 55 x 55 Circulant Matrices over {0,1} and {-1,1}. Qichao Wang, Hebei University of Technology (2026).
 
-Versioned PDF: https://github.com/dongxuelian2/order55-binary-circulant-maxdet/releases/download/order55-v1.0.0/order55-circulant-maxdet-v1.0.0.pdf
+Commit-pinned PDF: https://raw.githubusercontent.com/dongxuelian2/order55-binary-circulant-maxdet/e2204cc7d784cb264f47f0820b1fb71487cb0ecc/output/pdf/order55_joint.pdf
+
+Versioned release: https://github.com/dongxuelian2/order55-binary-circulant-maxdet/releases/tag/order55-v1.0.0
 
 Repository: https://github.com/dongxuelian2/order55-binary-circulant-maxdet
 
@@ -15,34 +17,36 @@ additional formula is proposed.
 
 COMMENTS:
 
-    a(55) = 134694094094758395331307111329132. This is proved in <a href="https://github.com/dongxuelian2/order55-binary-circulant-maxdet/releases/download/order55-v1.0.0/order55-circulant-maxdet-v1.0.0.pdf">Wang (2026)</a>. - ~~~~
+    a(55) = 134694094094758395331307111329132. This is proved in <a href="https://raw.githubusercontent.com/dongxuelian2/order55-binary-circulant-maxdet/e2204cc7d784cb264f47f0820b1fb71487cb0ecc/output/pdf/order55_joint.pdf">Wang (2026)</a>. - ~~~~
 
 LINKS:
 
-    Qichao Wang, <a href="https://github.com/dongxuelian2/order55-binary-circulant-maxdet/releases/download/order55-v1.0.0/order55-circulant-maxdet-v1.0.0.pdf">Maximum Determinants of 55 x 55 Circulant Matrices over {0,1} and {-1,1}</a>, 2026.
+    Qichao Wang, <a href="https://raw.githubusercontent.com/dongxuelian2/order55-binary-circulant-maxdet/e2204cc7d784cb264f47f0820b1fb71487cb0ecc/output/pdf/order55_joint.pdf">Maximum Determinants of 55 x 55 Circulant Matrices over {0,1} and {-1,1}</a>, 2026.
 
-Secondary supporting link: <a href="https://github.com/dongxuelian2/order55-binary-circulant-maxdet/tree/order55-v1.0.0">Order-55 proof repository</a>.
+Secondary supporting link: <a href="https://github.com/dongxuelian2/order55-binary-circulant-maxdet/tree/e2204cc7d784cb264f47f0820b1fb71487cb0ecc">Order-55 proof repository</a>.
 
 ## A215723
 
 COMMENTS:
 
-    a(55) = 297532404423965431213849494795385191907933028352. This is proved in <a href="https://github.com/dongxuelian2/order55-binary-circulant-maxdet/releases/download/order55-v1.0.0/order55-circulant-maxdet-v1.0.0.pdf">Wang (2026)</a>. - ~~~~
+    a(55) = 297532404423965431213849494795385191907933028352. This is proved in <a href="https://raw.githubusercontent.com/dongxuelian2/order55-binary-circulant-maxdet/e2204cc7d784cb264f47f0820b1fb71487cb0ecc/output/pdf/order55_joint.pdf">Wang (2026)</a>. - ~~~~
 
 LINKS:
 
-    Qichao Wang, <a href="https://github.com/dongxuelian2/order55-binary-circulant-maxdet/releases/download/order55-v1.0.0/order55-circulant-maxdet-v1.0.0.pdf">Maximum Determinants of 55 x 55 Circulant Matrices over {0,1} and {-1,1}</a>, 2026.
+    Qichao Wang, <a href="https://raw.githubusercontent.com/dongxuelian2/order55-binary-circulant-maxdet/e2204cc7d784cb264f47f0820b1fb71487cb0ecc/output/pdf/order55_joint.pdf">Maximum Determinants of 55 x 55 Circulant Matrices over {0,1} and {-1,1}</a>, 2026.
 
-Secondary supporting link: <a href="https://github.com/dongxuelian2/order55-binary-circulant-maxdet/tree/order55-v1.0.0">Order-55 proof repository</a>.
+Secondary supporting link: <a href="https://github.com/dongxuelian2/order55-binary-circulant-maxdet/tree/e2204cc7d784cb264f47f0820b1fb71487cb0ecc">Order-55 proof repository</a>.
 
 ## A215897
 
 COMMENTS:
 
-    a(55) = 16516366298178510386365752382353. This is proved in <a href="https://github.com/dongxuelian2/order55-binary-circulant-maxdet/releases/download/order55-v1.0.0/order55-circulant-maxdet-v1.0.0.pdf">Wang (2026)</a>. - ~~~~
+    a(55) = 16516366298178510386365752382353. This is proved in <a href="https://raw.githubusercontent.com/dongxuelian2/order55-binary-circulant-maxdet/e2204cc7d784cb264f47f0820b1fb71487cb0ecc/output/pdf/order55_joint.pdf">Wang (2026)</a>. - ~~~~
 
 LINKS:
 
-    Qichao Wang, <a href="https://github.com/dongxuelian2/order55-binary-circulant-maxdet/releases/download/order55-v1.0.0/order55-circulant-maxdet-v1.0.0.pdf">Maximum Determinants of 55 x 55 Circulant Matrices over {0,1} and {-1,1}</a>, 2026.
+    Qichao Wang, <a href="https://raw.githubusercontent.com/dongxuelian2/order55-binary-circulant-maxdet/e2204cc7d784cb264f47f0820b1fb71487cb0ecc/output/pdf/order55_joint.pdf">Maximum Determinants of 55 x 55 Circulant Matrices over {0,1} and {-1,1}</a>, 2026.
 
-Secondary supporting link: <a href="https://github.com/dongxuelian2/order55-binary-circulant-maxdet/tree/order55-v1.0.0">Order-55 proof repository</a>.
+Secondary supporting link: <a href="https://github.com/dongxuelian2/order55-binary-circulant-maxdet/tree/e2204cc7d784cb264f47f0820b1fb71487cb0ecc">Order-55 proof repository</a>.
+
+Release PDF asset: https://github.com/dongxuelian2/order55-binary-circulant-maxdet/releases/download/order55-v1.0.0/order55-circulant-maxdet-v1.0.0.pdf
