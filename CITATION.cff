@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use the order-55 results, cite the joint paper."
+title: "Maximum Determinants of 55 x 55 Circulant Matrices over {0,1} and {-1,1}"
+type: software
+authors:
+  - family-names: Wang
+    given-names: Qichao
+    affiliation: Hebei University of Technology
+repository-code: https://github.com/dongxuelian2/order55-binary-circulant-maxdet
+preferred-citation:
+  type: article
+  title: "Maximum Determinants of 55 x 55 Circulant Matrices over {0,1} and {-1,1}"
+  authors:
+    - family-names: Wang
+      given-names: Qichao
+      affiliation: Hebei University of Technology
+  year: 2026
+  url: https://github.com/dongxuelian2/order55-binary-circulant-maxdet/releases/download/order55-v1.0.0/order55-circulant-maxdet-v1.0.0.pdf

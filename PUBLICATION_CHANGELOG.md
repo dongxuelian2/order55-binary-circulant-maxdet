@@ -1,0 +1,18 @@
+# Publication change log
+
+Source sign artifacts: commits `69ec2ed8c4c9b572a37d9d2419247341883891ef`
+and `db02b4ccfe409a89feafa2bd984bfd9740d9a7f8` on the preserved
+`sign-circulant-order55` branch. The publication branch starts at
+`7377ad14e88172822397bb54d3c2c1040780a3cd` and retains those original
+objects. No certificate file was recreated or restored from prose.
+
+Publication-facing sources changed: `README.md`, `CITATION.cff`,
+`PROOF_MAP.md`, `docs/OEIS_SUBMISSION.md`, `RELEASE_NOTES.md`, `SHA256SUMS.txt`,
+`paper/order55_global/arxiv/main.tex`, `paper/order55_global/manuscript.tex`,
+`paper/order55_global/manuscript.md`, all four existing OEIS draft files,
+`scripts/check_order55_manuscript.py`, `scripts/check_order55_sign_manuscript.py`,
+and `scripts/render_order55_paper.py`. Generated publication PDFs and the
+versioned `dist` PDF were rebuilt from the same LaTeX source.
+
+Proof-critical files restored or modified in this publication pass: none.
+The inherited `.gitattributes` is unchanged.
