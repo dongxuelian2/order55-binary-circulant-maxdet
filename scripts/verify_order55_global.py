@@ -9,13 +9,14 @@ from fractions import Fraction as F
 from math import isqrt,gcd,factorial,prod
 from collections import Counter,defaultdict
 from concurrent.futures import ThreadPoolExecutor
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 import argparse,hashlib,json,subprocess,tempfile
 import sympy as sp
 ROOT=Path(__file__).resolve().parents[1]
 P=(2305843009213696591,2305843009213697141)
 
 def digest(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def same_replay(a,b):return a.read_bytes().replace(b'\r\n',b'\n')==b.read_bytes().replace(b'\r\n',b'\n')
 def load(p):return json.loads(p.read_text())
 def lines(p):return [json.loads(x) for x in p.read_text().splitlines() if x]
 def roots(x):
@@ -86,7 +87,7 @@ def audit(folder,full):
     with tempfile.TemporaryDirectory(prefix='order55-audit-') as tmp:
         tmp=Path(tmp);executables={}
         for record in load(folder/'build.json'):
-            source=next(ROOT/'native'/Path(x).name for x in record['command'] if x.endswith('.cpp'))
+            source=next(ROOT/'native'/PureWindowsPath(x).name for x in record['command'] if x.endswith('.cpp'))
             assert digest(source)==record['source_sha256']
             exe=tmp/(source.stem+'.exe');subprocess.run(['clang++','-O3','-std=c++20','-march=native',str(source),'-o',str(exe)],check=True);executables[source.stem]=exe
         lookup={};profile_counts=[]
@@ -94,7 +95,7 @@ def audit(folder,full):
             for m in (5,11):
                 stored=folder/f'profiles_m{m}_k{k}.jsonl';replay=tmp/stored.name
                 with replay.open('w') as f:subprocess.run([str(executables['order55_profiles']),str(folder/'profile_thresholds.txt'),str(m),str(k)],stdout=f,stderr=subprocess.DEVNULL,check=True)
-                assert digest(replay)==digest(stored)
+                assert same_replay(replay,stored)
                 mapping=defaultdict(set)
                 for row in lines(stored):
                     a=row['profile'];assert len(a)==m and sum(a)==k and all(0<=v<=55//m for v in a)
@@ -133,7 +134,7 @@ def audit(folder,full):
             idx=entry['partition'];source=folder/f'corr_k{k}_part{idx}.txt';stored=folder/f'corr_k{k}_part{idx}_targets.jsonl';replay=tmp/stored.name;ra=tmp/(source.stem+'_audit.json')
             assert list(map(int,source.read_text().split()))==vs
             with replay.open('w') as f:subprocess.run([str(executables['order55_correlation_screen']),str(k),str(M),str(source),str(folder/'foldcorr_m'),str(ra),str(folder/'cosine_intervals.txt')],stdout=f,check=True)
-            assert digest(replay)==digest(stored);fresh=load(ra);old=entry['audit'];assert fresh['ordered_profiles']==count
+            assert same_replay(replay,stored);fresh=load(ra);old=entry['audit'];assert fresh['ordered_profiles']==count
             for key in ('ordered_profiles','folded_matching_profiles','canonical_determinants','above_screen','max_absolute_profile_product'):assert fresh[key]==old[key]
             for t in lines(stored):t['source_partition']=idx;alltargets.append(t)
         alltargets.sort(key=lambda t:(-int(t['absolute_profile_product']),t['k'],t['correlations']))
