@@ -1,5 +1,12 @@
 # Repository instructions
 
+## Mandatory legacy research audit
+
+- Review **every existing tracked research document**, not only the files that contain Chinese text. Audit definitions, quantifiers, hypotheses, edge cases, lemma dependencies, completeness of proofs, calculations, code-to-claim consistency, bibliographic accuracy, and all statements of novelty or scope. Resolve ambiguities and supply necessary missing definitions, arguments, examples, and references.
+- Translate Chinese-language mathematics into accurate English without changing its meaning, preserving equations, labels, hypotheses, and all proof steps. If a purported proof has an actual gap, repair it rigorously if possible; otherwise identify the precise unresolved step and correctly classify the result as incomplete. Never silently upgrade evidence or invent conclusions.
+- Organize corrections into focused per-repository PRs. Review the full diff for residual Chinese prose, broken mathematical links and citations, and unintended proof changes. Run existing relevant checks and provide proof-level review; automated language scans and tests alone are insufficient.
+- Keep all future research files unambiguous and in English, including comments and manuscript prose. Avoid duplicative progress reports or unnecessary engineering scaffolding.
+
 This is a research repository. Keep proof statements, mathematical explanations, and program documentation precise, verifiable, and easy to navigate. Preserve the established directory layout and proof assumptions when editing.
 
 ## Mandatory English-language policy
