@@ -301,7 +301,7 @@ times, put $\mu=S/h$ and $V=L-S^2/h$.  The two values are
 Enumerating $m=1,\ldots,h-1$, together with the zero-variance and boundary
 cases, exhausts the compact feasible set.  The implementation bounds the
 square roots outward by integer arithmetic at a decimal scale of $10^{50}$.
-No floating-point comparison decides a pruning step.
+Every pruning decision uses exact integers and outward rational bounds.
 
 The certificate also imposes a uniform spectral cap.  Let
 \[
@@ -507,9 +507,7 @@ inequality
 which is just Cauchy--Schwarz followed by AM--GM on the absolute values.
 The signed product is reconstructed from two $61$-bit Fourier fields.  A
 separate squared integer comparison proves that the product of the primes
-exceeds the bound in \eqref{eq:formal-profile-bound}; hence no modular wrap
-can turn a formal product into an incorrect target.  Profiles whose exact absolute
-product is below $M$ cannot contain an improving word.  Profiles at or above
+exceeds the bound in \eqref{eq:formal-profile-bound}; hence the CRT reconstruction preserves the exact product and its comparison with the incumbent.  Profiles with an exact absolute product below $M$ are eliminated.  Profiles at or above
 the threshold are passed to the complete lift enumeration.
 
 
@@ -530,8 +528,7 @@ assignment records its word and a seven-coordinate signature: five row
 counts and the two within-column correlation sums for shifts $11$ and $22$.
 These statistics are additive across columns.  The left half is sorted by
 its packed signature; each right half is joined to the unique complementary
-signature.  The packing is injective over the bounded coordinate ranges, so
-the join uses exact integer equality rather than a hash collision.  Every
+signature.  The packing is injective over the bounded coordinate ranges, so the join uses exact integer equality with an injective packed signature.  Every
 joined word has the requested folds and the two stored correlations; the
 remaining independent shifts are checked by rotated $55$-bit intersections
 and population counts.
@@ -668,8 +665,7 @@ For $p_r=|f_x(\zeta^r)|^2=4q_r$ and $\sigma=2k-55$,
  \sigma^4+2\sum p_r^2=55\left(55^2+2\sum_{s=1}^{27}\rho_s^2\right).
 \]
 At fixed weight this is an invertible affine change of the integer
-correlations; the sign congruence adds no condition beyond that
-integrality. The implementation keeps the sparse binary deviations.
+correlations; the sign congruence follows directly from that integrality. The implementation keeps the sparse binary deviations.
 
 The first-moment bound is
 \[
@@ -713,13 +709,13 @@ $k$ & Formal profiles & Explicit profiles & Targets & Lift tasks\\
 \end{tabular}
 \end{center}
 There are $17,835$ canonical targets and $151,772$ lift tasks.
-No target remains at weight $22$.
+The weight-$22$ target set is empty.
 
 The independent arithmetic checker parametrizes the two stationary
 values by their separation, verifies its own dyadic cosine enclosures,
 and generates multisets by descending multiplicities.
 An independent bounded-alphabet FKM necklace generator produces every
-cyclic fold representative; it shares no production affine-minimum test.
+cyclic fold representative; it uses an independent affine canonicalization routine.
 All fold representative sets and their correlations agree exactly.
 
 An independent \texttt{next\_permutation} traversal computes every
@@ -788,7 +784,7 @@ This proves Theorem~\ref{thm:sign} and classifies all equality cases.
 
 \subsection{Comparison of the two maxima}
 
-The sign winner is not induced by the binary global winner.
+The sign winner and the binary global winner occupy distinct affine classes.
 Its weight-$23$ binary determinant falls below $D_{01}(55)$ by
 $92485602443857757677261299685341$. Its weight-$32$ complement has
 binary determinant $58724857949079148040411564026144$.
