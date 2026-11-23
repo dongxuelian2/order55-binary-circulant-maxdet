@@ -1,0 +1,45 @@
+name: Build order-55 joint manuscript
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'paper/order55_global/arxiv/main.tex'
+      - 'paper/order55_global/arxiv/references.bib'
+      - '.github/workflows/order55-joint-paper.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Compile main PDF and bibliography
+        uses: xu-cheng/latex-action@v4
+        with:
+          working_directory: paper/order55_global/arxiv
+          root_file: main.tex
+      - name: Update existing PDF paths
+        run: |
+          test -s paper/order55_global/arxiv/main.pdf
+          mkdir -p output/pdf
+          cp paper/order55_global/arxiv/main.pdf output/pdf/order55_joint.pdf
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin main
+          local_tex="$(git hash-object paper/order55_global/arxiv/main.tex)"
+          remote_tex="$(git show origin/main:paper/order55_global/arxiv/main.tex | git hash-object --stdin)"
+          if [ "$local_tex" != "$remote_tex" ]; then
+            echo "Source advanced; skip publishing stale PDF"
+            exit 0
+          fi
+          git add paper/order55_global/arxiv/main.pdf output/pdf/order55_joint.pdf
+          if ! git diff --cached --quiet; then
+            git commit -m "paper: rebuild order-55 joint PDF at stable paths"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
