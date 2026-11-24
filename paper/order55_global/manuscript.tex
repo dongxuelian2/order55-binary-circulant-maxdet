@@ -63,8 +63,9 @@ $134694094094758395331307111329132$; its maximizers have weight $28$
 and form one affine orbit of size $2200$.  The sign maximum is
 $297532404423965431213849494795385191907933028352$; its
 maximizers form two affine orbits of size $2200$, exchanged by global
-negation.  The common Fourier spectrum yields two distinct determinant
-objectives through their zero-frequency factors.  Exact moment
+negation.  After normalizing the sign determinant by $2^{54}$,
+the two objectives share the nontrivial Fourier product
+and differ in their zero-frequency factors.  Exact moment
 bounds, cyclotomic folds, correlation profiles, and exhaustive binary
 lifts establish both extrema and their complete classifications.
 \end{abstract}
@@ -129,8 +130,9 @@ each.  Their plus-sign counts and row sums are $(23,-9)$ and
 $(32,9)$, respectively.
 \end{theorem}
 
-The two determinant objectives share the product of the $27$
-nontrivial Fourier magnitudes.  Their zero-frequency coefficients
+After dividing the sign determinant by $2^{54}$,
+both objectives share the product of the $27$ nontrivial
+binary Fourier magnitudes. Their zero-frequency coefficients
 differ: after complement reduction the binary objective has factor
 $55-k$, and the normalized sign objective has factor $55-2k$,
 where $k$ is the number of ones in a binary word.  Thus the
@@ -515,12 +517,22 @@ inequality
   \leq (55-k)\left(\frac{\sum_r q_r^2}{27}\right)^{27/2},
 \end{equation}
 which is just Cauchy--Schwarz followed by AM--GM on the absolute values.
-The signed product is reconstructed from two $61$-bit Fourier fields.
-A squared integer comparison establishes that the combined CRT modulus
-exceeds the upper bound in \eqref{eq:formal-profile-bound}.
-The reconstruction therefore preserves the exact product.
-Profiles with absolute product below $M$ are eliminated; the remaining
-profiles enter the binary lift enumeration.
+The signed product is reconstructed over the two prime fields
+\[
+ p_1=2305843009213696591,\qquad
+ p_2=2305843009213697141,
+\]
+each with $p_i\equiv1\pmod{55}$.
+For every retained formal multiset the integer certificate checks
+\[
+ 4(55-k)^2\left(\sum_{r=1}^{27}q_r^2\right)^{27}
+ <(p_1p_2)^2\,27^{27}.
+\]
+Consequently, twice the absolute bound in
+\eqref{eq:formal-profile-bound} is below the CRT modulus
+$p_1p_2$, so the signed product is uniquely reconstructed.
+Profiles with absolute product below $M$ are eliminated;
+the remaining profiles enter binary lift enumeration.
 
 
 \subsection{Exhaustive binary lifts}\label{sec:lifts}
@@ -812,9 +824,11 @@ weight at order $55$.
 
 \section{Conclusion}
 
-The change from binary to sign circulants preserves every
-nontrivial Fourier magnitude and changes the factor at frequency
-zero. At order $55$, this changes the maximizing weight and
+The encoding $x=2a-\mathbf1$ doubles every nontrivial
+Fourier eigenvalue. After normalization by $2^{54}$,
+the remaining Fourier product agrees with the binary
+objective, while the zero-frequency factor changes.
+At order $55$ this shifts the maximizing weight and
 the affine-orbit classification. Cyclotomic folding isolates
 the low-dimensional arithmetic constraints, while exact
 correlation enumeration and binary lifts certify both extrema.
@@ -857,8 +871,10 @@ screens use outward rational bounds for every pruning decision.
 The binary verifier re-derives rational product bounds and cosine
 enclosures, checks fold norms by resultants, regenerates
 correlation profiles, and verifies lift tasks, output words,
-determinants and affine orbits.  Its full-lift mode executes
-the independent six-plus-five implementation.
+determinants and affine orbits. Its \texttt{--full-lifts} option
+replays the native lift generator with the six-plus-five split.
+The separately implemented typed-key full-fiber check is recorded in
+\path|certificates/order55_sign/binary_companion/full_fiber_report.json|.
 Certificate manifests record input hashes, integer counts
 and output identities.
 
