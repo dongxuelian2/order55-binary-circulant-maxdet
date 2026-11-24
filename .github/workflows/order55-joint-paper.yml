@@ -23,6 +23,19 @@ jobs:
         with:
           working_directory: paper/order55_global/arxiv
           root_file: main.tex
+      - name: Confirm theorem witnesses in compiled PDF
+        run: |
+          if ! command -v pdftotext >/dev/null 2>&1; then
+            sudo apt-get update -qq
+            sudo apt-get install -y -qq poppler-utils
+          fi
+          pdftotext -layout paper/order55_global/arxiv/main.pdf /tmp/order55-paper.txt
+          grep -Fq '0000000100011111011011001101011011010100011110101000111' /tmp/order55-paper.txt
+          grep -Fq '0000000000100110110100111001001110001010101100010010111' /tmp/order55-paper.txt
+          grep -Fq '129883590734231309783760428781663' /tmp/order55-paper.txt
+          grep -Fq '134694094094758395331307111329132' /tmp/order55-paper.txt
+          grep -Fq '297532404423965431213849494795385191907933028352' /tmp/order55-paper.txt
+          echo 'Both canonical words and exact determinant values appear in compiled PDF'
       - name: Update existing PDF paths
         run: |
           test -s paper/order55_global/arxiv/main.pdf
